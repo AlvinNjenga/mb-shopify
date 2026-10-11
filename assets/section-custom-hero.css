@@ -1,0 +1,197 @@
+.custom-hero {
+  position: relative;
+  isolation: isolate;
+  background: #c2b8db;
+  color: #f2f2f2;
+  font-family: 'Hero Inter', sans-serif;
+}
+
+.custom-hero__media,
+.custom-hero__image,
+.custom-hero::after {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-hero__media { display: block; z-index: 0; }
+.custom-hero__image { object-fit: cover; object-position: center; }
+.custom-hero::after {
+  content: '';
+  background: #000;
+  opacity: var(--hero-overlay);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.custom-hero__layout {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: var(--hero-height);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Align with the floating header instead of Dawn's 5rem page gutters. */
+.custom-hero__layout.page-width,
+.custom-hero-categories.page-width {
+  width: 100%;
+  max-width: 100%;
+  padding-left: max(1.5rem, 2vw);
+  padding-right: max(1.5rem, 2vw);
+}
+
+.custom-hero__content { width: 100%; max-width: 60rem; }
+.custom-hero__heading {
+  margin: 0;
+  color: inherit;
+  font-family: 'Hero Fraunces', Georgia, serif;
+  font-size: clamp(4.4rem, 4.8vw, 6.89rem);
+  line-height: 1.1;
+  letter-spacing: 0.06rem;
+  font-weight: 700;
+}
+.custom-hero__heading em {
+  position: relative;
+  display: inline-block;
+  font-style: normal;
+}
+.custom-hero__heading em::after {
+  content: '';
+  position: absolute;
+  left: -10%;
+  bottom: -15px;
+  width: 120%;
+  height: 0.6em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='167' height='10' viewBox='0 0 167 10'%3E%3Cpath d='M5 8C40 4 130 -1 162 6' stroke='%23e9e4fc' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") no-repeat center / contain;
+  transform: scaleX(-1);
+  pointer-events: none;
+}
+.custom-hero__description { color: inherit; margin-top: 1rem; font-size: 1.62rem; line-height: 1.67; }
+.custom-hero__description p { margin: 0; }
+.custom-hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 12.2rem;
+  min-height: 4.2rem;
+  margin-top: 1rem;
+  padding: 0 2rem;
+  border: 1px solid transparent;
+  border-radius: 1.3rem;
+  background: #fff;
+  color: #1d1d1d;
+  font-family: 'Hero Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  box-shadow: 0 4px 14px -10px #000;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.custom-hero__button svg { flex-shrink: 0; background: #9f9f9f66; border-radius: 50%; }
+.custom-hero__button:hover { background: #e9e4fc; color: #1d1d1d; }
+.custom-hero__button:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+.custom-hero[class*='--top-'] .custom-hero__layout { align-items: flex-start; }
+.custom-hero[class*='--bottom-'] .custom-hero__layout { align-items: flex-end; }
+.custom-hero[class*='-center'] .custom-hero__layout { justify-content: center; text-align: center; }
+.custom-hero[class*='-right'] .custom-hero__layout { justify-content: flex-end; text-align: right; }
+
+@media screen and (max-width: 749px) {
+  .custom-hero__layout {
+    min-height: min(var(--hero-height), 560px);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .custom-hero__content { max-width: 44rem; }
+  .custom-hero__heading { font-size: clamp(3.6rem, 9vw, 5.56rem); }
+  .custom-hero__description { font-size: 1.6rem; margin-top: 1rem; }
+  .custom-hero__button { margin-top: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .custom-hero__button { transition: none; }
+}
+
+.custom-hero-categories {
+  position: relative;
+  z-index: 3;
+  margin-top: -190px;
+  padding-bottom: 2rem;
+}
+.custom-hero-categories__list {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 8rem) / 5);
+  gap: 2rem;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  margin: 0;
+  padding: 0 0 1.5rem;
+  list-style: none;
+}
+.custom-hero-categories__slider { display: block; position: relative; }
+.custom-hero-categories__controls {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 1.5rem);
+  display: flex;
+  gap: 0.5rem;
+}
+.custom-hero-categories__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 50%);
+  box-shadow: 0 6px 10px -10px #000;
+  color: #1d1d1d;
+  cursor: pointer;
+}
+.custom-hero-categories__arrow svg { transition: transform 0.3s ease; }
+.custom-hero-categories__arrow--prev svg { transform: rotate(180deg); }
+.custom-hero-categories__arrow:hover:not(:disabled) svg { transform: scale(1.1); }
+.custom-hero-categories__arrow--prev:hover:not(:disabled) svg { transform: rotate(180deg) scale(1.1); }
+.custom-hero-categories__arrow:disabled { color: rgb(29 29 29 / 30%); cursor: default; }
+.custom-hero-categories__arrow:focus-visible { outline: 2px solid #1d1d1d; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .custom-hero-categories__list { scroll-behavior: auto; }
+  .custom-hero-categories__arrow svg { transition: none; }
+}
+.custom-hero-categories__item { min-width: 0; scroll-snap-align: start; }
+.hero-category-card { position: relative; display: block; padding-bottom: 2rem; color: #1d1d1d; text-decoration: none; }
+.hero-category-card__media { aspect-ratio: 1; overflow: hidden; border-radius: 8px; background: #e9e4fc; }
+.hero-category-card__media img,
+.hero-category-card__media svg { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero-category-card__title {
+  position: relative;
+  margin: -2rem 2rem 0;
+  padding: 1rem 0.8rem;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  font-family: 'Hero Fraunces', Georgia, serif;
+  font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: inherit;
+}
+.hero-category-card:hover .hero-category-card__title { text-decoration: underline; text-underline-offset: 0.3rem; }
+.hero-category-card:focus-visible { outline: 2px solid #1d1d1d; outline-offset: -2px; }
+.custom-hero-categories__list:focus-visible { outline: 2px solid #1d1d1d; outline-offset: 3px; }
+.custom-hero:has(+ .custom-hero-categories) .custom-hero__layout { padding-bottom: 23rem; }
+@media screen and (max-width: 989px) {
+  .custom-hero-categories { margin-top: -110px; }
+  .custom-hero-categories__list { grid-auto-columns: calc((100% - 3rem) / 2.2); gap: 1.5rem; }
+  .hero-category-card__title { font-size: 1.6rem; }
+  .custom-hero:has(+ .custom-hero-categories) .custom-hero__layout { padding-bottom: 15rem; }
+}

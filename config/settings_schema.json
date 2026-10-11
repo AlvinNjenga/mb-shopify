@@ -160,6 +160,13 @@
         "label": "t:settings_schema.layout.settings.page_width.label"
       },
       {
+        "type": "checkbox",
+        "id": "full_width_layout",
+        "label": "Use full available width",
+        "info": "Expands content across the screen with side padding. Turn off to use the page width setting.",
+        "default": false
+      },
+      {
         "type": "range",
         "id": "spacing_sections",
         "min": 0,

@@ -1,0 +1,146 @@
+{{ 'section-custom-hero.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  @font-face {
+    font-family: 'Hero Fraunces';
+    src: url('{{ 'hero-fraunces-regular.woff2' | asset_url }}') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Hero Inter';
+    src: url('{{ 'hero-inter.woff2' | asset_url }}') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Hero Inter';
+    src: url('{{ 'hero-inter-bold.woff2' | asset_url }}') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+{% endstyle %}
+
+{%- liquid
+  assign priority = 'auto'
+  assign loading = 'lazy'
+  if section.index == 1
+    assign priority = 'high'
+    assign loading = 'eager'
+  endif
+  assign heading_tag = 'h2'
+  if section.index == 1 and request.page_type == 'index'
+    assign heading_tag = 'h1'
+  endif
+-%}
+
+<div
+  id="CustomHero-{{ section.id }}"
+  class="custom-hero custom-hero--{{ section.settings.text_position }}"
+  style="--hero-height: {{ section.settings.height }}px; --hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+>
+  <picture class="custom-hero__media">
+    {%- if section.settings.mobile_image != blank -%}
+      <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 375 }} 375w, {{ section.settings.mobile_image | image_url: width: 550 }} 550w, {{ section.settings.mobile_image | image_url: width: 750 }} 750w, {{ section.settings.mobile_image | image_url: width: 1100 }} 1100w" sizes="100vw">
+    {%- elsif section.settings.image == blank -%}
+      <source media="(max-width: 749px)" srcset="{{ 'olivelle-hero-mobile.jpg' | asset_url }}">
+    {%- endif -%}
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 3840 | image_tag: widths: '375, 550, 750, 1100, 1500, 2000, 3000, 3840', sizes: '100vw', loading: loading, fetchpriority: priority, class: 'custom-hero__image' }}
+    {%- else -%}
+      <img src="{{ 'olivelle-hero-desktop.jpg' | asset_url }}" alt="" width="2200" height="1200" loading="{{ loading }}" fetchpriority="{{ priority }}" class="custom-hero__image">
+    {%- endif -%}
+  </picture>
+  <div class="custom-hero__layout page-width">
+    <div class="custom-hero__content">
+      {%- if section.settings.heading != blank -%}
+        <{{ heading_tag }} class="custom-hero__heading">{{ section.settings.heading }}</{{ heading_tag }}>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="custom-hero__description rte">{{ section.settings.description }}</div>
+      {%- endif -%}
+      {%- if section.settings.button_text != blank and section.settings.button_url != blank -%}
+        <a class="custom-hero__button" href="{{ section.settings.button_url }}">
+          {{ section.settings.button_text | escape }}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- if section.blocks.size > 0 -%}
+  <div class="custom-hero-categories page-width">
+    <slider-component class="custom-hero-categories__slider">
+      <div class="custom-hero-categories__controls">
+        <button type="button" class="custom-hero-categories__arrow custom-hero-categories__arrow--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" aria-controls="Slider-Categories-{{ section.id }}" disabled>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="custom-hero-categories__arrow" name="next" aria-label="{{ 'general.slider.next_slide' | t }}" aria-controls="Slider-Categories-{{ section.id }}"{% if section.blocks.size < 2 %} disabled{% endif %}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    <ul id="Slider-Categories-{{ section.id }}" class="custom-hero-categories__list" role="list" aria-label="Shop by category">
+      {%- for block in section.blocks -%}
+        <li id="Slide-Categories-{{ section.id }}-{{ forloop.index }}" class="custom-hero-categories__item" {{ block.shopify_attributes }}>
+          {% render 'hero-category-card', block: block %}
+        </li>
+      {%- endfor -%}
+    </ul>
+    </slider-component>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Custom hero",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 10,
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Uses the reference placeholder when empty." },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image", "info": "Uses Image when empty, or the mobile reference placeholder if both images are empty." },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Pure <em>Glow</em>" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Hydrate, refresh, and reveal your skin.</p>" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Get Yours" },
+    { "type": "url", "id": "button_url", "label": "Button URL", "default": "/collections/all" },
+    { "type": "select", "id": "text_position", "label": "Text position", "options": [
+      { "value": "top-left", "label": "Top left" },
+      { "value": "top-center", "label": "Top center" },
+      { "value": "top-right", "label": "Top right" },
+      { "value": "middle-left", "label": "Middle left" },
+      { "value": "middle-center", "label": "Middle center" },
+      { "value": "middle-right", "label": "Middle right" },
+      { "value": "bottom-left", "label": "Bottom left" },
+      { "value": "bottom-center", "label": "Bottom center" },
+      { "value": "bottom-right", "label": "Bottom right" }
+    ], "default": "middle-left" },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 0 },
+    { "type": "range", "id": "height", "label": "Height", "min": 400, "max": 1000, "step": 20, "unit": "px", "default": 800 }
+  ],
+  "blocks": [{
+    "type": "category",
+    "name": "Category card",
+    "settings": [
+      { "type": "collection", "id": "collection", "label": "Collection" },
+      { "type": "image_picker", "id": "image", "label": "Image", "info": "Uses the collection image when empty." },
+      { "type": "text", "id": "title", "label": "Title", "info": "Uses the collection title when empty." },
+      { "type": "url", "id": "link", "label": "Link", "info": "Uses the collection URL when empty." },
+      { "type": "select", "id": "placeholder_image", "label": "Placeholder image", "info": "Used until a collection image or custom image is chosen.", "options": [
+        { "value": "", "label": "None" },
+        { "value": "hero-category-collection-facial-ils.jpg", "label": "Facial oils" },
+        { "value": "hero-category-collection-facial-tools-1.jpg", "label": "Facial tools" },
+        { "value": "hero-category-collection-new_arrivals.jpg", "label": "New arrivals" },
+        { "value": "hero-category-collection-beauty-set.jpg", "label": "Wellness sets" },
+        { "value": "hero-category-hero-2.jpg", "label": "Best sellers" },
+        { "value": "hero-category-category-self-care.jpg", "label": "Self care" }
+      ], "default": "" }
+    ]
+  }],
+  "presets": [{ "name": "Custom hero", "blocks": [{ "type": "category" }, { "type": "category" }, { "type": "category" }, { "type": "category" }, { "type": "category" }] }]
+}
+{% endschema %}

@@ -1,6 +1,18 @@
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- if section.settings.enable_floating_header -%}
+  {{ 'component-floating-header.css' | asset_url | stylesheet_tag }}
+  {%- style -%}
+    #shopify-section-{{ section.id }} {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      margin-bottom: 0;
+      height: {% if request.page_type == 'index' %}0{% else %}calc(var(--header-height, 100px) + 4vw){% endif %};
+    }
+  {%- endstyle -%}
+{%- endif -%}
 <link
   rel="stylesheet"
   href="{{ 'component-cart-notification.css' | asset_url }}"
@@ -136,8 +148,12 @@
 
 {% liquid
   assign header_tag = 'div'
+  assign header_logo_position = section.settings.logo_position
+  if section.settings.enable_floating_header
+    assign header_logo_position = 'middle-center'
+  endif
 
-  if section.settings.sticky_header_type != 'none'
+  if section.settings.sticky_header_type != 'none' or section.settings.enable_floating_header
     assign header_tag = 'sticky-header'
   endif
 %}
@@ -145,8 +161,9 @@
 <{{ header_tag }}
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
+    data-floating="{{ section.settings.enable_floating_header }}"
   {% endif %}
-  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+  class="header-wrapper{% if section.settings.enable_floating_header %} header-wrapper--floating{% endif %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
 >
   {%- liquid
     assign social_links = false
@@ -164,10 +181,10 @@
       assign language_selector = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
+  <header class="header header--{{ header_logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
     {%- liquid
       assign render_search_left = false
-      if section.settings.logo_position == 'top-center' or section.settings.menu == blank or shop.customer_accounts_enabled
+      if header_logo_position == 'top-center' or section.settings.menu == blank or shop.customer_accounts_enabled
         assign render_search_left = true
       endif
 
@@ -180,7 +197,7 @@
       endif
     -%}
 
-    {%- if section.settings.logo_position != 'middle-center' -%}
+    {%- if header_logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
@@ -223,7 +240,7 @@
       endif
     %}
 
-    {%- if section.settings.logo_position == 'middle-center' -%}
+    {%- if header_logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
@@ -334,10 +351,11 @@
     }
 
     connectedCallback() {
-      this.header = document.querySelector('.section-header');
+      this.header = this.closest('.section-header');
+      this.isFloating = this.getAttribute('data-floating') === 'true';
       this.mobileMediaQuery = window.matchMedia('(max-width: 990px)');
       this.headerIsAlwaysSticky =
-        this.getAttribute('data-sticky-type') === 'always' ||
+        this.isFloating || this.getAttribute('data-sticky-type') === 'always' ||
         this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
 
@@ -360,16 +378,23 @@
       window.addEventListener('scroll', this.onScrollHandler, false);
 
       this.createObserver();
+      if (this.isFloating) {
+        this.floatingHeaderOrigin = window.scrollY + this.header.getBoundingClientRect().top;
+        this.resizeObserver = new ResizeObserver(this.setHeaderHeight);
+        this.resizeObserver.observe(this);
+        this.onScroll();
+      }
     }
 
     setHeaderHeight() {
-      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      document.documentElement.style.setProperty('--header-height', `${this.isFloating ? this.offsetHeight : this.header.offsetHeight}px`);
     }
 
     disconnectedCallback() {
       this.mobileMediaQuery.removeEventListener('change', this.setHeaderHeight);
       this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
       window.removeEventListener('scroll', this.onScrollHandler);
+      this.resizeObserver?.disconnect();
     }
 
     createObserver() {
@@ -383,6 +408,15 @@
 
     onScroll() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (this.isFloating) {
+        // Separate enter/exit thresholds prevent flicker and mirror the reference's delayed expansion.
+        const expanded = this.header.classList.contains('floating-header-expanded');
+        const threshold = expanded ? this.floatingHeaderOrigin + 20 : this.floatingHeaderOrigin + this.offsetHeight + 250;
+        this.header.classList.toggle('floating-header-expanded', scrollTop > threshold);
+        this.currentScrollTop = scrollTop;
+        return;
+      }
 
       if ([...this.predictiveSearches].some((predictiveSearch) => predictiveSearch.isOpen)) return;
 
@@ -504,6 +538,13 @@
   "class": "section-header",
   "max_blocks": 3,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_floating_header",
+      "default": false,
+      "label": "Floating header",
+      "info": "Uses a centered desktop logo and stays visible while scrolling. Overlays the homepage and expands to full width after scrolling."
+    },
     {
       "type": "select",
       "id": "logo_position",

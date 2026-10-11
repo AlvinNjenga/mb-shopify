@@ -13,6 +13,7 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
+      "disabled": true,
       "blocks": {
         "announcement-bar-0": {
           "type": "announcement",
@@ -39,6 +40,7 @@
       "type": "header",
       "settings": {
         "logo_position": "top-center",
+        "enable_floating_header": true,
         "mobile_logo_position": "center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",

@@ -9,7 +9,29 @@
  */
 {
   "sections": {
+    "custom-hero": {
+      "type": "custom-hero",
+      "blocks": {
+        "facial-oils": { "type": "category", "settings": { "title": "Facial Oils", "placeholder_image": "hero-category-collection-facial-ils.jpg" } },
+        "facial-tools": { "type": "category", "settings": { "title": "Facial Tools", "placeholder_image": "hero-category-collection-facial-tools-1.jpg" } },
+        "new-arrivals": { "type": "category", "settings": { "title": "New Arrivals", "placeholder_image": "hero-category-collection-new_arrivals.jpg" } },
+        "wellness-sets": { "type": "category", "settings": { "title": "Wellness Sets", "placeholder_image": "hero-category-collection-beauty-set.jpg" } },
+        "best-sellers": { "type": "category", "settings": { "title": "Best Sellers", "placeholder_image": "hero-category-hero-2.jpg" } },
+        "self-care": { "type": "category", "settings": { "title": "Self Care", "placeholder_image": "hero-category-category-self-care.jpg" } }
+      },
+      "block_order": ["facial-oils", "facial-tools", "new-arrivals", "wellness-sets", "best-sellers", "self-care"],
+      "settings": {
+        "heading": "Pure <em>Glow</em>",
+        "description": "<p>Hydrate, refresh, and reveal your skin.</p>",
+        "button_text": "Get Yours",
+        "button_url": "shopify://collections/all",
+        "text_position": "middle-left",
+        "overlay_opacity": 0,
+        "height": 800
+      }
+    },
     "image-with-text": {
+      "disabled": true,
       "type": "image-with-text",
       "blocks": {
         "heading": {
@@ -77,6 +99,7 @@
     }
   },
   "order": [
+    "custom-hero",
     "image-with-text",
     "featured-collection"
   ]

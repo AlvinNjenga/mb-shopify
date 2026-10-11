@@ -1,0 +1,23 @@
+{% comment %}Simple hero category card. Collection values can be overridden per block.{% endcomment %}
+{%- liquid
+  assign category = block.settings.collection
+  assign title = block.settings.title | default: category.title | default: 'Choose a collection'
+  assign image = block.settings.image | default: category.featured_image
+  assign link = block.settings.link | default: category.url
+  assign tag = 'div'
+  if link != blank
+    assign tag = 'a'
+  endif
+-%}
+<{{ tag }} class="hero-category-card"{% if link != blank %} href="{{ link }}"{% endif %}>
+  <div class="hero-category-card__media">
+    {%- if image != blank -%}
+      {{ image | image_url: width: 1000 | image_tag: widths: '200, 400, 600, 800, 1000', sizes: '(min-width: 990px) 20vw, 45vw', loading: 'lazy', alt: '' }}
+    {%- elsif block.settings.placeholder_image != blank -%}
+      <img src="{{ block.settings.placeholder_image | asset_url }}" alt="" width="600" height="600" loading="lazy">
+    {%- else -%}
+      {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <h3 class="hero-category-card__title">{{ title | escape }}</h3>
+</{{ tag }}>
