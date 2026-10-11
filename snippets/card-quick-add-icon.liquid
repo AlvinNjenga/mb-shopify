@@ -1,0 +1,12 @@
+{% comment %}Olivelle three-line quick-add icon, with a separate sold-out state.{% endcomment %}
+<svg class="icon card-quick-add-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true" focusable="false">
+  {% case action %}
+    {% when 'options' %}
+      <path stroke-linecap="round" d="M4 6h12M4 10h12M4 14h12" />
+    {% when 'sold-out' %}
+      <circle cx="10" cy="10" r="6" />
+      <path stroke-linecap="round" d="m6 14 8-8" />
+    {% else %}
+      <path stroke-linecap="round" d="M4 6h12M4 10h12M4 14h12" />
+  {% endcase %}
+</svg>
