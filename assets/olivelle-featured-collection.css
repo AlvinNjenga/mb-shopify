@@ -1,0 +1,39 @@
+/* Match the reference grid without changing saved section settings. */
+.olivelle-product-collection {
+  --grid-desktop-horizontal-spacing: 20px;
+  background: #ffffff;
+}
+
+@media screen and (min-width: 990px) {
+  .olivelle-product-collection .page-width,
+  .olivelle-product-collection .page-width-desktop {
+    max-width: 1620px;
+    padding-inline: 45px;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .olivelle-product-collection .slider-mobile-gutter {
+    padding-inline: 13px;
+  }
+
+  .olivelle-product-collection .slider--tablet.grid--peek {
+    margin-inline: 0;
+    padding-inline: 0;
+    column-gap: 10px;
+    scroll-padding-left: 0;
+  }
+
+  .olivelle-product-collection .slider--tablet.grid--peek .grid__item {
+    width: calc(100vw - 53.5px);
+    max-width: none;
+  }
+
+  .olivelle-product-collection .slider--tablet.grid--peek .grid__item:first-child {
+    margin-left: 0;
+  }
+
+  .olivelle-product-collection .slider--tablet .product-card-wrapper .card:not(.card--horizontal) {
+    padding-bottom: 30px;
+  }
+}

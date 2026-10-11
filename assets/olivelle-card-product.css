@@ -1,0 +1,263 @@
+/* Olivelle's Glow Essentials cards, adapted to Sense's card__* markup.
+   Scoped overrides also win over component styles loaded by sections. */
+.product-card-wrapper .card.card:not(.card--horizontal) {
+  --image-padding: 0rem;
+  --border-width: 0rem;
+  --border-radius: 7.2px;
+  --shadow-opacity: 0;
+  --text-alignment: center;
+  color: #1d1d1d;
+  background: #fff;
+  border: 0;
+  border-radius: 7.2px;
+  box-shadow: none;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.product-card-wrapper .card:not(.card--horizontal)::after,
+.product-card-wrapper .card:not(.card--horizontal) .card__inner::after {
+  box-shadow: none;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .card__inner {
+  background: transparent;
+  border: 0;
+  border-radius: 7.2px;
+  box-shadow: none;
+  flex-grow: 0;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .card__media {
+  margin: 0;
+  width: 100%;
+  border-radius: 7.2px;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) > .card__content {
+  padding: 0;
+  margin-top: 0;
+  grid-template-rows: max-content minmax(0, 1fr) max-content auto;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) > .card__content > .card__information {
+  padding: 13.5px 0;
+  text-align: center;
+}
+
+/* Sense nests price/vendor information inside card__information. */
+.product-card-wrapper .card:not(.card--horizontal) .card-information {
+  padding: 0;
+  text-align: center;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .card__heading {
+  color: #1d1d1d;
+  font-family: 'Olivelle Fraunces', Georgia, serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.54px;
+  margin: 0;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .card__heading a {
+  text-decoration: none;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .price {
+  color: #1d1d1d;
+  font-family: 'Olivelle Inter', Arial, sans-serif;
+  font-size: 12.6px;
+  font-weight: 400;
+  line-height: 19.6px;
+  letter-spacing: 0.54px;
+  margin-top: 0;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .price__container {
+  margin-bottom: 0;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .card-information > .price.price {
+  margin-top: 0;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .price--on-sale .price-item--regular {
+  font-size: 10.8px;
+  color: #aaa;
+  margin: 0;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .price--on-sale .price__sale {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4.5px;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .price__sale > .price-item--sale {
+  order: -1;
+  margin: 0;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .caption-with-letter-spacing {
+  font-family: 'Olivelle Inter', Arial, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .badge {
+  border: 0;
+  border-radius: 0;
+  padding: 2px 3px;
+  background: #f7f7f7;
+  color: #1d1d1d;
+  font-family: 'Olivelle Inter', Arial, sans-serif;
+  font-size: 9px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .card__inner .card__content {
+  padding: 0;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .card__inner .card__badge {
+  align-self: start;
+  justify-self: end;
+  grid-row-start: 1;
+  margin: 3px;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .card__inner .card-badge.top.right.first-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  z-index: 2;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .badge.badge--discount {
+  position: static;
+  display: inline-block;
+  padding: 8.1px;
+  font-size: 13.5px;
+  line-height: 1;
+  border-top-right-radius: 4.5px;
+}
+
+/* Olivelle's icon-only control overlaps the lower edge of the image. */
+.product-card-wrapper .card:not(.card--horizontal) .quick-add {
+  position: relative;
+  grid-row-start: 1;
+  justify-self: stretch;
+  margin: -20px 30px 0;
+  z-index: 2;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .quick-add > modal-opener,
+.product-card-wrapper .card:not(.card--horizontal) .quick-add > product-form {
+  display: block;
+  width: 100%;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .quick-add__submit {
+  --color-button: 255, 255, 255;
+  --color-button-text: 29, 29, 29;
+  --color-secondary-button: 255, 255, 255;
+  --color-secondary-button-text: 29, 29, 29;
+  --buttons-radius: 7.2px;
+  --buttons-radius-outset: 7.2px;
+  --border-opacity: 0;
+  --border-offset: 0;
+  min-height: 0;
+  height: 34.1875px;
+  min-width: 100%;
+  width: 100%;
+  padding: 0;
+  border-radius: 7.2px;
+  background: #fff;
+  color: #1d1d1d;
+  font-family: 'Olivelle Inter', Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  box-shadow: none;
+}
+
+.product-card-wrapper .quick-add__submit .card-quick-add-icon {
+  display: block;
+  width: 34.1875px;
+  height: 34.1875px;
+  padding: 5px;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .quick-add__submit::before,
+.product-card-wrapper .card:not(.card--horizontal) .quick-add__submit::after {
+  box-shadow: none;
+}
+
+.product-card-wrapper .card:not(.card--horizontal) .quick-add__submit:hover {
+  background: #f7f7f7;
+}
+
+@media screen and (min-width: 990px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .product-card-wrapper .card:not(.card--horizontal) .media--hover-effect > img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.4, 1);
+  }
+
+  .product-card-wrapper .card:not(.card--horizontal) .media--hover-effect > img:first-child {
+    z-index: 1;
+  }
+
+  .product-card-wrapper .card:not(.card--horizontal) .media--hover-effect > img + img {
+    z-index: 2;
+    opacity: 1;
+    transform: translateY(100%) scale(0.9);
+  }
+
+  .product-card-wrapper:hover .card:not(.card--horizontal) .media--hover-effect > img:first-child:not(:only-child) {
+    opacity: 1;
+    transform: translateY(-100%) scale(0.9);
+  }
+
+  .product-card-wrapper:hover .card:not(.card--horizontal) .media--hover-effect > img + img {
+    opacity: 1;
+    transform: translateY(0) scale(1.03);
+  }
+
+  .product-card-wrapper:hover .card:not(.card--horizontal) .media--hover-effect > img:only-child {
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card-wrapper .card:not(.card--horizontal) .media--hover-effect > img {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Keep placeholder sizing and information spacing on the actual card markup. */
+.product-card-wrapper .placeholder-svg {
+  height: auto;
+  width: 100%;
+}
+
+.product-card-wrapper .card-information > *:not(.visually-hidden:first-child) + *:not(.rating):not(.card__information-volume-pricing-note) {
+  margin-top: 0;
+}
+
+.product-card-wrapper.underline-links-hover .card {
+  transition: all 0.4s ease;
+}
+
+@media screen and (max-width: 989px) {
+  .product-card-wrapper .media--hover-effect > img + img {
+    display: none;
+  }
+}
