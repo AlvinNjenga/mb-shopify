@@ -1,0 +1,71 @@
+{{ 'section-heading-with-images.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="header_with_images color-{{ section.settings.color_scheme }} gradient"
+  style="--heading-images-size: {{ section.settings.font_size }}px; --heading-images-mobile-size: {{ section.settings.font_size_mobile }}px; --heading-images-padding-top: {{ section.settings.padding_top }}px; --heading-images-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    <h2 class="heading-with-images__heading">
+      {%- for block in section.blocks -%}
+        <span {{ block.shopify_attributes }}>
+          {{- block.settings.text | escape -}}
+          {% render 'heading-inline-image', block: block %}
+        </span>
+        {{- ' ' -}}
+      {%- endfor -%}
+      {{- section.settings.trailing_text | escape -}}
+    </h2>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Heading with images",
+  "tag": "section",
+  "class": "section section-heading-with-images",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "trailing_text", "label": "Text after the last image" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "font_size", "label": "Desktop text size", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 40 },
+    { "type": "range", "id": "font_size_mobile", "label": "Mobile text size", "min": 18, "max": 48, "step": 2, "unit": "px", "default": 26 },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0 }
+  ],
+  "blocks": [
+    {
+      "type": "image_phrase",
+      "name": "Text and inline image",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text before image" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Choose an image to replace the reference image." },
+        { "type": "select", "id": "reference_image", "label": "Reference image", "options": [
+          { "value": "none", "label": "None" },
+          { "value": "oil", "label": "Facial oil" },
+          { "value": "skincare", "label": "Skincare" },
+          { "value": "product", "label": "Beauty product" }
+        ], "default": "none" },
+        { "type": "text", "id": "alt_text", "label": "Image description / link label" },
+        { "type": "url", "id": "link", "label": "Image link" },
+        { "type": "select", "id": "shape", "label": "Image shape", "options": [
+          { "value": "default", "label": "Rounded rectangle" },
+          { "value": "asymmetrical", "label": "Organic" },
+          { "value": "circle", "label": "Circle" }
+        ], "default": "asymmetrical" },
+        { "type": "range", "id": "image_width", "label": "Desktop image width", "min": 40, "max": 160, "step": 4, "unit": "px", "default": 100 },
+        { "type": "range", "id": "image_width_mobile", "label": "Mobile image width", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 44 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading with images",
+      "blocks": [
+        { "type": "image_phrase", "settings": { "text": "Nourish your", "reference_image": "oil", "alt_text": "Shop facial oils", "link": "shopify://collections/facial-oils" } },
+        { "type": "image_phrase", "settings": { "text": "body. Skincare you'll love", "reference_image": "skincare", "alt_text": "Shop skincare savings", "link": "shopify://collections/big-savings", "shape": "default", "image_width": 80 } },
+        { "type": "image_phrase", "settings": { "text": "every day", "reference_image": "product", "alt_text": "Shop facial oils", "link": "shopify://collections/facial-oils" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+{% liquid
+  assign image_asset = 'loved-' | append: block.settings.reference_product | append: '.webp'
+  if block.settings.reference_product == 'gua-sha'
+    assign image_asset = 'ritual-slide-healthy.webp'
+  endif
+%}
+<div class="loved-product-card">
+  {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="loved-product-card__image-link" aria-label="{{ block.settings.title | escape }}">{% endif %}
+    <div class="loved-product-card__image media media--square">
+      {% if block.settings.image != blank %}
+        {{ block.settings.image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '275, 550, 750, 1100', sizes: '(min-width: 990px) 25vw, 90vw' }}
+      {% elsif block.settings.reference_product != 'none' %}
+        <img src="{{ image_asset | asset_url }}" width="900" height="900" loading="lazy" alt="{{ block.settings.title | escape }}"{% if block.settings.reference_product == 'gua-sha' %} style="object-position: 71.1798% 19.1295%;"{% endif %}>
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  {% if block.settings.link != blank %}</a>{% endif %}
+  <div class="loved-product-card__info">
+    {% if block.settings.sale_label != blank %}<p class="loved-product-card__badge">{{ block.settings.sale_label | escape }}</p>{% endif %}
+    {% if block.settings.title != blank %}<h3 class="inline-richtext">{{ block.settings.title }}</h3>{% endif %}
+    {% if block.settings.text != blank %}<div class="rte">{{ block.settings.text }}</div>{% endif %}
+    {% if block.settings.link_label != blank and block.settings.link != blank %}
+      <a class="link animate-arrow" href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}<span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span></a>
+    {% endif %}
+  </div>
+</div>

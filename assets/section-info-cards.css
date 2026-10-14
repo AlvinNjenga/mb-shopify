@@ -1,0 +1,25 @@
+.reference-infocards__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.reference-infocard { background: var(--card-background); color: var(--card-color); }
+.reference-infocard__summary { display: flex; height: 100%; flex-direction: column; align-items: center; justify-content: center; padding: 25px; text-align: center; cursor: pointer; list-style: none; }
+.reference-infocard__summary::-webkit-details-marker { display: none; }
+.reference-infocard__summary:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
+.reference-infocard__image { display: block; width: 200px; height: 200px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.reference-infocard__subtitle { margin: 20px 0 15px; font-family: 'Olivelle Inter', Arial, sans-serif; font-size: 15px; line-height: 1.8; letter-spacing: 0.3px; }
+.reference-infocard__title { margin: 0; color: inherit; font-family: 'Olivelle Fraunces', Georgia, serif; font-size: 20px; font-weight: 700; line-height: 1; letter-spacing: 0; }
+.reference-infocard__panel { position: fixed; inset: 0; z-index: 1000; overflow: auto; padding: 25px; background: var(--card-background); color: var(--card-color); overscroll-behavior: contain; }
+.reference-infocard__header { display: flex; align-items: center; gap: 14px; width: fit-content; max-width: calc(100% - 50px); margin: 0 auto; }
+.reference-infocard__header .reference-infocard__image { width: 150px; height: 150px; }
+.reference-infocard__header .reference-infocard__title { font-size: 30px; }
+.reference-infocard__header .reference-infocard__subtitle { margin: 0 0 2px; }
+.reference-infocard__body { max-width: 800px; margin: 20px auto 0; font-family: 'Olivelle Inter', Arial, sans-serif; font-size: 15px; line-height: 1.8; }
+.reference-infocard__close { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; padding: 10px; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.reference-infocard__close svg { width: 100%; height: 100%; }
+@media screen and (max-width: 990px) {
+  .reference-infocards__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reference-infocard__summary { padding: 10px; }
+  .reference-infocard__image { width: 80px; height: 80px; }
+  .reference-infocard__summary .reference-infocard__title, .reference-infocard__summary .reference-infocard__subtitle { font-size: 14px; }
+  .reference-infocard__header .reference-infocard__image { width: 80px; height: 80px; }
+  .reference-infocard__panel { padding: 60px 20px 25px; }
+  .reference-infocard__header { max-width: 100%; }
+}

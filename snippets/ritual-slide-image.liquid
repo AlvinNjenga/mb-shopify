@@ -1,0 +1,19 @@
+{% liquid
+  assign reference_asset = 'ritual-slide-' | append: block.settings.reference_image | append: '.webp'
+  assign focal_point = '50% 50%'
+  if block.settings.reference_image == 'healthy'
+    assign focal_point = '71.1798% 19.1295%'
+  elsif block.settings.reference_image == 'self-care'
+    assign focal_point = '62.9301% 73.5295%'
+  endif
+%}
+<picture class="ritual-slider__image" style="--ritual-focal-point: {{ focal_point }};">
+  {% if block.settings.mobile_image != blank %}
+    <source media="(max-width: 768px)" srcset="{{ block.settings.mobile_image | image_url: width: 750 }} 750w, {{ block.settings.mobile_image | image_url: width: 1100 }} 1100w" sizes="100vw">
+  {% endif %}
+  {% if block.settings.image != blank %}
+    {{ block.settings.image | image_url: width: 2000 | image_tag: loading: 'lazy', widths: '550, 750, 1100, 1500, 2000', sizes: '(max-width: 768px) 100vw, 65vw' }}
+  {% else %}
+    <img src="{{ reference_asset | asset_url }}" width="1536" height="1024" loading="lazy" alt="">
+  {% endif %}
+</picture>

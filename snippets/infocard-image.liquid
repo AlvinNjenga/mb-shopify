@@ -1,0 +1,8 @@
+{% if block.settings.image != blank %}
+  {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '160, 200, 400, 600', sizes: '(max-width: 990px) 80px, 200px', class: 'reference-infocard__image' }}
+{% elsif block.settings.reference_image != 'none' %}
+  {% assign reference_asset = 'infocard-reference-' | append: block.settings.reference_image | append: '.webp' %}
+  <img src="{{ reference_asset | asset_url }}" class="reference-infocard__image" width="900" height="900" loading="lazy" alt="">
+{% else %}
+  {{ 'image' | placeholder_svg_tag: 'reference-infocard__image' }}
+{% endif %}

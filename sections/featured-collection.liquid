@@ -32,6 +32,12 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  #shopify-section-{{ section.id }} .olivelle-product-collection {
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }}, {{ section.settings.background_color.blue }};
+    --gradient-background: {{ section.settings.background_color }};
+    background: {{ section.settings.background_color }};
+  }
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
@@ -75,6 +81,9 @@
     data-id="{{ section.id }}"
   >
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="olivelle-collection__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
       {%- if section.settings.title != blank -%}
         <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {{ section.settings.title }}
@@ -93,6 +102,26 @@
         </div>
       {%- endif -%}
     </div>
+
+    {%- if section.blocks.size > 0 or section.settings.collection != blank -%}
+      <nav class="olivelle-collection__links page-width" aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}">
+        {%- if section.blocks.size == 0 -%}
+          <a class="olivelle-collection__pill olivelle-collection__pill--selected" href="{{ section.settings.collection.url }}">
+            {{ section.settings.collection.title | escape }}
+            <span class="olivelle-collection__count">{{ section.settings.collection.all_products_count }}</span>
+          </a>
+        {%- endif -%}
+        {%- for block in section.blocks -%}
+          {%- assign linked_collection = block.settings.collection -%}
+          {%- if linked_collection != blank -%}
+            <a class="olivelle-collection__pill{% if linked_collection == section.settings.collection %} olivelle-collection__pill--selected{% endif %}" href="{{ linked_collection.url }}" {{ block.shopify_attributes }}>
+              {{ block.settings.label | default: linked_collection.title | escape }}
+              <span class="olivelle-collection__count">{{ linked_collection.all_products_count }}</span>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
 
     <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
@@ -226,6 +255,18 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Caption",
+      "default": "Shop our favorites"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#f7f7f7"
+    },
     {
       "type": "collection",
       "id": "collection",
@@ -520,6 +561,17 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_link",
+      "name": "Collection link",
+      "limit": 6,
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "label", "label": "Label", "info": "Leave blank to use the collection title." }
+      ]
     }
   ],
   "presets": [

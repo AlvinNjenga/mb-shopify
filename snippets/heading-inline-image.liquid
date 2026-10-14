@@ -1,0 +1,31 @@
+{%- liquid
+  assign fallback_image = ''
+  assign fallback_height = 300
+  case block.settings.reference_image
+    when 'oil'
+      assign fallback_image = 'heading-inline-facial-oil.webp'
+    when 'skincare'
+      assign fallback_image = 'heading-inline-skincare.webp'
+      assign fallback_height = 350
+    when 'product'
+      assign fallback_image = 'heading-inline-product.png'
+  endcase
+  assign image_alt = block.settings.alt_text | default: block.settings.image.alt
+  if block.settings.link != blank and image_alt == blank
+    assign image_alt = block.settings.text
+  endif
+-%}
+{%- if block.settings.image != blank or fallback_image != blank -%}
+  {% if block.settings.link != blank %}
+    <a href="{{ block.settings.link }}" class="heading-with-images__image heading-with-images__image--{{ block.settings.shape }}" style="--inline-image-width: {{ block.settings.image_width }}px; --inline-image-mobile-width: {{ block.settings.image_width_mobile }}px;">
+  {% else %}
+    <span class="heading-with-images__image heading-with-images__image--{{ block.settings.shape }}" style="--inline-image-width: {{ block.settings.image_width }}px; --inline-image-mobile-width: {{ block.settings.image_width_mobile }}px;">
+  {% endif %}
+    {%- if block.settings.image != blank -%}
+      {%- capture sizes -%}(min-width: 990px) {{ block.settings.image_width }}px, {{ block.settings.image_width_mobile }}px{%- endcapture -%}
+      {{ block.settings.image | image_url: width: 480 | image_tag: widths: '80, 160, 240, 320, 480', sizes: sizes, loading: 'lazy', alt: image_alt }}
+    {%- else -%}
+      <img src="{{ fallback_image | asset_url }}" alt="{{ image_alt | escape }}" width="300" height="{{ fallback_height }}" loading="lazy">
+    {%- endif -%}
+  {% if block.settings.link != blank %}</a>{% else %}</span>{% endif %}
+{%- endif -%}

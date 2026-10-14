@@ -30,6 +30,36 @@
         "height": 800
       }
     },
+    "heading-with-images": {
+      "type": "heading-with-images",
+      "blocks": {
+        "facial-oil": { "type": "image_phrase", "settings": { "text": "Nourish your", "reference_image": "oil", "alt_text": "Shop facial oils", "link": "shopify://collections/facial-oils", "shape": "asymmetrical", "image_width": 100, "image_width_mobile": 44 } },
+        "skincare": { "type": "image_phrase", "settings": { "text": "body. Skincare you'll love", "reference_image": "skincare", "alt_text": "Shop skincare savings", "link": "shopify://collections/big-savings", "shape": "default", "image_width": 80, "image_width_mobile": 44 } },
+        "beauty-product": { "type": "image_phrase", "settings": { "text": "every day", "reference_image": "product", "alt_text": "Shop facial oils", "link": "shopify://collections/facial-oils", "shape": "asymmetrical", "image_width": 100, "image_width_mobile": 44 } }
+      },
+      "block_order": ["facial-oil", "skincare", "beauty-product"],
+      "settings": { "color_scheme": "scheme-1", "font_size": 40, "font_size_mobile": 26, "padding_top": 16, "padding_bottom": 0 }
+    },
+    "skincare-introduction": {
+      "type": "rich-text",
+      "blocks": {
+        "description": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Discover skincare essentials designed to nourish, hydrate, and enhance your natural glow. From botanical facial oils and beauty tools to luxurious self-care sets, everything you need for radiant, healthy-looking skin.</p>"
+          }
+        }
+      },
+      "block_order": ["description"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
     "image-with-text": {
       "disabled": true,
       "type": "image-with-text",
@@ -69,12 +99,324 @@
         "padding_bottom": 0
       }
     },
+    "skincare-image-with-text": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": { "caption": "Discover natural skincare essentials", "text_style": "subtitle", "text_size": "medium" }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": { "heading": "Glow From Within", "heading_size": "h1" }
+        },
+        "text": {
+          "type": "text",
+          "settings": { "text": "<p>Transform your skincare routine with nourishing botanical oils designed to hydrate, balance, and enhance your natural radiance. Crafted with carefully selected ingredients, our formulas help support healthy, glowing skin while turning your daily routine into a relaxing self-care ritual.</p>", "text_style": "body" }
+        },
+        "button": {
+          "type": "button",
+          "settings": { "button_label": "Shop Facial Oils", "button_link": "shopify://collections/facial-oils", "button_style_secondary": false }
+        }
+      },
+      "block_order": ["caption", "heading", "text", "button"],
+      "settings": {
+        "reference_style": true,
+        "collection_label": "New Collection",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "info-cards": {
+    "blocks":  {
+                   "card-1":  {
+                                  "settings":  {
+                                                   "subtitle":  "Clean Beauty",
+                                                   "text":  "\u003cp\u003eOur skincare is created with carefully selected botanical ingredients designed to nourish and support healthy, radiant skin. We focus on gentle, effective formulas that work in harmony with your skin, helping to hydrate, balance, and restore its natural glow.\u003c/p\u003e\u003cp\u003eEvery product is crafted with simplicity and care, avoiding unnecessary additives and focusing on ingredients that truly benefit your skin. Our goal is to deliver clean beauty solutions that feel luxurious while remaining safe and skin-friendly.\u003c/p\u003e\u003cp\u003eWe believe skincare should be both effective and mindful. Thatâ€™s why our formulas are designed to support your skinâ€™s natural balance while turning your routine into a calming self-care ritual.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eWhat Makes Our Formulas Special?\u003c/strong\u003e\u003c/p\u003e\u003cp\u003eâ€¢ Botanical and skin-loving ingredients\u003cbr/\u003eâ€¢ Gentle formulas suitable for daily use\u003cbr/\u003eâ€¢ Designed to support natural skin balance\u003cbr/\u003eâ€¢ Clean beauty approach without unnecessary additives\u003c/p\u003e",
+                                                   "reference_image":  "1",
+                                                   "background":  "#e9e4fc",
+                                                   "text_color":  "#1d1d1d",
+                                                   "title":  "Natural. Gentle. Skin-Loving."
+                                               },
+                                  "type":  "card"
+                              },
+                   "card-2":  {
+                                  "settings":  {
+                                                   "subtitle":  "Skin Care Tools",
+                                                   "text":  "\u003cp\u003eOur beauty tools are designed to elevate your skincare routine and help you achieve better results from your favorite products. From facial rollers to cleansing brushes and skincare devices, each tool is created to support healthier, smoother-looking skin.\u003c/p\u003e\u003cp\u003eThese tools help improve circulation, reduce puffiness, and enhance the absorption of skincare products. When used regularly, they can help your skin look more refreshed, revitalized, and naturally radiant.\u003c/p\u003e\u003cp\u003eBy combining skincare with beauty tools, your daily routine becomes more effective and enjoyable, turning simple moments into a relaxing beauty ritual.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eWhy Use Beauty Tools?\u003c/strong\u003e\u003c/p\u003e\u003cp\u003eâ€¢ Improve circulation and skin tone\u003cbr/\u003eâ€¢ Reduce puffiness and facial tension\u003cbr/\u003eâ€¢ Enhance absorption of skincare products\u003cbr/\u003eâ€¢ Support smoother, glowing skin\u003c/p\u003e",
+                                                   "reference_image":  "2",
+                                                   "background":  "#f7f5f2",
+                                                   "text_color":  "#1d1d1d",
+                                                   "title":  "Advanced Beauty Tools"
+                                               },
+                                  "type":  "card"
+                              },
+                   "card-3":  {
+                                  "settings":  {
+                                                   "subtitle":  "Self-Care Ritual",
+                                                   "text":  "\u003cp\u003eSkincare is more than a routine â€” itâ€™s a moment to slow down and care for yourself. Our self-care sets and spa-inspired products are designed to help you create calming rituals that nurture both your skin and your well-being.\u003c/p\u003e\u003cp\u003eFrom nourishing oils and creams to relaxing beauty tools and spa accessories, every product is made to transform everyday skincare into a peaceful experience.\u003c/p\u003e\u003cp\u003eTaking time for self-care allows your skin to recharge while helping you feel refreshed, relaxed, and confident.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003ePerfect For Your Daily Ritual\u003c/strong\u003e\u003c/p\u003e\u003cp\u003eâ€¢ Relaxing at-home spa moments\u003cbr/\u003eâ€¢ Evening skincare routines\u003cbr/\u003eâ€¢ Stress-relieving self-care rituals\u003cbr/\u003eâ€¢ Creating mindful beauty habits\u003c/p\u003e",
+                                                   "reference_image":  "3",
+                                                   "background":  "#e9e4fc",
+                                                   "text_color":  "#1d1d1d",
+                                                   "title":  "Relax. Restore. Glow."
+                                               },
+                                  "type":  "card"
+                              },
+                   "card-4":  {
+                                  "settings":  {
+                                                   "subtitle":  "Vegan Beauty",
+                                                   "text":  "\u003cp\u003eWe believe beauty should be kind â€” to your skin, to animals, and to the planet. Thatâ€™s why our products are developed with vegan-friendly formulas and cruelty-free practices.\u003c/p\u003e\u003cp\u003eOur approach focuses on responsibly selected ingredients and thoughtful design, helping you build a beauty routine that feels good and aligns with your values.\u003c/p\u003e\u003cp\u003eBy choosing clean and conscious skincare, youâ€™re supporting a routine that respects both your skin and the environment.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eOur Commitment\u003c/strong\u003e\u003c/p\u003e\u003cp\u003eâ€¢ Vegan-friendly ingredients\u003cbr/\u003eâ€¢ Cruelty-free beauty philosophy\u003cbr/\u003eâ€¢ Thoughtfully selected materials\u003cbr/\u003eâ€¢ Conscious and responsible skincare\u003c/p\u003e",
+                                                   "reference_image":  "4",
+                                                   "background":  "#f7f5f2",
+                                                   "text_color":  "#1d1d1d",
+                                                   "title":  "Kind to Skin \u0026 Planet"
+                                               },
+                                  "type":  "card"
+                              }
+               },
+    "block_order":  [
+                        "card-1",
+                        "card-2",
+                        "card-3",
+                        "card-4"
+                    ],
+    "type":  "info-cards",
+    "settings":  {
+                     "color_scheme":  "scheme-1",
+                     "padding_top":  40,
+                     "padding_bottom":  0
+                 }
+},
+    "ritual-slider": {
+    "type":  "ritual-slider",
+    "blocks":  {
+                   "slide-1":  {
+                                   "type":  "slide",
+                                   "settings":  {
+                                                    "link":  "shopify://collections/all",
+                                                    "button_label":  "Order Now"
+                                                }
+                               },
+                   "slide-2":  {
+                                   "type":  "slide",
+                                   "settings":  {
+                                                    "reference_image":  "glow",
+                                                    "heading":  "Daily Glow Ritual",
+                                                    "caption":  "Nourish and hydrate your skin with botanical facial oils designed to enhance your natural radiance and support a healthy, glowing complexion.",
+                                                    "link":  "shopify://collections/facial-oils"
+                                                }
+                               },
+                   "slide-3":  {
+                                   "type":  "slide",
+                                   "settings":  {
+                                                    "reference_image":  "self-care",
+                                                    "heading":  "Self-Care Beauty Sets",
+                                                    "caption":  "Discover beautifully curated skincare sets designed to nourish your skin and elevate your daily beauty ritual. Perfect for glowing skin or thoughtful self-care gifts.",
+                                                    "button_label":  "Explore Sets",
+                                                    "link":  "shopify://collections/all"
+                                                }
+                               }
+               },
+    "block_order":  [
+                        "slide-1",
+                        "slide-2",
+                        "slide-3"
+                    ],
+    "settings":  {
+                     "color_scheme":  "scheme-1",
+                     "accessibility_label":  "Skincare rituals",
+                     "autoplay":  true,
+                     "autoplay_speed":  4,
+                     "padding_top":  0,
+                     "padding_bottom":  0
+                 }
+},
+    "most-loved-products": {
+  "type": "multicolumn",
+  "blocks": {
+    "roller": {
+      "type": "column",
+      "settings": {
+        "title": "Quartz Roller",
+        "sale_label": "30% sale",
+        "link_label": "Order Now",
+        "link": "shopify://products/facial-roler",
+        "text": "",
+        "reference_product": "roller"
+      }
+    },
+    "oils": {
+      "type": "column",
+      "settings": {
+        "title": "Radiant Oils",
+        "sale_label": "20% sale",
+        "link_label": "Shop Here",
+        "link": "shopify://collections/facial-oils",
+        "text": "",
+        "reference_product": "oils"
+      }
+    },
+    "gua-sha": {
+      "type": "column",
+      "settings": {
+        "title": "Gua Sha",
+        "sale_label": "20% sale",
+        "link_label": "Order Now",
+        "link": "shopify://products/gua-sha",
+        "text": "",
+        "reference_product": "gua-sha"
+      }
+    },
+    "globes": {
+      "type": "column",
+      "settings": {
+        "title": "Cooling Globes",
+        "sale_label": "15% sale",
+        "link_label": "Shop Now",
+        "link": "shopify://collections/facial-tools",
+        "text": "",
+        "reference_product": "globes"
+      }
+    },
+    "wellness": {
+      "type": "column",
+      "settings": {
+        "title": "Wellness Set",
+        "sale_label": "10% sale",
+        "link_label": "Shop Now",
+        "link": "shopify://collections/wellness-sets",
+        "text": "",
+        "reference_product": "wellness"
+      }
+    }
+  },
+  "block_order": [
+    "roller",
+    "oils",
+    "gua-sha",
+    "globes",
+    "wellness"
+  ],
+  "settings": {
+    "promotion_style": true,
+    "title": "Most Loved Products",
+    "heading_size": "h1",
+    "image_width": "full",
+    "image_ratio": "square",
+    "columns_desktop": 4,
+    "columns_mobile": "1",
+    "column_alignment": "left",
+    "background_style": "none",
+    "color_scheme": "scheme-1",
+    "swipe_on_mobile": true,
+    "button_label": "",
+    "padding_top": 36,
+    "padding_bottom": 0
+  }
+},
+    "facial-oils-banner": {
+  "type": "custom-hero",
+  "settings": {
+    "collection_banner": true,
+    "featured_collection": "facial-oils",
+    "products_to_show": 8,
+    "heading": "The Art of <em>Facial</em> Oils",
+    "description": "<p>Lightweight facial oils enriched with natural ingredients to hydrate, smooth, and enhance your skin?s natural radiance.</p>",
+    "button_text": "Shop Face Oils",
+    "button_url": "shopify://collections/facial-oils",
+    "text_position": "middle-center",
+    "overlay_opacity": 30,
+    "height": 720
+  }
+},
+    "customer-reviews": {
+  "type": "customer-reviews",
+  "blocks": {
+    "review-1": {
+      "type": "review",
+      "settings": {
+        "quote": "<p>This oil instantly became part of my daily routine. It feels lightweight yet deeply nourishing, leaving my skin soft, radiant, and beautifully hydrated all day.</p>",
+        "name": "Rob Doe",
+        "rating": 4,
+        "product_title": "Peptide Lift Oil",
+        "link": "/products/detox-oil",
+        "reference_card": "1"
+      }
+    },
+    "review-2": {
+      "type": "review",
+      "settings": {
+        "quote": "<p>Such a beautiful set! Every product feels luxurious and thoughtfully designed. It’s perfect for relaxing self-care moments and makes an amazing gift too.</p>",
+        "name": "John Smith",
+        "rating": 5,
+        "product_title": "Complete Self-Care Beauty Gift Set",
+        "link": "/products/complete-self-care-beauty-gift-set",
+        "reference_card": "2"
+      }
+    },
+    "review-3": {
+      "type": "review",
+      "settings": {
+        "quote": "<p>These cooling globes feel incredible on the skin. They instantly refresh my face, reduce puffiness, and leave my complexion looking brighter and more awake.</p>",
+        "name": "Esther Love",
+        "rating": 3,
+        "product_title": "Facial ice globes",
+        "link": "/products/facial-ice-globes",
+        "reference_card": "3"
+      }
+    },
+    "review-4": {
+      "type": "review",
+      "settings": {
+        "quote": "<p>This spa set instantly elevates my skincare routine. The products feel luxurious and create a calming ritual that makes every evening more relaxing.</p>",
+        "name": "Brian Kindani",
+        "rating": 5,
+        "product_title": "Luxury Self-Care & Skincare Spa Set",
+        "link": "/products/luxury-self-care-skincare-spa-set",
+        "reference_card": "4"
+      }
+    },
+    "review-5": {
+      "type": "review",
+      "settings": {
+        "quote": "<p>I love using this roller during my skincare routine. It helps my serums absorb better and leaves my skin feeling refreshed and beautifully smooth.</p>",
+        "name": "John Kindani",
+        "rating": 5,
+        "product_title": "Facial Roler",
+        "link": "/products/facial-roler",
+        "reference_card": "5"
+      }
+    }
+  },
+  "block_order": [
+    "review-1",
+    "review-2",
+    "review-3",
+    "review-4",
+    "review-5"
+  ],
+  "settings": {
+    "heading": "Over 3,000 Happy reviews",
+    "padding_top": 0,
+    "padding_bottom": 40
+  }
+},
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
         "collection": "all",
         "products_to_show": 4,
-        "title": "Featured products",
+        "title": "Beauty Essentials",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -93,14 +435,22 @@
         "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 56,
+        "padding_top": 28,
         "padding_bottom": 68
       }
     }
   },
   "order": [
     "custom-hero",
+    "heading-with-images",
+    "skincare-introduction",
     "image-with-text",
-    "featured-collection"
+    "featured-collection",
+    "skincare-image-with-text",
+    "info-cards",
+    "ritual-slider",
+    "most-loved-products",
+    "facial-oils-banner",
+    "customer-reviews"
   ]
 }
