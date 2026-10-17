@@ -1,0 +1,15 @@
+<div class="about-team__image">
+  {% if block.settings.image != blank %}
+    {{ block.settings.image | image_url: width: 550 | image_tag: widths: '150, 300, 550', sizes: '(max-width: 749px) 25vw, 110px', loading: 'lazy', alt: '' }}
+  {% else %}
+    {% liquid
+      assign portrait = 'about-team-emma.webp'
+      if block.settings.reference_image == 'daniela'
+        assign portrait = 'about-team-daniela.webp'
+      elsif block.settings.reference_image == 'lily'
+        assign portrait = 'about-team-lily.webp'
+      endif
+    %}
+    <img src="{{ portrait | asset_url }}" alt="" width="550" height="550" loading="lazy">
+  {% endif %}
+</div>

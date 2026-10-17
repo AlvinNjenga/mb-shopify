@@ -1,0 +1,17 @@
+{% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+{% if block.settings.image != blank %}
+  {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '200, 350, 550, 750, 1000', sizes: '(max-width: 990px) 350px, 500px', alt: block.settings.alt }}
+{% elsif block.settings.asset_image != blank %}
+  {% liquid
+    assign image_width = 1024
+    assign image_height = 1024
+    if block.settings.asset_image contains 'scroll-logo-'
+      assign image_width = 280
+      assign image_height = 104
+    endif
+  %}
+  <img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.alt | escape }}" loading="lazy" width="{{ image_width }}" height="{{ image_height }}">
+{% else %}
+  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+{% endif %}
+{% if block.settings.link != blank %}</a>{% endif %}

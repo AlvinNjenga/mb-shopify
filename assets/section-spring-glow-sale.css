@@ -1,0 +1,81 @@
+.banner--spring-glow {
+  overflow: hidden;
+  border-radius: 0 0 50px 50px;
+}
+
+.banner--spring-glow .banner__content {
+  max-width: 1620px;
+  padding: 50px;
+}
+
+.banner--spring-glow .banner__box {
+  --color-foreground: 242, 242, 242;
+  --color-button: 255, 255, 255;
+  --color-button-text: 29, 29, 29;
+  padding: 0;
+  color: rgb(var(--color-foreground));
+}
+
+.banner--spring-glow .banner__heading {
+  color: inherit;
+  font-family: 'Olivelle Fraunces', Georgia, serif;
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.banner--spring-glow .banner__heading em {
+  position: relative;
+  display: inline-block;
+  font-style: normal;
+}
+
+.banner--spring-glow .banner__heading em::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 100%;
+  height: 0.6em;
+  transform: scaleX(-1);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='167' height='10' viewBox='0 0 167 10'%3E%3Cpath d='M5 8C40 4 130 -1 162 6' stroke='%23e9e4fc' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.banner--spring-glow .banner__text {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.banner--spring-glow .banner__box > * + .banner__buttons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.banner--spring-glow .button {
+  gap: 12px;
+  border-radius: 6px;
+  --buttons-radius: 6px;
+  --buttons-radius-outset: 6px;
+}
+
+.spring-glow-arrow {
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (max-width: 749px) {
+  .banner--spring-glow .banner__content {
+    padding: 48px 20px;
+  }
+
+  .banner--spring-glow .banner__heading {
+    font-size: 50px;
+  }
+
+  .banner--spring-glow:not(.banner--mobile-bottom) .banner__box {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}

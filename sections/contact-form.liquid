@@ -1,6 +1,20 @@
 {{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+  @font-face {
+    font-family: 'Contact Inter';
+    src: url('{{ 'hero-inter.woff2' | asset_url }}') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Contact Inter';
+    src: url('{{ 'hero-inter-bold.woff2' | asset_url }}') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -15,7 +29,25 @@
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+  <div class="contact page-width{% if section.settings.show_image %} contact--split{% else %} page-width--narrow{% endif %} section-{{ section.id }}-padding">
+    {%- if section.settings.show_image -%}
+      <div class="contact__layout">
+        <div class="contact__banner">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 1920 | image_tag: widths: '352, 832, 1200, 1920', sizes: '(min-width: 990px) 50vw, 100vw', class: 'contact__image', loading: 'lazy' }}
+          {%- else -%}
+            <img class="contact__image" src="{{ 'contact-hero.jpg' | asset_url }}" alt="" width="1536" height="1024" loading="lazy">
+          {%- endif -%}
+          <div class="contact__overlay">
+            <h1 class="contact__banner-title">{{ section.settings.banner_heading }}</h1>
+            <div class="rte">{{ section.settings.banner_text }}</div>
+            {%- if section.settings.banner_button_label != blank -%}
+              <a class="button contact__banner-button" href="#ContactForm">{{ section.settings.banner_button_label | escape }}{% render 'contact-chevron' %}</a>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="contact__panel">
+    {%- endif -%}
     {%- if section.settings.heading != blank -%}
       <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {{ section.settings.heading }}
@@ -75,6 +107,7 @@
             autocapitalize="off"
             value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
             aria-required="true"
+            required
             {% if form.errors contains 'email' %}
               aria-invalid="true"
               aria-describedby="ContactForm-email-error"
@@ -129,9 +162,14 @@
       <div class="contact__button">
         <button type="submit" class="button">
           {{ 'templates.contact.form.send' | t }}
+          {%- if section.settings.show_image -%}{% render 'contact-chevron' %}{%- endif -%}
         </button>
       </div>
     {%- endform -%}
+    {%- if section.settings.show_image -%}
+        </div>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -144,6 +182,35 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show image beside form",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "banner_heading",
+      "label": "Image heading",
+      "default": "Contact Us"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_text",
+      "label": "Image text",
+      "default": "<p>We’d be delighted to connect with you! Our team is ready to assist. Reach out by filling in the email form below.</p>"
+    },
+    {
+      "type": "text",
+      "id": "banner_button_label",
+      "label": "Image button label",
+      "default": "Contact us"
+    },
     {
       "type": "inline_richtext",
       "id": "heading",

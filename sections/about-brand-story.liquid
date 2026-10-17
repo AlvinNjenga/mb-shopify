@@ -1,0 +1,35 @@
+{{ 'section-about-brand-story.css' | asset_url | stylesheet_tag }}
+{% render 'about-fonts' %}
+
+<div class="about-story" style="--story-padding-top: {{ section.settings.padding_top }}px; --story-padding-bottom: {{ section.settings.padding_bottom }}px; --story-mobile-gap: {{ section.settings.mobile_gap }}px;">
+  <div class="about-story__grid">
+    <div class="about-story__media">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1780 | image_tag: widths: '352, 750, 1100, 1500, 1780', sizes: '(max-width: 990px) calc(100vw - 27px), (min-width: 1620px) 765px, calc((100vw - 90px) / 2)', loading: 'lazy', alt: section.settings.image_alt }}
+      {% else %}
+        <img src="{{ 'about-brand-journey.webp' | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="1536" height="1024" loading="lazy">
+      {% endif %}
+    </div>
+    <div class="about-story__content">
+      {% render 'about-media-text-content', section: section %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About brand story",
+  "tag": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave blank to use the reference brand story image." },
+    { "type": "text", "id": "image_alt", "label": "Image description" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Heart and Journey Behind Our Brand" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>We believe true beauty begins with moments of care, balance, and intention. Our journey started with a passion for creating skincare experiences that combine nourishing botanical oils, thoughtfully designed beauty tools, and calming self-care rituals.</p>" },
+    { "type": "range", "id": "padding_top", "label": "Desktop top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 16 },
+    { "type": "range", "id": "padding_bottom", "label": "Desktop bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "mobile_gap", "label": "Mobile and tablet top spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 84 }
+  ],
+  "presets": [{ "name": "About brand story" }]
+}
+{% endschema %}

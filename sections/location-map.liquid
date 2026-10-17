@@ -1,0 +1,95 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    margin-top: 0;
+    padding-top: {{ section.settings.padding_top | times: 0.7 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.7 | round: 0 }}px;
+  }
+
+  #shopify-section-{{ section.id }} .location-map__frame {
+    display: block;
+    width: 100%;
+    height: {{ section.settings.map_height }}px;
+    border: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.map_url != blank -%}
+  <iframe
+    class="location-map__frame"
+    src="{{ section.settings.map_url | escape }}"
+    title="{{ section.settings.map_title | escape }}"
+    width="600"
+    height="{{ section.settings.map_height }}"
+    style="border: 0;"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+  ></iframe>
+{%- elsif request.design_mode -%}
+  <div class="page-width">
+    <p>Add the Google Maps embed URL in this section’s settings to display your business location.</p>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Location map",
+  "tag": "section",
+  "class": "section section-location-map",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "url",
+      "id": "map_url",
+      "label": "Google Maps embed URL",
+      "info": "Paste the https://www.google.com/maps/embed URL from the src attribute of your Google Maps embed HTML."
+    },
+    {
+      "type": "text",
+      "id": "map_title",
+      "label": "Accessible map title",
+      "default": "Our business location"
+    },
+    {
+      "type": "range",
+      "id": "map_height",
+      "label": "Map height",
+      "min": 200,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Space above map",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Space below map",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [{ "name": "Location map" }]
+}
+{% endschema %}

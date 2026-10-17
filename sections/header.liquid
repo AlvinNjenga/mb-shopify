@@ -1,7 +1,13 @@
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
-{%- if section.settings.enable_floating_header -%}
+{%- liquid
+  assign use_floating_header = false
+  if section.settings.enable_floating_header and request.page_type == 'index'
+    assign use_floating_header = true
+  endif
+-%}
+{%- if use_floating_header -%}
   {{ 'component-floating-header.css' | asset_url | stylesheet_tag }}
   {%- style -%}
     #shopify-section-{{ section.id }} {
@@ -136,6 +142,15 @@
   }
 {%- endstyle -%}
 
+{%- unless request.page_type == 'index' -%}
+  {{ 'component-inner-header.css' | asset_url | stylesheet_tag }}
+  {%- style -%}
+    #shopify-section-{{ section.id }} {
+      margin-bottom: 0;
+    }
+  {%- endstyle -%}
+{%- endunless -%}
+
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
@@ -153,7 +168,7 @@
     assign header_logo_position = 'middle-center'
   endif
 
-  if section.settings.sticky_header_type != 'none' or section.settings.enable_floating_header
+  if section.settings.sticky_header_type != 'none' or use_floating_header
     assign header_tag = 'sticky-header'
   endif
 %}
@@ -161,9 +176,9 @@
 <{{ header_tag }}
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
-    data-floating="{{ section.settings.enable_floating_header }}"
+    data-floating="{{ use_floating_header }}"
   {% endif %}
-  class="header-wrapper{% if section.settings.enable_floating_header %} header-wrapper--floating{% endif %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+  class="header-wrapper{% if use_floating_header %} header-wrapper--floating{% endif %}{% unless request.page_type == 'index' %} header-wrapper--inner{% endunless %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
 >
   {%- liquid
     assign social_links = false

@@ -13,7 +13,6 @@
 .customer-review__quote { color: rgba(29,29,29,.75); font-family: 'Olivelle Inter', Arial, sans-serif; font-size: 11.34px; line-height: 21.42px; letter-spacing: .54px; }
 .customer-review__quote p { margin: 0; }
 .customer-review__body h3 { margin: 13px 0 9px; font-family: 'Olivelle Fraunces', Georgia, serif; font-size: 11.34px; line-height: 1.27; font-weight: 700; letter-spacing: .54px; }
-.customer-review__portrait { display: block; width: 50px; height: 50px; object-fit: cover; border-radius: 7.2px; }
 .customer-review__product { display: flex; align-items: center; justify-content: center; padding: 20px; background: #e9e4fc; text-align: center; }
 .customer-review__product a { color: inherit; text-decoration: none; }
 .customer-review__product img { display: block; width: 60px; height: 60px; object-fit: cover; border-radius: 7.2px; margin: 0 auto 12px; }

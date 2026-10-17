@@ -13,6 +13,7 @@
   "sections": {
     "newsletter": {
       "type": "newsletter",
+      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -47,19 +48,64 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "color_scheme": "scheme-2",
-        "newsletter_enable": false,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "",
+        "enable_follow_on_shop": false,
         "show_social": true,
         "enable_country_selector": true,
         "enable_language_selector": true,
-        "payment_enable": false,
+        "payment_enable": true,
         "show_policy": true,
         "margin_top": 0,
-        "padding_top": 44,
-        "padding_bottom": 48
-      }
+        "padding_top": 32,
+        "padding_bottom": 16,
+        "reference_layout": true
+      },
+      "blocks": {
+        "reference_brand": {
+          "type": "reference_brand",
+          "settings": {
+            "description": "<p>Indulge in a nutritious and delicious experience with the Flux collection of protein powders and chocolate treats. Each product is thoughtfully crafted to nourish your body while satisfying your taste buds. Whether you're fueling up after a workout or simply looking for a wholesome snack, our protein powders provide the perfect balance of plant-based nutrition.</p>",
+            "facebook": "https://facebook.com/shopify",
+            "instagram": "https://instagram.com/shopify",
+            "youtube": "https://www.youtube.com/shopify",
+            "tiktok": "https://tiktok.com/@shopify",
+            "whatsapp": "https://whatsapp.com/shopify"
+          }
+        },
+        "reference_shop": {
+          "type": "text",
+          "settings": {
+            "heading": "Our Shop",
+            "subtext": "<p>Find a location nearest you.</p><p>📍 <a href=\"/pages/contact\"><strong>See Our Stores</strong></a></p><p>✉️ <a href=\"mailto:info@refuel.com\"><strong>info@refuel.com</strong></a></p><p>─</p><p><a href=\"/policies/privacy-policy\">Privacy policy</a></p><p><a href=\"/policies/refund-policy\">Refund policy</a></p><p><a href=\"/policies/terms-of-service\">Terms &amp; Condition</a></p>"
+          }
+        },
+        "reference_links": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "",
+            "fallback_links": "<p><a href=\"/collections/best-sellers\">Best Sellers</a></p><p><a href=\"/collections/big-savings\">Big Savings</a></p><p><a href=\"/pages/about\">About</a></p><p><a href=\"/pages/events\">Events</a></p><p><a href=\"/blogs/news\">News</a></p><p><a href=\"/search\">Search</a></p>"
+          }
+        },
+        "reference_image": {
+          "type": "image",
+          "settings": {
+            "image_width": 550,
+            "alignment": "center",
+            "reference_image": true,
+            "caption_heading": "Organic & Homemade",
+            "caption_text": "<p>Our latest collection of high-protein products.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "reference_brand",
+        "reference_shop",
+        "reference_links",
+        "reference_image"
+      ]
     }
   },
   "order": [

@@ -1,0 +1,45 @@
+{{ 'section-about-introduction.css' | asset_url | stylesheet_tag }}
+{{ 'section-about-team.css' | asset_url | stylesheet_tag }}
+{% render 'about-fonts' %}
+
+<div class="about-team" style="--intro-highlight: {{ section.settings.highlight_color }}; --team-padding-top: {{ section.settings.padding_top }}px; --team-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  {% if section.settings.heading != blank %}
+    <h2 class="about-team__heading about-intro__heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+  <ul class="about-team__list" role="list" aria-label="{{ section.settings.accessibility_label | escape }}" tabindex="0">
+    {% for block in section.blocks %}
+      <li class="about-team__card" {{ block.shopify_attributes }}>
+        {% render 'about-team-image', block: block %}
+        <div class="about-team__info">
+          {% if block.settings.name != blank %}<h3 class="about-team__name">{{ block.settings.name | escape }}</h3>{% endif %}
+          {% if block.settings.description != blank %}<div class="about-team__text rte">{{ block.settings.description }}</div>{% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "About team",
+  "tag": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Italic text receives a decorative underline.", "default": "Our <em>Team</em>" },
+    { "type": "text", "id": "accessibility_label", "label": "Accessibility label", "default": "Our team members" },
+    { "type": "color", "id": "highlight_color", "label": "Underline color", "default": "#d4c4d9" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 }
+  ],
+  "blocks": [{
+    "type": "member", "name": "Team member",
+    "settings": [
+      { "type": "image_picker", "id": "image", "label": "Portrait" },
+      { "type": "select", "id": "reference_image", "label": "Default portrait", "options": [{ "value": "emma", "label": "Emma" }, { "value": "daniela", "label": "Daniela" }, { "value": "lily", "label": "Lily" }], "default": "emma" },
+      { "type": "text", "id": "name", "label": "Name" },
+      { "type": "richtext", "id": "description", "label": "Description" }
+    ]
+  }],
+  "presets": [{ "name": "About team", "blocks": [{ "type": "member", "settings": { "name": "Emma Thompson", "reference_image": "emma" } }, { "type": "member", "settings": { "name": "Daniela Martinez", "reference_image": "daniela" } }, { "type": "member", "settings": { "name": "Lily Brooks", "reference_image": "lily" } }] }]
+}
+{% endschema %}

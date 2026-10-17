@@ -1,0 +1,24 @@
+{%- liquid
+  assign loading = 'lazy'
+  assign priority = 'auto'
+  if first_slide
+    assign loading = 'eager'
+    assign priority = 'high'
+  endif
+  assign reference_asset = 'about-philosophy.webp'
+  assign position = '71.1798% 19.1295%'
+  if block.settings.reference_image == 'story'
+    assign reference_asset = 'about-story.webp'
+    assign position = '47.1986% 28.6522%'
+  endif
+-%}
+<picture class="about-slideshow__media" style="--about-image-position: {{ position }};">
+  {% if block.settings.mobile_image != blank %}
+    <source media="(max-width: 768px)" srcset="{{ block.settings.mobile_image | image_url: width: 550 }} 550w, {{ block.settings.mobile_image | image_url: width: 750 }} 750w, {{ block.settings.mobile_image | image_url: width: 1100 }} 1100w" sizes="100vw">
+  {% endif %}
+  {% if block.settings.image != blank %}
+    {{ block.settings.image | image_url: width: 3000 | image_tag: widths: '550, 750, 1100, 1500, 2000, 3000', sizes: '100vw', loading: loading, fetchpriority: priority }}
+  {% else %}
+    <img src="{{ reference_asset | asset_url }}" alt="" width="1536" height="1024" loading="{{ loading }}" fetchpriority="{{ priority }}">
+  {% endif %}
+</picture>

@@ -1,0 +1,6 @@
+{% if section.settings.heading != blank %}
+  <h2 class="about-story__heading">{{ section.settings.heading | escape }}</h2>
+{% endif %}
+{% if section.settings.text != blank %}
+  <div class="about-story__text rte">{{ section.settings.text }}</div>
+{% endif %}

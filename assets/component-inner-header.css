@@ -1,0 +1,71 @@
+/* Compact header for inner pages; homepage keeps its floating header. */
+.header-wrapper--inner .header {
+  max-width: 1620px;
+  min-height: 60px;
+  padding: 4px 45px;
+}
+
+.header-wrapper--inner .header__inline-menu {
+  margin: 0;
+}
+
+.header-wrapper--inner .header__inline-menu > .list-menu {
+  margin-left: -9px;
+}
+
+.header-wrapper--inner .header__menu-item {
+  padding: 10.8px 9px;
+  color: rgb(var(--color-foreground));
+  font-size: 13.6px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  line-height: 1.5;
+}
+
+.header-wrapper--inner .header__inline-menu > .list-menu > li > header-menu > details > summary {
+  padding-right: 25px;
+}
+
+.header-wrapper--inner .header__menu-item span,
+.header-wrapper--inner .header__active-menu-item {
+  text-decoration: none;
+}
+
+.header-wrapper--inner .header__menu-item span {
+  position: relative;
+}
+
+.header-wrapper--inner .header__menu-item span::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.4;
+  transition: width 0.2s ease, left 0.2s ease;
+}
+
+.header-wrapper--inner .header__menu-item:hover span::after,
+.header-wrapper--inner .header__menu-item:focus-visible span::after {
+  left: 0;
+  width: 100%;
+}
+
+.header-wrapper--inner .header__submenu .header__menu-item {
+  padding: 8px 22px;
+}
+
+@media screen and (max-width: 989px) {
+  .header-wrapper--inner .header {
+    min-height: 54px;
+    padding: 5px 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-wrapper--inner .header__menu-item span::after {
+    transition: none;
+  }
+}

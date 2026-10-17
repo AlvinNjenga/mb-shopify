@@ -1,0 +1,72 @@
+{{ 'section-beauty-benefits.css' | asset_url | stylesheet_tag }}
+
+<div class="beauty-benefits">
+  <ul class="beauty-benefits__grid" role="list">
+    {%- for block in section.blocks -%}
+      <li class="beauty-benefits__card" {{ block.shopify_attributes }}>
+        <div class="beauty-benefits__copy">
+          <h3>{{ block.settings.heading | escape }}</h3>
+          <p>{{ block.settings.text | escape }}</p>
+        </div>
+        <div class="beauty-benefits__icon" aria-hidden="true">
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 100 | image_tag: loading: 'lazy', alt: '', width: 27 }}
+          {%- else -%}
+            {%- case block.settings.icon -%}
+              {%- when 'cruelty-free' -%}
+                {{ 'beauty-benefit-cruelty-free.svg' | inline_asset_content }}
+              {%- when 'organic' -%}
+                {{ 'beauty-benefit-organic.svg' | inline_asset_content }}
+              {%- when 'made-with-love' -%}
+                {{ 'beauty-benefit-made-with-love.svg' | inline_asset_content }}
+              {%- when 'strong-formula' -%}
+                {{ 'beauty-benefit-strong-formula.svg' | inline_asset_content }}
+            {%- endcase -%}
+          {%- endif -%}
+        </div>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Beauty benefits",
+  "tag": "section",
+  "class": "section beauty-benefits-section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Cruelty Free" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Cosmetics for a kinder World" },
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "cruelty-free",
+          "options": [
+            { "value": "cruelty-free", "label": "Cruelty free" },
+            { "value": "organic", "label": "Organic cosmetics" },
+            { "value": "made-with-love", "label": "Made with love" },
+            { "value": "strong-formula", "label": "Strong formula" }
+          ]
+        },
+        { "type": "image_picker", "id": "image", "label": "Custom icon" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Beauty benefits",
+      "blocks": [
+        { "type": "benefit", "settings": { "heading": "Cruelty Free", "text": "Cosmetics for a kinder World", "icon": "cruelty-free" } },
+        { "type": "benefit", "settings": { "heading": "Organic Cosmetics", "text": "Nourish Your Skin with Nature", "icon": "organic" } },
+        { "type": "benefit", "settings": { "heading": "Made with Love", "text": "Beautifully Crafted with Love", "icon": "made-with-love" } },
+        { "type": "benefit", "settings": { "heading": "Strong Formula", "text": "A Formula For Flawless Skin", "icon": "strong-formula" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

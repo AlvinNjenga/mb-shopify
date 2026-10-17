@@ -17,12 +17,6 @@
               {% render 'review-stars', rating: block.settings.rating %}
               <div class="customer-review__quote rte">{{ block.settings.quote }}</div>
               <h3>{{ block.settings.name | escape }}</h3>
-              {% if block.settings.portrait != blank %}
-                {{ block.settings.portrait | image_url: width: 200 | image_tag: loading: 'lazy', class: 'customer-review__portrait' }}
-              {% elsif block.settings.reference_card != 'none' %}
-                {% assign portrait_asset = 'review-portrait-' | append: block.settings.reference_card | append: '.webp' %}
-                <img class="customer-review__portrait" src="{{ portrait_asset | asset_url }}" width="50" height="50" loading="lazy" alt="">
-              {% endif %}
             </div>
             <div class="customer-review__product">
               {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}

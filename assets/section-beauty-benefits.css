@@ -1,0 +1,107 @@
+.shopify-section.beauty-benefits-section {
+  margin-top: 0;
+}
+
+.beauty-benefits {
+  padding-top: 12px;
+  background: #fff;
+}
+
+.beauty-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1620px;
+  margin: 0 auto;
+  padding: 10px 45px;
+  list-style: none;
+}
+
+.beauty-benefits__card {
+  display: flex;
+  align-items: center;
+  gap: 13.5px;
+  padding: 0 20px;
+  border-radius: 8px;
+  background: #f7f7f7;
+  color: #1d1d1d;
+}
+
+.beauty-benefits__copy {
+  flex: 0 1 90%;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.beauty-benefits__copy h3 {
+  margin: 1em 0;
+  font-family: 'Olivelle Fraunces', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.27;
+  letter-spacing: 0.54px;
+  color: #1d1d1d;
+}
+
+.beauty-benefits__copy p {
+  margin: -20px 0 1em;
+  font-family: 'Olivelle Inter', Arial, sans-serif;
+  font-size: 12.96px;
+  font-weight: 400;
+  line-height: 1.888889;
+  letter-spacing: 0.54px;
+}
+
+.beauty-benefits__icon {
+  flex: 0 1 10%;
+  min-width: 27px;
+  font-size: 16.2px;
+  line-height: 30.6px;
+  color: #000;
+}
+
+.beauty-benefits__icon svg,
+.beauty-benefits__icon img {
+  display: inline;
+  vertical-align: baseline;
+  width: 27px;
+  height: auto;
+}
+
+@media screen and (min-width: 750px) and (max-width: 1300px) {
+  .beauty-benefits__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 988px) {
+  .beauty-benefits__grid {
+    padding-inline: 13.5px;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .shopify-section.beauty-benefits-section {
+    margin-top: 72px;
+  }
+
+  .beauty-benefits__icon {
+    font-size: 14.4px;
+    line-height: 27.2px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .beauty-benefits {
+    padding-top: 9px;
+  }
+
+  .beauty-benefits__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .beauty-benefits__copy h3 {
+    font-size: 17px;
+  }
+}

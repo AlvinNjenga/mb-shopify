@@ -1,0 +1,50 @@
+.about-intro {
+  padding: var(--intro-padding-top) 21px var(--intro-padding-bottom);
+  background: #fff;
+  color: #1d1d1d;
+  text-align: center;
+  font-family: 'About Inter', Arial, sans-serif;
+  letter-spacing: 0.6px;
+}
+.about-intro__content { max-width: 702px; margin: 0 auto; }
+.about-intro__decoration { height: 169.6px; }
+.about-intro__decoration img { display: block; width: 130px; height: 130px; object-fit: contain; margin: 0 auto; }
+.about-intro__heading {
+  margin: 0;
+  font-family: 'About Fraunces', Georgia, serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.27;
+  letter-spacing: 0.6px;
+  color: #1d1d1d;
+  overflow-wrap: break-word;
+}
+.about-intro__decoration + .about-intro__heading { margin-top: 9px; }
+.about-intro__heading em { position: relative; font-style: normal; }
+.about-intro__heading em::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  width: 100%;
+  height: 0.6em;
+  transform: translateX(-50%) scaleX(-1);
+  background: var(--intro-highlight);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='167' height='10' viewBox='0 0 167 10'%3E%3Cpath d='M5 8C40 4 130 -1 162 6' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") no-repeat center / contain;
+  pointer-events: none;
+}
+.about-intro__text { margin-top: 9px; font-size: 16.2px; line-height: 30.6px; color: rgba(29, 29, 29, 0.75); }
+.about-intro__text > :first-child { margin-top: 0; }
+.about-intro__text > :last-child { margin-bottom: 0; }
+@media (min-width: 750px) and (max-width: 989px) {
+  .about-intro__content { max-width: 450px; }
+}
+@media (max-width: 990px) {
+  .about-intro__decoration { height: 148.2px; }
+  .about-intro__text { font-size: 14.4px; line-height: 27.2px; }
+}
+@media (max-width: 749px) {
+  .about-intro { padding-top: calc(var(--intro-padding-top) * 0.75); padding-bottom: calc(var(--intro-padding-bottom) * 0.75); }
+  .about-intro__heading { font-size: 40px; }
+  .about-intro__text { font-size: 14.4px; line-height: 27.2px; }
+}

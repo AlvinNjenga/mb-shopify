@@ -1,0 +1,68 @@
+{{ 'section-about-slideshow.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ritual-slider.js' | asset_url }}" defer="defer"></script>
+
+{% render 'about-fonts' %}
+{% style %}
+  #AboutSlideshow-{{ section.id }} {
+    --about-height: {{ section.settings.height }}px;
+    --about-mobile-height: {{ section.settings.mobile_height }}px;
+    --about-panel: {{ section.settings.panel_color | color_modify: 'alpha', 0.8 }};
+    --about-text: {{ section.settings.text_color }};
+  }
+{% endstyle %}
+
+<div class="about-slideshow" id="AboutSlideshow-{{ section.id }}">
+  <ritual-slider class="about-slideshow__slider" role="region" aria-roledescription="carousel" aria-label="{{ section.settings.accessibility_label | escape }}" data-autoplay="false">
+    <ul class="about-slideshow__slides" id="AboutSlides-{{ section.id }}" role="list" aria-live="polite">
+      {% for block in section.blocks %}
+        <li class="about-slideshow__slide ritual-slider__slide{% if forloop.first %} is-active{% endif %}" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ section.blocks.size }}" data-block-id="{{ block.id }}" {% unless forloop.first %}aria-hidden="true" inert{% endunless %} {{ block.shopify_attributes }}>
+          {% render 'about-slide-image', block: block, first_slide: forloop.first %}
+          <div class="about-slideshow__layout">
+            <div class="about-slideshow__panel">
+              {% if forloop.first %}
+                <h1 class="about-slideshow__heading">{{ block.settings.heading | escape }}</h1>
+              {% else %}
+                <h2 class="about-slideshow__heading">{{ block.settings.heading | escape }}</h2>
+              {% endif %}
+              <p class="about-slideshow__caption">{{ block.settings.caption | escape }}</p>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    {% if section.blocks.size > 1 %}
+      <div class="about-slideshow__controls ritual-slider__controls" hidden>
+        <button type="button" data-previous aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}" aria-controls="AboutSlides-{{ section.id }}">{% render 'about-slider-arrow', direction: 'previous' %}</button>
+        <span class="visually-hidden"><span data-current>1</span> / {{ section.blocks.size }}</span>
+        <button type="button" data-next aria-label="{{ 'sections.slideshow.next_slideshow' | t }}" aria-controls="AboutSlides-{{ section.id }}">{% render 'about-slider-arrow', direction: 'next' %}</button>
+      </div>
+      <div class="about-slideshow__progress" aria-hidden="true"><span></span></div>
+    {% endif %}
+  </ritual-slider>
+</div>
+
+{% schema %}
+{
+  "name": "About slideshow",
+  "tag": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "accessibility_label", "label": "Accessibility label", "default": "About our brand" },
+    { "type": "range", "id": "height", "label": "Desktop height", "min": 400, "max": 800, "step": 10, "unit": "px", "default": 500 },
+    { "type": "range", "id": "mobile_height", "label": "Mobile height", "min": 400, "max": 700, "step": 10, "unit": "px", "default": 400 },
+    { "type": "color", "id": "panel_color", "label": "Panel background", "default": "#e9e4fc" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1d1d1d" }
+  ],
+  "blocks": [{
+    "type": "slide", "name": "Slide",
+    "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+      { "type": "select", "id": "reference_image", "label": "Default reference image", "options": [{ "value": "philosophy", "label": "Beauty philosophy" }, { "value": "story", "label": "Our story" }], "default": "philosophy" },
+      { "type": "text", "id": "heading", "label": "Heading", "default": "Our Beauty Philosophy" },
+      { "type": "textarea", "id": "caption", "label": "Description" }
+    ]
+  }],
+  "presets": [{ "name": "About slideshow", "blocks": [{ "type": "slide" }, { "type": "slide", "settings": { "reference_image": "story", "heading": "Our Story" } }] }]
+}
+{% endschema %}

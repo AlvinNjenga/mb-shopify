@@ -1,0 +1,33 @@
+<div class="footer-block__brand-info">
+  <div class="footer-block__image-wrapper" style="max-width: 80px;">
+    {%- if block.settings.image != blank -%}
+      {{ block.settings.image | image_url: width: 200 | image_tag: loading: 'lazy', widths: '80, 160, 200', width: 80 }}
+    {%- else -%}
+      <img src="{{ 'footer-reference-logo.png' | asset_url }}" alt="Flux" width="80" height="33" loading="lazy">
+    {%- endif -%}
+  </div>
+  <div class="rte">{{ block.settings.description }}</div>
+  {%- if section.settings.newsletter_enable -%}
+    {%- render 'footer-newsletter', section: section -%}
+  {%- endif -%}
+  {%- if section.settings.show_social -%}
+    {%- if has_social_icons -%}
+      {%- render 'social-icons', class: 'footer__list-social' -%}
+    {%- else -%}
+      {%- assign networks = 'facebook,instagram,youtube,tiktok,whatsapp' | split: ',' -%}
+      <ul class="list-unstyled list-social footer__list-social" role="list">
+        {%- for network in networks -%}
+          {%- if block.settings[network] != blank -%}
+            {%- assign icon_asset = 'icon-' | append: network | append: '.svg' -%}
+            <li class="list-social__item">
+              <a href="{{ block.settings[network] }}" class="link list-social__link">
+                <span class="svg-wrapper">{{ icon_asset | inline_asset_content }}</span>
+                <span class="visually-hidden">{{ network | capitalize }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  {%- endif -%}
+</div>

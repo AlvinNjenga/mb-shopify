@@ -1,0 +1,135 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "slideshow": {
+      "type": "about-slideshow",
+      "blocks": {
+        "philosophy": {
+          "type": "slide",
+          "settings": {
+            "reference_image": "philosophy",
+            "heading": "Our Beauty Philosophy",
+            "caption": "We believe skincare should be more than a routine — it should be a moment of care, balance, and renewal. Our approach combines nourishing facial oils, innovative beauty tools, and mindful self-care rituals designed to support naturally healthy, radiant skin."
+          }
+        },
+        "story": {
+          "type": "slide",
+          "settings": {
+            "reference_image": "story",
+            "heading": "Our Story",
+            "caption": "Our journey began with a simple idea: beauty should feel natural, effortless, and empowering. By combining botanical ingredients, carefully crafted skincare tools, and wellness-inspired rituals, we create products that support both skin health and everyday self-care."
+          }
+        }
+      },
+      "block_order": [
+        "philosophy",
+        "story"
+      ],
+      "settings": {
+        "accessibility_label": "About our brand",
+        "height": 500,
+        "mobile_height": 400,
+        "panel_color": "#e9e4fc",
+        "text_color": "#1d1d1d"
+      }
+    },
+    "introduction": {
+      "type": "about-introduction",
+      "settings": {
+        "show_decoration": true,
+        "heading": "A Journey to <em>Natural</em> Beauty",
+        "text": "<p>We believe skincare should be more than a routine — it should be a moment of balance, care, and renewal. Our philosophy blends nourishing botanical oils, thoughtfully crafted beauty tools, and mindful self-care rituals designed to support healthy, radiant skin.</p>",
+        "highlight_color": "#d4c4d9",
+        "padding_top": 32,
+        "padding_bottom": 16
+      }
+    },
+    "brand_story": {
+      "type": "about-brand-story",
+      "settings": {
+        "heading": "The Heart and Journey Behind Our Brand",
+        "text": "<p>We believe true beauty begins with moments of care, balance, and intention. Our journey started with a passion for creating skincare experiences that combine nourishing botanical oils, thoughtfully designed beauty tools, and calming self-care rituals.</p>",
+        "padding_top": 16,
+        "padding_bottom": 36,
+        "mobile_gap": 84
+      }
+    },
+    "sustainability": {
+      "type": "about-sustainability",
+      "settings": {
+        "heading": "Quality & Sustainability",
+        "text": "<p>We believe beauty should be as mindful as it is effective. Our products are created with carefully selected ingredients, skin-friendly materials, and thoughtful design to support both your wellbeing and the planet. From nourishing botanical oils to durable beauty tools and calming self-care essentials, every detail is chosen to deliver quality you can trust.</p>",
+        "background_color": "#e9e4fc",
+        "padding": 36,
+        "mobile_gap": 56
+      }
+    },
+    "team": {
+      "type": "about-team",
+      "settings": {
+        "heading": "Our <em>Team</em>",
+        "accessibility_label": "Our team members",
+        "highlight_color": "#d4c4d9",
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "blocks": {
+        "emma": {
+          "type": "member",
+          "settings": {
+            "reference_image": "emma",
+            "name": "Emma Thompson",
+            "description": "<p>Emma is a skincare specialist passionate about natural beauty rituals and mindful self-care. She focuses on creating routines that combine nourishing botanical oils with relaxing beauty tools to support healthy, radiant skin.</p>"
+          }
+        },
+        "daniela": {
+          "type": "member",
+          "settings": {
+            "reference_image": "daniela",
+            "name": "Daniela Martinez",
+            "description": "<p>Daniela leads product development with a love for clean ingredients and innovative skincare solutions. She works closely on designing beauty products and tools that elevate everyday wellness and enhance natural glow.</p>"
+          }
+        },
+        "lily": {
+          "type": "member",
+          "settings": {
+            "reference_image": "lily",
+            "name": "Lily Brooks",
+            "description": "<p>Lily is dedicated to sharing the brand’s vision of simple, effective self-care. Through creative storytelling and a deep understanding of skincare routines, she helps inspire people to embrace mindful beauty rituals.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "emma",
+        "daniela",
+        "lily"
+      ]
+    },
+    "sale_banner": {
+      "type": "about-sale-banner",
+      "settings": {
+        "heading": "Summer <em>Sale</em>",
+        "text": "<p>Refresh your skincare ritual with our nourishing beauty essentials. Discover lightweight face oils, rejuvenating tools, and self-care favorites designed to hydrate, smooth, and enhance your natural glow. Treat your skin to a radiant summer routine.</p>",
+        "button_label": "Shop the Sale",
+        "height": 558,
+        "overlay_opacity": 10
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow",
+    "introduction",
+    "brand_story",
+    "sustainability",
+    "team",
+    "sale_banner"
+  ]
+}

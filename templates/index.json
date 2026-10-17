@@ -9,6 +9,120 @@
  */
 {
   "sections": {
+    "scrolling-brands": {
+  "type": "scrolling-images",
+  "blocks": {
+    "logo-1": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-logo-1.jpg",
+        "alt": "Brand logo 1"
+      }
+    },
+    "logo-5": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-logo-5.jpg",
+        "alt": "Brand logo 2"
+      }
+    },
+    "logo-6": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-logo-6.jpg",
+        "alt": "Brand logo 3"
+      }
+    },
+    "logo-3": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-logo-3.jpg",
+        "alt": "Brand logo 4"
+      }
+    },
+    "logo-2": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-logo-2.jpg",
+        "alt": "Brand logo 5"
+      }
+    },
+    "logo-4": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-logo-4.jpg",
+        "alt": "Brand logo 6"
+      }
+    }
+  },
+  "block_order": [
+    "logo-1",
+    "logo-5",
+    "logo-6",
+    "logo-3",
+    "logo-2",
+    "logo-4"
+  ],
+  "settings": {
+    "layout": "brands",
+    "color_scheme": "scheme-1",
+    "accessibility_label": "Our brands",
+    "speed": 70,
+    "padding_top": 0,
+    "padding_bottom": 0
+  }
+},
+    "scrolling-gallery": {
+  "type": "scrolling-images",
+  "blocks": {
+    "image-1": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-self-care-2-c.jpg",
+        "alt": "Facial ice globes",
+        "link": "/products/facial-ice-globes"
+      }
+    },
+    "image-2": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-face-oil-1-b_2e8811b1-5adb-4c4d-9550-627e28f859b8.jpg",
+        "alt": "Glow facial oil",
+        "link": "/products/glow-oil"
+      }
+    },
+    "image-3": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-face-oil-1-d.jpg",
+        "alt": "Facial oil skincare ritual",
+        "link": "/products/glow-oil"
+      }
+    },
+    "image-4": {
+      "type": "image",
+      "settings": {
+        "asset_image": "scroll-face-tools-1.jpg",
+        "alt": "Facial roller",
+        "link": "/products/facial-roler"
+      }
+    }
+  },
+  "block_order": [
+    "image-1",
+    "image-2",
+    "image-3",
+    "image-4"
+  ],
+  "settings": {
+    "layout": "gallery",
+    "color_scheme": "scheme-1",
+    "accessibility_label": "Explore our skincare",
+    "speed": 70,
+    "padding_top": 36,
+    "padding_bottom": 12
+  }
+},
     "custom-hero": {
       "type": "custom-hero",
       "blocks": {
@@ -411,6 +525,75 @@
     "padding_bottom": 40
   }
 },
+    "beauty-benefits": {
+      "type": "beauty-benefits",
+      "blocks": {
+        "cruelty-free": { "type": "benefit", "settings": { "heading": "Cruelty Free", "text": "Cosmetics for a kinder World", "icon": "cruelty-free" } },
+        "organic": { "type": "benefit", "settings": { "heading": "Organic Cosmetics", "text": "Nourish Your Skin with Nature", "icon": "organic" } },
+        "made-with-love": { "type": "benefit", "settings": { "heading": "Made with Love", "text": "Beautifully Crafted with Love", "icon": "made-with-love" } },
+        "strong-formula": { "type": "benefit", "settings": { "heading": "Strong Formula", "text": "A Formula For Flawless Skin", "icon": "strong-formula" } }
+      },
+      "block_order": ["cruelty-free", "organic", "made-with-love", "strong-formula"],
+      "settings": {}
+    },
+    "spring-glow-sale": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": { "heading": "Spring <em>Glow</em> Sale", "heading_size": "h0" }
+        },
+        "text": {
+          "type": "text",
+          "settings": { "text": "Refresh your skincare routine with our most-loved beauty essentials. Discover facial oils, tools, and self-care sets designed to hydrate, restore, and reveal your natural glow.", "text_style": "body" }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": { "button_label_1": "Claim the Deal", "button_link_1": "shopify://collections/big-savings", "button_style_secondary_1": false, "button_label_2": "" }
+        }
+      },
+      "block_order": ["heading", "text", "buttons"],
+      "settings": {
+        "spring_glow_style": true,
+        "image_overlay_opacity": 20,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "beauty-that-speaks": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Beauty That <em>Speaks</em> For Itself",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our curated skincare collection is designed for those who value quality, simplicity, and results. Discover powerful formulas, beauty tools, and self-care essentials that transform everyday routines into moments of glow and confidence.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 72
+      }
+    },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
@@ -451,6 +634,11 @@
     "ritual-slider",
     "most-loved-products",
     "facial-oils-banner",
-    "customer-reviews"
+    "customer-reviews",
+    "spring-glow-sale",
+    "beauty-benefits",
+    "beauty-that-speaks",
+    "scrolling-brands",
+    "scrolling-gallery"
   ]
 }

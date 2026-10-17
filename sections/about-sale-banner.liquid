@@ -1,0 +1,55 @@
+{{ 'section-about-introduction.css' | asset_url | stylesheet_tag }}
+{{ 'section-about-sale-banner.css' | asset_url | stylesheet_tag }}
+{% render 'about-fonts' %}
+{% liquid
+  assign sale_link = section.settings.button_link
+  if sale_link == blank
+    assign sale_link = collections['big-savings'].url | default: routes.all_products_collection_url
+  endif
+%}
+
+<div class="about-sale" style="--intro-highlight: #e9e4fc; --sale-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }}; --sale-height: {{ section.settings.height }}px;">
+  <picture class="about-sale__media">
+    {% if section.settings.mobile_image != blank %}
+      <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 550 }} 550w, {{ section.settings.mobile_image | image_url: width: 750 }} 750w" sizes="100vw">
+    {% endif %}
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 3000 | image_tag: widths: '550, 750, 1100, 1500, 2000, 3000', sizes: '100vw', loading: 'lazy', alt: '' }}
+    {% else %}
+      <img src="{{ 'about-summer-sale.webp' | asset_url }}" alt="" width="2200" height="770" loading="lazy">
+    {% endif %}
+  </picture>
+  <div class="about-sale__layout">
+    <div class="about-sale__content">
+      {% if section.settings.heading != blank %}<h2 class="about-sale__heading about-intro__heading">{{ section.settings.heading }}</h2>{% endif %}
+      {% if section.settings.text != blank %}<div class="about-sale__text rte">{{ section.settings.text }}</div>{% endif %}
+      {% if section.settings.button_label != blank %}
+        <div class="about-sale__buttons">
+          <a class="about-sale__button" href="{{ sale_link }}">
+            {{ section.settings.button_label | escape }}
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="12" fill="#d9d9d9"/><path d="m10 6 6 6-6 6" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About sale banner",
+  "tag": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave blank to use the reference Summer Sale image." },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Italic text receives a decorative underline.", "default": "Summer <em>Sale</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Refresh your skincare ritual with our nourishing beauty essentials. Discover lightweight face oils, rejuvenating tools, and self-care favorites designed to hydrate, smooth, and enhance your natural glow. Treat your skin to a radiant summer routine.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the Sale" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Defaults to the Big Savings collection when available, otherwise all products." },
+    { "type": "range", "id": "height", "label": "Desktop minimum height", "min": 350, "max": 750, "step": 4, "unit": "px", "default": 558 },
+    { "type": "range", "id": "overlay_opacity", "label": "Image overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 10 }
+  ],
+  "presets": [{ "name": "About sale banner" }]
+}
+{% endschema %}

@@ -64,6 +64,7 @@ if (!customElements.get('ritual-slider')) {
       });
       const counter = this.querySelector('[data-current]');
       if (counter) counter.textContent = this.current + 1;
+      this.style.setProperty('--slider-progress', `${((this.current + 1) / this.slides.length) * 100}%`);
       this.schedule();
     }
 
