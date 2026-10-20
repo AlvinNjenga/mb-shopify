@@ -13,7 +13,6 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
-      "disabled": true,
       "blocks": {
         "announcement-bar-0": {
           "type": "announcement",
@@ -26,6 +25,7 @@
       "block_order": [
         "announcement-bar-0"
       ],
+      "disabled": true,
       "settings": {
         "auto_rotate": false,
         "change_slides_speed": 5,
@@ -39,9 +39,9 @@
     "header": {
       "type": "header",
       "settings": {
-        "logo_position": "top-center",
+        "enable_collection_floating_header": false,
         "enable_floating_header": true,
-        "enable_collection_floating_header": true,
+        "logo_position": "top-center",
         "mobile_logo_position": "center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
