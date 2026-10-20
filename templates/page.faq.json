@@ -1,0 +1,221 @@
+{
+    "sections":  {
+                     "main":  {
+                                  "type":  "main-page",
+                                  "disabled":  true,
+                                  "settings":  {
+
+                                               }
+                              },
+                     "categories":  {
+                                        "type":  "faq-categories",
+                                        "blocks":  {
+                                                       "orders":  {
+                                                                      "type":  "category",
+                                                                      "settings":  {
+                                                                                       "heading":  "Orders \u0026 Support",
+                                                                                       "text":  "\u003cp\u003eWe’re here to ensure your shopping experience is smooth and enjoyable. If you have any questions or need assistance with an order, our support team is ready to help.\u003c/p\u003e",
+                                                                                       "link_label":  "View Faq",
+                                                                                       "link":  "#orders",
+                                                                                       "reference_image_url":  "https://flux-demo-6.myshopify.com/cdn/shop/files/orders.webp?v=1773567707"
+                                                                                   }
+                                                                  },
+                                                       "shipping":  {
+                                                                        "type":  "category",
+                                                                        "settings":  {
+                                                                                         "heading":  "Shipping \u0026 Returns",
+                                                                                         "text":  "\u003cp\u003eWe want you to love your purchase! Our shipping process is quick and reliable, with options that fit your needs. If for any reason you’re not completely satisfied, our simple returns process makes it easy to return items.\u003c/p\u003e",
+                                                                                         "link_label":  "View Faq",
+                                                                                         "link":  "#shipping",
+                                                                                         "reference_image_url":  "https://flux-demo-6.myshopify.com/cdn/shop/files/shipping.webp?v=1773567720"
+                                                                                     }
+                                                                    },
+                                                       "product":  {
+                                                                       "type":  "category",
+                                                                       "settings":  {
+                                                                                        "heading":  "Product Info",
+                                                                                        "text":  "\u003cp\u003eExplore the unique features of each product in our collection. From high-quality materials to thoughtful design, we provide detailed information to help you make the best choice.\u003c/p\u003e",
+                                                                                        "link_label":  "View Faq",
+                                                                                        "link":  "#product",
+                                                                                        "reference_image_url":  "https://flux-demo-6.myshopify.com/cdn/shop/files/face-oil-2-c.webp?v=1772622546"
+                                                                                    }
+                                                                   }
+                                                   },
+                                        "block_order":  [
+                                                            "orders",
+                                                            "shipping",
+                                                            "product"
+                                                        ],
+                                        "settings":  {
+
+                                                     }
+                                    },
+                     "orders":  {
+                                    "type":  "faq-group",
+                                    "settings":  {
+                                                     "anchor":  "orders",
+                                                     "caption":  "Support FAQs",
+                                                     "heading":  "Orders \u0026 Support",
+                                                     "open_first_collapsible_row":  true
+                                                 },
+                                    "blocks":  {
+                                                   "question_1":  {
+                                                                      "type":  "question",
+                                                                      "settings":  {
+                                                                                       "heading":  "How can I place an order?",
+                                                                                       "row_content":  "\u003cp\u003ePlacing an order  is quick and easy. Simply browse our online store, select the products you desire, and add them to your cart. Proceed to the checkout process, where you\u0027ll provide your shipping and payment details. Once your order is confirmed, we\u0027ll take care of the rest.\u003c/p\u003e"
+                                                                                   }
+                                                                  },
+                                                   "question_2":  {
+                                                                      "type":  "question",
+                                                                      "settings":  {
+                                                                                       "heading":  "What payment methods do you accept?",
+                                                                                       "row_content":  "\u003cp\u003eWe accept various payment methods, including major credit cards (Visa, Mastercard, American Express), PayPal, and other secure online payment platforms. Rest assured that your payment information is protected and encrypted for a secure transaction.\u003c/p\u003e"
+                                                                                   }
+                                                                  },
+                                                   "question_3":  {
+                                                                      "type":  "question",
+                                                                      "settings":  {
+                                                                                       "heading":  "How long will it take to receive my order?",
+                                                                                       "row_content":  "\u003cp\u003eWe strive to process and ship orders as quickly as possible. After your order is placed, please allow 1-2 business days for processing. Shipping times may vary depending on your location and the shipping method selected at checkout. You can find more information about estimated delivery times on our website or contact our support team for specific inquiries.\u003c/p\u003e"
+                                                                                   }
+                                                                  },
+                                                   "question_4":  {
+                                                                      "type":  "question",
+                                                                      "settings":  {
+                                                                                       "heading":  "Can I track my order?",
+                                                                                       "row_content":  "\u003cp\u003eYes, absolutely! Once your order is shipped, we\u0027ll provide you with a tracking number via email. You can use this tracking number to monitor the progress of your package and stay updated on its estimated delivery date. If you have any issues with tracking your order, feel free to reach out to our support team for assistance.\u003c/p\u003e"
+                                                                                   }
+                                                                  },
+                                                   "question_5":  {
+                                                                      "type":  "question",
+                                                                      "settings":  {
+                                                                                       "heading":  "What if I have questions or need assistance with my order?",
+                                                                                       "row_content":  "\u003cp\u003eWe\u0027re here to help! If you have any questions or need support regarding your order, our dedicated customer support team is available to assist you. You can reach out to us through our contact form, email, or phone. We strive to provide prompt and helpful responses to ensure your shopping experience with us is seamless.\u003c/p\u003e"
+                                                                                   }
+                                                                  }
+                                               },
+                                    "block_order":  [
+                                                        "question_1",
+                                                        "question_2",
+                                                        "question_3",
+                                                        "question_4",
+                                                        "question_5"
+                                                    ]
+                                },
+                     "shipping":  {
+                                      "type":  "faq-group",
+                                      "settings":  {
+                                                       "anchor":  "shipping",
+                                                       "caption":  "Support FAQs",
+                                                       "heading":  "Shipping \u0026 Returns",
+                                                       "open_first_collapsible_row":  false,
+                                                       "alternate_background":  true
+                                                   },
+                                      "blocks":  {
+                                                     "question_1":  {
+                                                                        "type":  "question",
+                                                                        "settings":  {
+                                                                                         "heading":  "Do you offer international shipping?",
+                                                                                         "row_content":  "\u003cp\u003eYes, we offer international shipping to many countries. However, please note that international shipping times and costs may differ from domestic shipping. Make sure to review the shipping options available for your country during the checkout process.\u003c/p\u003e"
+                                                                                     }
+                                                                    },
+                                                     "question_2":  {
+                                                                        "type":  "question",
+                                                                        "settings":  {
+                                                                                         "heading":  "How long does shipping take?",
+                                                                                         "row_content":  "\u003cp\u003eShipping times can vary depending on your location and the shipping method chosen. Typically, domestic orders within [Country] are delivered within 3-5 business days. International shipping times may range from 7-14 business days, depending on the destination. Please note that these are estimated times and delays may occur due to unforeseen circumstances or customs procedures.\u003c/p\u003e"
+                                                                                     }
+                                                                    },
+                                                     "question_3":  {
+                                                                        "type":  "question",
+                                                                        "settings":  {
+                                                                                         "heading":  "What is your return policy?",
+                                                                                         "row_content":  "\u003cp\u003eWe want you to be completely satisfied with your purchase. If for any reason you are not happy with your order, we accept returns within 30 days of the original purchase date. Please ensure that the product is unopened, unused, and in its original packaging for a successful return. Kindly refer to our Returns Policy on our website for detailed instructions on initiating a return.\u003c/p\u003e"
+                                                                                     }
+                                                                    },
+                                                     "question_4":  {
+                                                                        "type":  "question",
+                                                                        "settings":  {
+                                                                                         "heading":  "How do I initiate a return?",
+                                                                                         "row_content":  "\u003cp\u003e Initiating a return is easy. Simply contact our customer support team with your order details and reason for return. Our team will guide you through the process and provide you with further instructions on returning the product. Please note that return shipping costs may be the responsibility of the customer, unless the return is due to an error on our part.\u003c/p\u003e"
+                                                                                     }
+                                                                    },
+                                                     "question_5":  {
+                                                                        "type":  "question",
+                                                                        "settings":  {
+                                                                                         "heading":  "What if my order arrives damaged or there is an issue with the product?",
+                                                                                         "row_content":  "\u003cp\u003eWe apologize for any inconvenience caused by a damaged or defective product. If you receive a damaged item or there is an issue with the product, please contact our customer support team immediately. We will gladly assist you in resolving the issue and arranging a replacement or refund as necessary.\u003c/p\u003e"
+                                                                                     }
+                                                                    }
+                                                 },
+                                      "block_order":  [
+                                                          "question_1",
+                                                          "question_2",
+                                                          "question_3",
+                                                          "question_4",
+                                                          "question_5"
+                                                      ]
+                                  },
+                     "product":  {
+                                     "type":  "faq-group",
+                                     "settings":  {
+                                                      "anchor":  "product",
+                                                      "caption":  "Support FAQs",
+                                                      "heading":  "Product Info",
+                                                      "open_first_collapsible_row":  false
+                                                  },
+                                     "blocks":  {
+                                                    "question_1":  {
+                                                                       "type":  "question",
+                                                                       "settings":  {
+                                                                                        "heading":  "Are your products vegan?",
+                                                                                        "row_content":  "\u003cp\u003eYes, all our products are 100% vegan. We are proud to offer a wide range of food that are free from any animal-derived ingredients or by-products.\u003c/p\u003e"
+                                                                                    }
+                                                                   },
+                                                    "question_2":  {
+                                                                       "type":  "question",
+                                                                       "settings":  {
+                                                                                        "heading":  "Are your products organic?",
+                                                                                        "row_content":  "\u003cp\u003eAbsolutely! We prioritize the use of organic and natural ingredients in our formulations. Our products are carefully crafted to harness the power of nature.\u003c/p\u003e"
+                                                                                    }
+                                                                   },
+                                                    "question_3":  {
+                                                                       "type":  "question",
+                                                                       "settings":  {
+                                                                                        "heading":  "Are your products cruelty-free?",
+                                                                                        "row_content":  "\u003cp\u003eYes, we are proud to be a cruelty-free brand. We do not conduct any animal testing, and our products are certified cruelty-free by reputable organizations. We believe in the ethical treatment of animals and ensure that our products are developed without any harm to our furry friends.\u003c/p\u003e"
+                                                                                    }
+                                                                   },
+                                                    "question_4":  {
+                                                                       "type":  "question",
+                                                                       "settings":  {
+                                                                                        "heading":  "What are the main ingredients used in your products?",
+                                                                                        "row_content":  "\u003cp\u003eWe use a wide range of natural and organic ingredients in our products. Each product has a unique formulation designed to provide specific benefits. Common ingredients you\u0027ll find in our products include botanical extracts, plant oils, vitamins, and minerals, all carefully selected for their nourishing your body.\u003c/p\u003e"
+                                                                                    }
+                                                                   },
+                                                    "question_5":  {
+                                                                       "type":  "question",
+                                                                       "settings":  {
+                                                                                        "heading":  "Do you offer products for specific skin concerns?",
+                                                                                        "row_content":  "\u003cp\u003eYes, we offer a variety of products tailored to address specific skin concerns such as dryness, acne, aging, and sensitivity. Our range includes moisturizers, serums, cleansers, masks, and more, each formulated to target and improve specific skin issues. Explore our product descriptions or reach out to our customer support team for personalized recommendations.\u003c/p\u003e"
+                                                                                    }
+                                                                   }
+                                                },
+                                     "block_order":  [
+                                                         "question_1",
+                                                         "question_2",
+                                                         "question_3",
+                                                         "question_4",
+                                                         "question_5"
+                                                     ]
+                                 }
+                 },
+    "order":  [
+                  "main",
+                  "categories",
+                  "orders",
+                  "shipping",
+                  "product"
+              ]
+}
