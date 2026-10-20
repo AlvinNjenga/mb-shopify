@@ -1,9 +1,13 @@
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+{{ 'component-header-links.css' | asset_url | stylesheet_tag }}
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- liquid
   assign use_floating_header = false
   if section.settings.enable_floating_header and request.page_type == 'index'
+    assign use_floating_header = true
+  endif
+  if section.settings.enable_collection_floating_header and request.page_type == 'collection'
     assign use_floating_header = true
   endif
 -%}
@@ -15,7 +19,7 @@
       top: 0;
       z-index: 5;
       margin-bottom: 0;
-      height: {% if request.page_type == 'index' %}0{% else %}calc(var(--header-height, 100px) + 4vw){% endif %};
+      height: 0;
     }
   {%- endstyle -%}
 {%- endif -%}
@@ -142,7 +146,7 @@
   }
 {%- endstyle -%}
 
-{%- unless request.page_type == 'index' -%}
+{%- unless request.page_type == 'index' or use_floating_header -%}
   {{ 'component-inner-header.css' | asset_url | stylesheet_tag }}
   {%- style -%}
     #shopify-section-{{ section.id }} {
@@ -178,7 +182,7 @@
     data-sticky-type="{{ section.settings.sticky_header_type }}"
     data-floating="{{ use_floating_header }}"
   {% endif %}
-  class="header-wrapper{% if use_floating_header %} header-wrapper--floating{% endif %}{% unless request.page_type == 'index' %} header-wrapper--inner{% endunless %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+  class="header-wrapper{% if use_floating_header %} header-wrapper--floating{% if request.page_type == 'collection' %} header-wrapper--collection{% endif %}{% endif %}{% unless request.page_type == 'index' or use_floating_header %} header-wrapper--inner{% endunless %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
 >
   {%- liquid
     assign social_links = false
@@ -553,6 +557,13 @@
   "class": "section-header",
   "max_blocks": 3,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_collection_floating_header",
+      "default": false,
+      "label": "Floating header on collection pages",
+      "info": "Overlays the collection banner and stays visible while scrolling."
+    },
     {
       "type": "checkbox",
       "id": "enable_floating_header",

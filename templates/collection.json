@@ -12,23 +12,48 @@
     "main-collection-banner": {
       "type": "main-collection-banner",
       "settings": {
+        "banner_layout": "overlay",
+        "desktop_height": 414,
+        "mobile_height": 351,
+        "overlay_opacity": 60,
         "show_collection_description": true,
         "show_collection_image": true,
         "color_scheme": "scheme-1"
       }
     },
+    "collection-subnavigation": {
+      "type": "collection-subnavigation",
+      "settings": {
+        "navigation_label": "Shop by collection",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "collection-services": {
+      "type": "collection-services",
+      "blocks": {
+        "shipping": { "type": "service", "settings": { "heading": "Free Shipping", "text": "For orders over $110", "icon": "truck" } },
+        "returns": { "type": "service", "settings": { "heading": "Money Guarantee", "text": "30 days for an exchange", "icon": "return" } },
+        "support": { "type": "service", "settings": { "heading": "Online Support", "text": "24 hours per day", "icon": "support" } },
+        "payment": { "type": "service", "settings": { "heading": "Flexible Payment", "text": "Multiple Credit Cards", "icon": "payment" } }
+      },
+      "block_order": ["shipping", "returns", "support", "payment"],
+      "settings": { "color_scheme": "scheme-1", "show_social": true }
+    },
     "main-collection-product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 20,
+        "show_layout_switcher": true,
+        "pagination_style": "load_more",
+        "show_promotion": true,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
@@ -40,6 +65,8 @@
   },
   "order": [
     "main-collection-banner",
-    "main-collection-product-grid"
+    "collection-subnavigation",
+    "main-collection-product-grid",
+    "collection-services"
   ]
 }

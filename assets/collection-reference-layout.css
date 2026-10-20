@@ -1,0 +1,62 @@
+/* Collection-only geometry; Dawn retains control of filtering and sorting. */
+.collection-reference-layout {
+  display: block;
+  --grid-desktop-horizontal-spacing: 20px;
+  --grid-desktop-vertical-spacing: 20px;
+  --grid-mobile-horizontal-spacing: 10px;
+  --grid-mobile-vertical-spacing: 10px;
+}
+
+.collection-reference-layout .page-width {
+  width: 100%;
+  max-width: 1620px;
+  margin-inline: auto;
+  padding-inline: 45px;
+}
+
+.collection-reference-layout .product-grid-container {
+  min-width: 0;
+}
+
+.collection-reference-layout .product-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--collection-columns-desktop), minmax(0, 1fr));
+  gap: 20px;
+  margin: 16px 0 18px;
+  padding: 0;
+}
+
+.collection-reference-layout .product-grid > .grid__item,
+.collection-reference-layout .collection .product-grid > .grid__item:only-child {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.collection-reference-layout--horizontal .facets-wrapper,
+.collection-reference-layout--drawer .facets-wrapper {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
+@media screen and (max-width: 989px) {
+  .collection-reference-layout .product-grid {
+    grid-template-columns: repeat(var(--collection-columns-mobile), minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .collection-reference-layout .page-width {
+    padding-inline: 13.5px;
+  }
+
+  .collection-reference-layout .product-grid {
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .collection-reference-layout--horizontal .facets-wrapper,
+  .collection-reference-layout--drawer .facets-wrapper {
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,16 @@
+{% comment %}Native Shopify swatches link directly to the corresponding variant.{% endcomment %}
+{%- for option in product.options_with_values -%}
+  {%- assign swatch_count = option.values | map: 'swatch' | compact | size -%}
+  {%- if swatch_count > 0 -%}
+    <div class="collection-card-swatches">
+      {%- for value in option.values -%}
+        {%- if value.swatch != blank -%}
+          <a class="collection-card-swatches__link" href="{{ value.variant.url | default: product.url }}" aria-label="{{ product.title | escape }} — {{ value | escape }}" title="{{ value | escape }}">
+            {% render 'swatch', swatch: value.swatch %}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}

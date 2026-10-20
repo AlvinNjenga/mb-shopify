@@ -1,0 +1,34 @@
+<collection-layout-switcher class="collection-layout-switcher">
+  {%- for device in (1..2) -%}
+    {%- liquid
+      assign device_name = 'desktop'
+      assign first_column = 2
+      assign last_column = 4
+      assign selected_columns = section.settings.columns_desktop | plus: 0
+      if device == 2
+        assign device_name = 'mobile'
+        assign first_column = 1
+        assign last_column = 2
+        assign selected_columns = section.settings.columns_mobile | plus: 0
+      endif
+    -%}
+    <div class="collection-layout-switcher__{{ device_name }}" role="group" aria-label="{{ section.settings.layout_label | escape }}">
+      {%- for columns in (first_column..last_column) -%}
+        <button type="button" data-device="{{ device_name }}" data-columns="{{ columns }}" aria-label="{{ columns }} {{ section.settings.columns_label | escape }}" aria-pressed="{% if selected_columns == columns %}true{% else %}false{% endif %}">
+          <svg viewBox="0 0 18 18" width="18" height="18" aria-hidden="true" focusable="false">
+            {%- liquid
+              assign cell = 20.0 | divided_by: columns
+              assign size = cell | minus: 2
+              assign end = columns | minus: 1
+            -%}
+            {%- for row in (0..end) -%}
+              {%- for column in (0..end) -%}
+                <rect x="{{ column | times: cell }}" y="{{ row | times: cell }}" width="{{ size }}" height="{{ size }}" fill="currentColor" />
+              {%- endfor -%}
+            {%- endfor -%}
+          </svg>
+        </button>
+      {%- endfor -%}
+    </div>
+  {%- endfor -%}
+</collection-layout-switcher>

@@ -1,0 +1,90 @@
+.collection-reference-layout--horizontal #main-collection-filters,
+.collection-reference-layout--drawer #main-collection-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  padding-top: 36px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.collection-reference-layout #main-collection-filters {
+  font-family: 'Collection Card Inter', Arial, sans-serif;
+  color: #1d1d1d;
+}
+
+.collection-reference-layout--horizontal .facets-container {
+  padding-top: 0;
+}
+
+.collection-reference-layout--horizontal .facets__form {
+  grid-template-columns: max-content max-content minmax(0, 1fr);
+  gap: 0 8px;
+  margin-bottom: 0;
+}
+
+.collection-reference-layout--horizontal .facets__wrapper { gap: 8px; }
+.collection-reference-layout--horizontal .facets__heading,
+.collection-reference-layout--horizontal .facet-filters__label,
+.collection-reference-layout--horizontal .product-count,
+.collection-reference-layout--drawer .product-count { display: none; }
+.collection-reference-layout--horizontal .facets__disclosure { margin: 0; }
+.collection-reference-layout--horizontal .facets__summary {
+  display: flex;
+  align-items: center;
+  min-height: 27px;
+  padding: 4px 27px 4px 10px;
+  margin: 0;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  font-size: 12.6px;
+  line-height: 18px;
+  color: #1d1d1d;
+}
+.collection-reference-layout--horizontal .facets__summary .icon-caret { right: 9px; width: 8px; }
+.collection-reference-layout--horizontal .facets__summary-label { text-decoration: none; }
+.collection-reference-layout--horizontal .facet-filters { padding: 0; align-items: center; }
+.collection-reference-layout--horizontal .facet-filters__field .select {
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+}
+.collection-reference-layout--horizontal .facet-filters__sort {
+  min-height: 27px;
+  padding: 4px 27px 4px 10px;
+  font-family: inherit;
+  font-size: 12.6px;
+  line-height: 18px;
+  letter-spacing: normal;
+  color: #1d1d1d;
+}
+.collection-reference-layout--horizontal .facet-filters__field .icon-caret { right: 9px; width: 8px; }
+.collection-reference-layout--horizontal .facets__display { top: calc(100% + 8px); border: 1px solid #ebebeb; border-radius: 8px; box-shadow: 0 5px 20px #0001; }
+.collection-reference-layout--horizontal .active-facets { margin-top: 8px; }
+.collection-layout-switcher { display: block; }
+.collection-layout-switcher__desktop,
+.collection-layout-switcher__mobile { display: flex; gap: 8px; }
+.collection-layout-switcher__mobile { display: none; }
+.collection-layout-switcher button { display: flex; align-items: center; justify-content: center; width: 20px; height: 27px; padding: 0; border: 0; background: transparent; color: #aaa; cursor: pointer; }
+.collection-layout-switcher button[aria-pressed='true'],
+.collection-layout-switcher button:hover { color: #1d1d1d; }
+.collection-layout-switcher button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.collection-reference-layout--vertical .collection-layout-switcher { display: flex; justify-content: flex-end; margin: 12px 0; }
+.collection-load-more { display: flex; justify-content: center; padding: 32px 0 20px; }
+.collection-load-more .button { min-height: 38px; min-width: 0; padding: 8px 18px; border-radius: 12px; background: #1d1d1d; color: #fff; font: 600 14px/1.4 'Collection Card Inter', Arial, sans-serif; }
+.collection-load-more .button::after { box-shadow: none; }
+.collection-load-more[aria-busy='true'] { opacity: 0.6; pointer-events: none; }
+
+@media screen and (max-width: 989px) {
+  .collection-layout-switcher__desktop { display: none; }
+  .collection-layout-switcher__mobile { display: flex; }
+  .collection-layout-switcher button { width: 24px; height: 30px; }
+}
+@media screen and (max-width: 749px) {
+  .collection-reference-layout--horizontal #main-collection-filters,
+  .collection-reference-layout--drawer #main-collection-filters { padding-top: 12px; padding-bottom: 10px; align-items: center; }
+  .collection-reference-layout .mobile-facets__open { padding: 0; }
+  .collection-reference-layout .mobile-facets__open-label { font-size: 12.6px; letter-spacing: normal; }
+  .collection-reference-layout .mobile-facets__open .svg-wrapper { width: 16px; }
+  .collection-reference-layout--horizontal .facets-container { grid-template-columns: minmax(0, 1fr); }
+}

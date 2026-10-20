@@ -1,0 +1,43 @@
+{%- if section.settings.enabled and product != blank -%}
+  {{ 'section-sticky-product-bar.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'sticky-product-bar.js' | asset_url }}" defer="defer"></script>
+  <sticky-product-bar
+    class="sticky-product-bar color-{{ section.settings.color_scheme }} gradient{% unless section.settings.show_desktop %} sticky-product-bar--hide-desktop{% endunless %}{% unless section.settings.show_mobile %} sticky-product-bar--hide-mobile{% endunless %}"
+    hidden
+  >
+    <div class="page-width sticky-product-bar__inner">
+      <div class="sticky-product-bar__product">
+        {%- if product.featured_image -%}
+          {{ product.featured_image | image_url: width: 120 | image_tag: loading: 'lazy', widths: '60, 120', sizes: '48px', class: 'sticky-product-bar__image' }}
+        {%- endif -%}
+        <div class="sticky-product-bar__copy">
+          <p class="sticky-product-bar__title">{{ product.title | escape }}</p>
+          <div data-sticky-price></div>
+        </div>
+      </div>
+      <label class="sticky-product-bar__quantity">
+        <span class="visually-hidden">{{ 'products.product.quantity.label' | t }}</span>
+        <input type="number" min="1" value="1" inputmode="numeric" data-sticky-quantity>
+      </label>
+      <button type="button" class="button button--primary sticky-product-bar__submit" data-sticky-submit disabled>
+        <span>{{ 'products.product.add_to_cart' | t }}</span>
+      </button>
+      <p class="sticky-product-bar__error" data-sticky-error role="status" hidden></p>
+    </div>
+  </sticky-product-bar>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Sticky purchase bar",
+  "tag": "section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "checkbox", "id": "enabled", "label": "Enable sticky purchase bar", "default": true },
+    { "type": "checkbox", "id": "show_desktop", "label": "Show on desktop", "default": true },
+    { "type": "checkbox", "id": "show_mobile", "label": "Show on mobile", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "paragraph", "content": "Appears after the main Add to cart button scrolls above the viewport. Uses the size, quantity and options selected in Product information. Requires its Buy buttons block." }
+  ],
+  "presets": [{ "name": "Sticky purchase bar" }]
+}
+{% endschema %}

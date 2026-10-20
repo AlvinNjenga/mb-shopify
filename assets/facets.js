@@ -112,8 +112,21 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static renderSectionFromFetch(url, event, updateEvent) {
-    fetch(url)
-      .then((response) => response.text())
+    // Bundled rendering avoids the CLI's single-section hot-reload route.
+    const requestUrl = new URL(url, window.location.origin);
+    const useBundledRendering = !!document.querySelector('collection-component.collection-reference-layout');
+    const sectionId = requestUrl.searchParams.get('section_id');
+    if (useBundledRendering) {
+      requestUrl.searchParams.delete('section_id');
+      requestUrl.searchParams.set('sections', sectionId);
+    }
+    fetch(requestUrl)
+      .then(async (response) => {
+        if (!response.ok) throw new Error('Unable to load filters');
+        const html = useBundledRendering ? (await response.json())[sectionId] : await response.text();
+        if (!html) throw new Error('Missing collection section');
+        return html;
+      })
       .then((html) => {
         FacetFiltersForm.filterData = [...FacetFiltersForm.filterData, { html, url }];
         FacetFiltersForm.renderSection(html, event, updateEvent);
@@ -121,6 +134,10 @@ class FacetFiltersForm extends HTMLElement {
       .catch((error) => {
         console.error(error);
         updateEvent?.reject(error);
+        if (useBundledRendering) {
+          requestUrl.searchParams.delete('sections');
+          window.location.assign(requestUrl);
+        }
       });
   }
 

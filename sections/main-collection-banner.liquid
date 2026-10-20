@@ -1,6 +1,34 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
 
+{%- if section.settings.banner_layout == 'overlay' -%}
+  {{ 'component-collection-banner-overlay.css' | asset_url | stylesheet_tag }}
+  {%- liquid
+    assign banner_image = section.settings.banner_image
+    if banner_image == blank and section.settings.show_collection_image
+      assign banner_image = collection.image
+    endif
+  -%}
+  <div
+    class="collection-banner-overlay"
+    style="--collection-banner-height: {{ section.settings.desktop_height }}px; --collection-banner-mobile-height: {{ section.settings.mobile_height }}px; --collection-banner-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+  >
+    {%- if banner_image != blank -%}
+      {{ banner_image | image_url: width: 3000 | image_tag: class: 'collection-banner-overlay__image', widths: '390, 750, 1100, 1500, 2000, 3000', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
+    {%- elsif section.settings.show_collection_image -%}
+      <img class="collection-banner-overlay__image" src="{{ 'contact-hero.jpg' | asset_url }}" width="1536" height="1024" alt="" loading="eager" fetchpriority="high">
+    {%- endif -%}
+    <div class="collection-banner-overlay__content">
+      <h1 class="collection-banner-overlay__title">
+        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}
+      </h1>
+      {%- if section.settings.show_collection_description and collection.description != blank -%}
+        <div class="collection-banner-overlay__description rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- else -%}
 {%- style -%}
   @media screen and (max-width: 749px) {
     .collection-hero--with-image .collection-hero__inner {
@@ -44,12 +72,59 @@
     {%- endif -%}
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "t:sections.main-collection-banner.name",
   "class": "section",
   "settings": [
+    {
+      "type": "select",
+      "id": "banner_layout",
+      "label": "Banner layout",
+      "default": "classic",
+      "options": [
+        { "value": "classic", "label": "Classic Dawn" },
+        { "value": "overlay", "label": "Full-width image with overlay" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner image",
+      "info": "For the overlay layout. Uses the collection image when empty, then the included reference image."
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Desktop banner height",
+      "min": 250,
+      "max": 650,
+      "step": 4,
+      "unit": "px",
+      "default": 414
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Mobile banner height",
+      "min": 201,
+      "max": 501,
+      "step": 3,
+      "unit": "px",
+      "default": 351
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Image overlay opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 60
+    },
     {
       "type": "paragraph",
       "content": "t:sections.main-collection-banner.settings.paragraph.content"

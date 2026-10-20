@@ -1,4 +1,16 @@
 /* One header and one set of controls in both scroll states. */
+.header-wrapper--floating.header-wrapper--collection {
+  width: 98%;
+  max-width: 98%;
+  border-radius: 7px;
+}
+
+.floating-header-expanded .header-wrapper--floating.header-wrapper--collection {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0;
+}
+
 .header-wrapper--floating {
   position: absolute;
   top: 0;

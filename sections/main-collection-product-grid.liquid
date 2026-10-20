@@ -1,6 +1,11 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'collection-reference-layout.css' | asset_url | stylesheet_tag }}
+{{ 'collection-reference-cards.css' | asset_url | stylesheet_tag }}
+{{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+{{ 'collection-toolbar.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'collection-controls.js' | asset_url }}" defer="defer"></script>
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
@@ -37,6 +42,8 @@
 {%- endstyle -%}
 
 <collection-component
+  class="collection-reference-layout collection-reference-layout--{{ section.settings.filter_type }}"
+  style="--collection-columns-desktop: {{ section.settings.columns_desktop }}; --collection-columns-mobile: {{ section.settings.columns_mobile }};"
   view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
   data-collection-id="{{ collection.id }}"
 >
@@ -104,7 +111,7 @@
       <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
         <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-        {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+        {%- if section.settings.enable_filtering or section.settings.enable_sorting or section.settings.show_layout_switcher -%}
           <aside
             aria-labelledby="verticalTitle"
             class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
@@ -118,6 +125,9 @@
               filter_type: section.settings.filter_type,
               paginate: paginate
             %}
+            {% if section.settings.show_layout_switcher %}
+              {% render 'collection-layout-switcher', section: section %}
+            {% endif %}
           </aside>
         {%- endif -%}
 
@@ -184,11 +194,22 @@
                     %}
                   </li>
                   {%- assign skip_card_product_styles = true -%}
+                  {% if section.settings.show_promotion and paginate.current_page == 1 and forloop.index == 4 %}
+                    {% render 'collection-promotion', section: section %}
+                  {% endif %}
                 {%- endfor -%}
               </ul>
 
               {%- if paginate.pages > 1 -%}
+                {% if section.settings.pagination_style == 'load_more' %}
+                  {% if paginate.next %}
+                    <collection-load-more class="collection-load-more">
+                      <a class="button" href="{{ paginate.next.url }}">{{ section.settings.load_more_label | escape }}</a>
+                    </collection-load-more>
+                  {% endif %}
+                {% else %}
                 {% render 'pagination', paginate: paginate, anchor: '' %}
+                {% endif %}
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -206,6 +227,18 @@
   "name": "t:sections.main-collection-product-grid.name",
   "class": "section",
   "settings": [
+    { "type": "checkbox", "id": "show_promotion", "label": "Show promotion after fourth product", "default": false },
+    { "type": "image_picker", "id": "promotion_image", "label": "Promotion image" },
+    { "type": "text", "id": "promotion_eyebrow", "label": "Promotion subtitle", "default": "Limited time offer" },
+    { "type": "text", "id": "promotion_title", "label": "Promotion heading", "default": "Glow Deals" },
+    { "type": "textarea", "id": "promotion_text", "label": "Promotion description", "default": "Treat yourself or someone special with our curated beauty and wellness sets." },
+    { "type": "text", "id": "promotion_button", "label": "Promotion button", "default": "Order Now" },
+    { "type": "url", "id": "promotion_link", "label": "Promotion link" },
+    { "type": "checkbox", "id": "show_layout_switcher", "label": "Show tile size controls", "default": true },
+    { "type": "text", "id": "layout_label", "label": "Layout accessibility label", "default": "Product grid layout" },
+    { "type": "text", "id": "columns_label", "label": "Columns accessibility label", "default": "columns" },
+    { "type": "select", "id": "pagination_style", "label": "Pagination style", "default": "pages", "options": [{ "value": "pages", "label": "Page numbers" }, { "value": "load_more", "label": "Load more button" }] },
+    { "type": "text", "id": "load_more_label", "label": "Load more label", "default": "Load more" },
     {
       "type": "range",
       "id": "products_per_page",

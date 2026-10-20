@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'Collection Card Fraunces';
+  src: url('hero-fraunces-regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.collection-reference-layout .collection-promotion {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 7.2px;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  background: #777;
+}
+.collection-promotion > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.collection-promotion::before { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent, #0009); z-index: -1; }
+.collection-promotion__content { padding: 24px; font: 12.6px/1.8 'Collection Card Inter', Arial, sans-serif; }
+.collection-promotion__content h2 { color: inherit; margin: 0; font: 700 28px/1.27 'Collection Card Fraunces', Georgia, serif; }
+.collection-promotion__content p { margin: 8px 0 16px; }
+.collection-promotion__content .collection-promotion__eyebrow { margin: 0; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+.collection-promotion__content a { display: inline-flex; gap: 10px; align-items: center; padding: 3px 8px; border-radius: 20px; background: #fff; color: #1d1d1d; text-decoration: none; font-weight: 700; }
+.collection-promotion__content a span { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; color: #fff; background: #ddd; }
+@media screen and (max-width: 749px) {
+  .collection-promotion__content { padding: 18px; font-size: 12px; }
+  .collection-promotion__content h2 { font-size: 23px; }
+}
+
+@font-face {
+  font-family: 'Collection Card Inter';
+  src: url('hero-inter.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.collection-reference-layout .product-card-wrapper .card.card:not(.card--horizontal) {
+  padding: 0;
+}
+
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) > .card__content {
+  position: relative;
+  display: block;
+}
+
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) > .card__content > .card__information {
+  padding: 17px 13.5px 18px;
+}
+
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .card__heading {
+  font-family: 'Collection Card Fraunces', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .price {
+  font-family: 'Collection Card Inter', Arial, sans-serif;
+  font-size: 12.6px;
+  letter-spacing: normal;
+}
+
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .badge.badge--discount {
+  padding: 3px;
+  font-size: 9px;
+}
+
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .quick-add {
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  width: 58px;
+  height: 58px;
+  margin: 0;
+  padding: 16px 8px 8px 16px;
+  background: #fff;
+  border-top-left-radius: 30px;
+}
+
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .quick-add::before,
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .quick-add::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: radial-gradient(circle at 0 0, transparent 7px, #fff 7.5px);
+  pointer-events: none;
+}
+
+.collection-reference-layout .quick-add::before { right: 0; top: -7px; }
+.collection-reference-layout .quick-add::after { left: -7px; bottom: 0; }
+
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .quick-add__submit {
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f7f7f7;
+}
+
+.collection-reference-layout .product-card-wrapper .quick-add modal-opener .quick-add__submit {
+  background: #e9e4fc;
+}
+
+.collection-reference-layout .product-card-wrapper .quick-add__submit:hover {
+  filter: brightness(0.95);
+}
+
+.collection-reference-layout .collection-card-swatches {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 14px !important;
+}
+
+.collection-card-swatches__link {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+}
+
+.collection-card-swatches__link .swatch {
+  --swatch--size: 20px;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) > .card__content > .card__information {
+    padding: 8px 9px 9px;
+  }
+
+  .collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .card__heading {
+    font-size: 14px;
+  }
+
+  .collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .price {
+    font-size: 12px;
+    line-height: 18.67px;
+  }
+
+  .collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .quick-add {
+    width: 48px;
+    height: 48px;
+    padding: 8px 4px 6px 10px;
+  }
+}

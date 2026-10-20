@@ -1,0 +1,74 @@
+{%- liquid
+  assign has_collections = false
+  for block in section.blocks
+    if block.settings.collection != blank
+      assign has_collections = true
+      break
+    endif
+  endfor
+-%}
+
+{%- if has_collections or request.design_mode -%}
+  {{ 'section-collection-subnavigation.css' | asset_url | stylesheet_tag }}
+  <div class="collection-subnavigation color-{{ section.settings.color_scheme }} gradient">
+    {%- if has_collections -%}
+      <nav aria-label="{{ section.settings.navigation_label | escape }}">
+        <ul class="collection-subnavigation__list" role="list">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign linked_collection = block.settings.collection
+              assign navigation_image = block.settings.image | default: linked_collection.featured_image
+              assign navigation_title = block.settings.label | default: linked_collection.title
+            -%}
+            {%- if linked_collection != blank -%}
+              <li class="collection-subnavigation__item" {{ block.shopify_attributes }}>
+                <a class="collection-subnavigation__link" href="{{ linked_collection.url }}"{% if linked_collection.id == collection.id %} aria-current="page"{% endif %}>
+                  {%- if navigation_image != blank -%}
+                    {{ navigation_image | image_url: width: 240 | image_tag: class: 'collection-subnavigation__image', widths: '80, 120, 160, 240', sizes: '(min-width: 750px) 80px, 60px', loading: 'lazy', alt: '' }}
+                  {%- endif -%}
+                  <span>{{ navigation_title | escape }}</span>
+                </a>
+              </li>
+            {%- elsif request.design_mode -%}
+              <li class="collection-subnavigation__empty" {{ block.shopify_attributes }}>Select a collection for this item.</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- elsif request.design_mode -%}
+      <p class="collection-subnavigation__empty">Add collection blocks to show navigation beneath the banner. This section stays hidden on the storefront until a collection is selected.</p>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{%- unless has_collections or request.design_mode -%}
+  {%- style -%}
+    #shopify-section-{{ section.id }} { display: none; }
+  {%- endstyle -%}
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Subcollection navigation",
+  "tag": "section",
+  "class": "section-collection-subnavigation",
+  "enabled_on": { "templates": ["collection"] },
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "navigation_label", "label": "Accessibility label", "default": "Shop by collection" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Custom image", "info": "Uses the collection image when empty." },
+        { "type": "text", "id": "label", "label": "Custom label", "info": "Uses the collection title when empty." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Subcollection navigation" }]
+}
+{% endschema %}

@@ -1,0 +1,83 @@
+@font-face {
+  font-family: 'Collection Fraunces';
+  src: url('hero-fraunces-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.collection-banner-overlay {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: var(--collection-banner-height, 414px);
+  background: #1d1d1d;
+  color: #fff;
+}
+
+.collection-banner-overlay__image,
+.collection-banner-overlay::after {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.collection-banner-overlay__image {
+  object-fit: cover;
+  object-position: 47.1289% 16.9962%;
+  z-index: -2;
+}
+
+.collection-banner-overlay::after {
+  content: '';
+  background: #000;
+  opacity: var(--collection-banner-opacity, 0.6);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.collection-banner-overlay__content {
+  width: 100%;
+  padding: 100px 45px 45px;
+}
+
+.collection-banner-overlay__title {
+  margin: 0;
+  padding-top: 9px;
+  color: inherit;
+  font-family: 'Collection Fraunces', Georgia, serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.27;
+  letter-spacing: normal;
+}
+
+.collection-banner-overlay__description {
+  max-width: 65ch;
+  margin-top: 15px;
+  color: inherit;
+}
+
+.collection-banner-overlay__description > :last-child {
+  margin-bottom: 0;
+}
+
+.collection-banner-overlay__description a {
+  color: inherit;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-banner-overlay {
+    min-height: var(--collection-banner-mobile-height, 351px);
+  }
+
+  .collection-banner-overlay__content {
+    padding: 85px 18px 36px;
+  }
+
+  .collection-banner-overlay__title {
+    font-size: 30px;
+  }
+}

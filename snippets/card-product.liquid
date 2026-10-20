@@ -225,6 +225,9 @@
               {%- endif -%}
 
               {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+              {% if product_view_context == 'collection' %}
+                {% render 'collection-card-swatches', product: card_product %}
+              {% endif %}
               {%- if card_product.quantity_price_breaks_configured? -%}
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                   {% liquid
@@ -386,7 +389,7 @@
                       <span>
                         {%- if card_product.selected_or_first_available_variant.available -%}
                           <span class="visually-hidden">{{ 'products.product.add_to_cart' | t }}</span>
-                          {% render 'card-quick-add-icon', action: 'add' %}
+                          {% render 'card-quick-add-icon', action: 'add', context: product_view_context %}
                         {%- else -%}
                           <span class="visually-hidden">{{ 'products.product.sold_out' | t }}</span>
                           {% render 'card-quick-add-icon', action: 'sold-out' %}

@@ -1,0 +1,185 @@
+/* Main product only; native Dawn media, forms and editor blocks remain intact. */
+.product-detail__heading {
+  margin: 0 0 0.6rem;
+}
+
+.product-detail__content {
+  font-size: 1.4rem;
+  line-height: 1.7;
+}
+
+.product-detail__content > :first-child {
+  margin-top: 0;
+}
+
+.product-detail__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--media-radius);
+}
+
+.olivelle-product .product__info-container {
+  max-width: none;
+}
+
+.olivelle-product .product__title h1 {
+  font-family: 'Olivelle Fraunces', var(--font-heading-family);
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.olivelle-product .olivelle-product__details > * + *,
+.olivelle-product .olivelle-product__purchase > * + * {
+  margin-top: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.olivelle-product .product__text.caption-with-letter-spacing {
+  font-size: 1.1rem;
+  letter-spacing: 0.15rem;
+}
+
+.olivelle-product .price--large {
+  font-size: 1.9rem;
+  letter-spacing: 0;
+}
+
+.olivelle-product .product__description {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.olivelle-product .product__inventory {
+  font-size: 1.3rem;
+}
+
+.olivelle-product .product__media-wrapper {
+  --media-radius: 8px;
+}
+
+.olivelle-product .thumbnail {
+  border-radius: 6px;
+}
+
+.olivelle-product .thumbnail[aria-current='true'] {
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-foreground));
+  border-color: rgb(var(--color-foreground));
+}
+
+.olivelle-product .product-form__input {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.olivelle-product .product-form__input--pill input[type='radio'] + label {
+  border-radius: 4px;
+  padding: 1.2rem 2rem;
+  letter-spacing: 0;
+}
+
+.olivelle-product .product-form__buttons {
+  max-width: none;
+}
+
+.olivelle-product .product-form__submit {
+  min-height: 5rem;
+}
+
+.olivelle-product .product__accordion summary {
+  padding-top: 1.8rem;
+  padding-bottom: 1.8rem;
+}
+
+.olivelle-product .accordion__title {
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 990px) {
+  .olivelle-product .product--medium:not(.product--no-media) .product__media-wrapper {
+    width: 35%;
+    max-width: 35%;
+  }
+
+  .olivelle-product .product--medium:not(.product--no-media) .product__info-wrapper {
+    width: 65%;
+    max-width: 65%;
+    padding-inline: 2.7rem 0;
+  }
+
+  .olivelle-product .product--medium.product--right:not(.product--no-media) .product__info-wrapper {
+    padding-inline: 0 2.7rem;
+  }
+
+  .olivelle-product .product:not(.product--no-media) .product__info-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.7rem;
+    align-items: start;
+  }
+
+  .olivelle-product .product:not(.product--no-media) .product__info-container:not(:has(> .olivelle-product__details)),
+  .olivelle-product .product:not(.product--no-media) .product__info-container:not(:has(> .olivelle-product__purchase)) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .olivelle-product .product__info-container:not(:has(> .olivelle-product__details)) > .olivelle-product__purchase {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+
+  .olivelle-product__details,
+  .olivelle-product__purchase {
+    min-width: 0;
+  }
+
+  .olivelle-product .olivelle-product__purchase {
+    margin: 0;
+    padding-inline-start: 2.7rem;
+    border-inline-start: 1px solid rgba(var(--color-foreground), 0.12);
+  }
+
+  .olivelle-product .olivelle-product__purchase > :first-child,
+  .olivelle-product .olivelle-product__details > :first-child {
+    margin-top: 0;
+  }
+
+  .olivelle-product .product-form__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .olivelle-product .product-form__submit,
+  .olivelle-product .shopify-payment-button {
+    flex: 1 1 12rem;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .olivelle-product .product-form__submit {
+    padding-inline: 1.2rem;
+  }
+
+  .olivelle-product .product--thumbnail .thumbnail-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .olivelle-product .product__info-wrapper {
+    padding-top: 2.4rem;
+  }
+
+  .olivelle-product .product__title h1 {
+    font-size: 3.2rem;
+  }
+}

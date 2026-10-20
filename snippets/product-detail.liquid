@@ -1,0 +1,27 @@
+{% comment %}
+  Optional product detail. Rich text settings support Shopify dynamic sources.
+  A custom-namespace metafield is the fallback when no content override is set.
+  Accepts: product, block.
+{% endcomment %}
+{%- liquid
+  assign detail_metafield = product.metafields.custom[block.settings.metafield_key]
+  assign detail_content = block.settings.content
+  assign detail_text = detail_content | strip_html | strip
+  if detail_text == blank and detail_metafield.value != blank
+    assign detail_content = detail_metafield | metafield_tag
+  endif
+  assign detail_text = detail_content | strip_html | strip
+-%}
+{%- if detail_text != blank or block.settings.image != blank -%}
+  <div class="product-detail" {{ block.shopify_attributes }}>
+    {%- if block.settings.heading != blank -%}
+      <h2 class="h4 product-detail__heading">{{ block.settings.heading | escape }}</h2>
+    {%- endif -%}
+    {%- if block.settings.image != blank -%}
+      {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '240, 400, 600, 800, 1000', sizes: '(min-width: 990px) 30vw, 100vw', class: 'product-detail__image' }}
+    {%- endif -%}
+    {%- if detail_text != blank -%}
+      <div class="rte product-detail__content">{{ detail_content }}</div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

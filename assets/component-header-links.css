@@ -1,0 +1,33 @@
+/* Shared link treatment for static and floating navigation. */
+:is(.header-wrapper--inner, .header-wrapper--floating) .header__menu-item span,
+:is(.header-wrapper--inner, .header-wrapper--floating) .header__active-menu-item {
+  text-decoration: none;
+}
+
+:is(.header-wrapper--inner, .header-wrapper--floating) .header__menu-item span {
+  position: relative;
+}
+
+:is(.header-wrapper--inner, .header-wrapper--floating) .header__menu-item span::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.4;
+  transition: width 0.2s ease, left 0.2s ease;
+}
+
+:is(.header-wrapper--inner, .header-wrapper--floating) .header__menu-item:hover span::after,
+:is(.header-wrapper--inner, .header-wrapper--floating) .header__menu-item:focus-visible span::after {
+  left: 0;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.header-wrapper--inner, .header-wrapper--floating) .header__menu-item span::after {
+    transition: none;
+  }
+}

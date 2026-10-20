@@ -1,0 +1,13 @@
+<li class="grid__item collection-promotion">
+  {% if section.settings.promotion_image != blank %}
+    {{ section.settings.promotion_image | image_url: width: 1000 | image_tag: widths: '360, 550, 750, 1000', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: '' }}
+  {% else %}
+    <img src="{{ 'hero-category-collection-facial-ils.jpg' | asset_url }}" width="550" height="550" alt="" loading="lazy">
+  {% endif %}
+  <div class="collection-promotion__content">
+    <p class="collection-promotion__eyebrow">{{ section.settings.promotion_eyebrow | escape }}</p>
+    <h2>{{ section.settings.promotion_title | escape }}</h2>
+    <p>{{ section.settings.promotion_text | escape }}</p>
+    <a href="{{ section.settings.promotion_link | default: routes.all_products_collection_url }}">{{ section.settings.promotion_button | escape }} <span aria-hidden="true">❯</span></a>
+  </div>
+</li>

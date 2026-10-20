@@ -41,6 +41,7 @@
       "settings": {
         "logo_position": "top-center",
         "enable_floating_header": true,
+        "enable_collection_floating_header": true,
         "mobile_logo_position": "center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
