@@ -11,7 +11,12 @@
   "sections": {
     "sticky_purchase": {
       "type": "sticky-product-bar",
-      "settings": { "enabled": true, "show_desktop": true, "show_mobile": true, "color_scheme": "scheme-1" }
+      "settings": {
+        "enabled": true,
+        "show_desktop": true,
+        "show_mobile": true,
+        "color_scheme": "scheme-1"
+      }
     },
     "main": {
       "type": "main-product",
@@ -42,8 +47,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
             "hide_single_value_options": true,
+            "picker_type": "button",
             "swatch_shape": "circle"
           }
         },
@@ -172,14 +177,6 @@
     },
     "product_values": {
       "type": "product-story",
-      "settings": {
-        "heading": "Product values",
-        "layout": "strip",
-        "metafield_key": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
-      },
       "blocks": {
         "item_1": {
           "type": "item",
@@ -203,7 +200,15 @@
         "item_2",
         "item_3",
         "item_4"
-      ]
+      ],
+      "settings": {
+        "heading": "Product values",
+        "layout": "strip",
+        "metafield_key": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     },
     "product_story": {
       "type": "product-story",
@@ -214,12 +219,34 @@
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48
-      },
-      "blocks": {},
-      "block_order": []
+      }
     },
     "product_ingredients": {
       "type": "product-story",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
       "settings": {
         "heading": "Ingredients & materials",
         "layout": "cards",
@@ -227,7 +254,10 @@
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48
-      },
+      }
+    },
+    "product_rituals": {
+      "type": "product-story",
       "blocks": {
         "item_1": {
           "type": "item",
@@ -240,21 +270,13 @@
         "item_3": {
           "type": "item",
           "settings": {}
-        },
-        "item_4": {
-          "type": "item",
-          "settings": {}
         }
       },
       "block_order": [
         "item_1",
         "item_2",
-        "item_3",
-        "item_4"
-      ]
-    },
-    "product_rituals": {
-      "type": "product-story",
+        "item_3"
+      ],
       "settings": {
         "heading": "Use & care",
         "layout": "cards",
@@ -262,7 +284,10 @@
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48
-      },
+      }
+    },
+    "product_results": {
+      "type": "product-story",
       "blocks": {
         "item_1": {
           "type": "item",
@@ -275,16 +300,18 @@
         "item_3": {
           "type": "item",
           "settings": {}
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {}
         }
       },
       "block_order": [
         "item_1",
         "item_2",
-        "item_3"
-      ]
-    },
-    "product_results": {
-      "type": "product-story",
+        "item_3",
+        "item_4"
+      ],
       "settings": {
         "heading": "Results",
         "layout": "results",
@@ -292,7 +319,10 @@
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48
-      },
+      }
+    },
+    "product_faq": {
+      "type": "product-story",
       "blocks": {
         "item_1": {
           "type": "item",
@@ -316,10 +346,7 @@
         "item_2",
         "item_3",
         "item_4"
-      ]
-    },
-    "product_faq": {
-      "type": "product-story",
+      ],
       "settings": {
         "heading": "Frequently asked questions",
         "layout": "faq",
@@ -327,42 +354,10 @@
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48
-      },
-      "blocks": {
-        "item_1": {
-          "type": "item",
-          "settings": {}
-        },
-        "item_2": {
-          "type": "item",
-          "settings": {}
-        },
-        "item_3": {
-          "type": "item",
-          "settings": {}
-        },
-        "item_4": {
-          "type": "item",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "item_1",
-        "item_2",
-        "item_3",
-        "item_4"
-      ]
+      }
     },
     "product_testimonials": {
       "type": "product-story",
-      "settings": {
-        "heading": "Customer stories",
-        "layout": "reviews",
-        "metafield_key": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
-      },
       "blocks": {
         "item_1": {
           "type": "item",
@@ -381,18 +376,18 @@
         "item_1",
         "item_2",
         "item_3"
-      ]
-    },
-    "product_services": {
-      "type": "product-story",
+      ],
       "settings": {
-        "heading": "Shopping with us",
-        "layout": "strip",
+        "heading": "Customer stories",
+        "layout": "reviews",
         "metafield_key": "",
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48
-      },
+      }
+    },
+    "product_services": {
+      "type": "product-story",
       "blocks": {
         "item_1": {
           "type": "item",
@@ -416,7 +411,15 @@
         "item_2",
         "item_3",
         "item_4"
-      ]
+      ],
+      "settings": {
+        "heading": "Shopping with us",
+        "layout": "strip",
+        "metafield_key": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
