@@ -1,0 +1,12 @@
+{% comment %}Render nonempty opt-in product columns. Accepts section, product_details_blocks, product_purchase_blocks.{% endcomment %}
+            {%- assign product_details_blocks = product_details_blocks | strip -%}
+            {%- assign product_purchase_blocks = product_purchase_blocks | strip -%}
+            {%- if section.settings.enable_olivelle_layout -%}
+              {%- if product_details_blocks != blank -%}
+                <div class="olivelle-product__details">{{ product_details_blocks }}</div>
+              {%- endif -%}
+              {%- if product_purchase_blocks != blank -%}
+                <div class="olivelle-product__purchase">{{ product_purchase_blocks }}</div>
+              {%- endif -%}
+            {%- endif -%}
+

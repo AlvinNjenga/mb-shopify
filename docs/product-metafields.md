@@ -144,3 +144,76 @@ Review stars default to zero (hidden); enter only the actual review rating.
 Story panel background is configurable, and Desktop image position still controls
 the split panels. Mobile split panels place the image first. Results and gallery
 items scroll horizontally on small screens. Empty sections stay hidden.
+
+### Cosmetics text-only overview
+
+The cosmetics template's About the product section uses the Text-only product
+information layout. It displays custom.short_introduction and the existing
+Product detail blocks, with custom.usage labelled How to Use. Empty fields hide
+their blocks. Section and block images are omitted in this layout; other layouts
+retain their image settings. Select Products > cosmetics in the theme editor to
+edit this section's labels, block order and dynamic sources.
+
+### Optional product promotion
+
+Products > cosmetics > Product information > Product promotion controls an offer
+panel below the About/How to Use accordions. It is empty and hidden by default.
+Enter a heading and/or offer details, with an optional labelled link and color
+scheme. Use compatible product dynamic sources for product-specific offers;
+literal text applies to every product using cosmetics. This display block does
+not configure a Shopify discount.
+
+### Cosmetics lower-page sections
+
+The lower page now orders Store offers, Brand stories, FAQ, Three benefits,
+Customer stories and Share Your Glow. Configure them under Products > cosmetics.
+Brand stories and benefits use each product's existing benefits, usage, composition,
+recommended-for and finish fields. With Use product images enabled, missing card
+images use the corresponding product image; explicit block images take priority.
+The gallery fallback still runs only when all gallery content items are empty.
+
+Content item blocks now support a labelled link and, for testimonials, a Reviewed
+product selector. Enter only genuine review copy, rating and attribution. Store
+offers and reviews stay hidden while empty. Offer copy is display content and does
+not create discounts. New section copy and links entered literally are shared by
+all products using cosmetics. The former values, ingredients, results,
+recommendations and service sections remain saved but disabled.
+
+### Content audit - 22 October 2026
+
+All eight product definitions exist in Shopify. Hydra-Boost's existing values are
+preserved. Radiance Vitamin C Serum now has seven product-content fields sourced
+from its description; Velvet Lip Butter has five. Lip usage and recommended skin
+types remain blank pending supplied content. Composition fields contain known
+key ingredients rather than a complete ingredient list.
+
+Content item blocks and Purchase information now offer a Fallback product field
+setting. The cosmetics template connects it for Product Info, brand stories,
+benefits and FAQ. A populated Content override/dynamic source takes precedence;
+when it is empty, the fallback key supports generic and legacy cosmetic metafields.
+Missing text hides brand/benefit cards that would otherwise contain only an
+automatic fallback product image. Explicit merchant images still display.
+
+The shared testimonials now copy four reviews from the merchant-owned reference
+website, with existing bundled product images/portraits. Edit their quote, author,
+rating, image, portrait and optional Reviewed product in the Customer stories
+layout. Selecting a real product enables its local product link; unuploaded
+reference products remain text labels. The heading and quotes apply across the
+cosmetics template. Historical notes above about empty reviews are superseded.
+
+### Per-product benefit card copy
+
+The Three benefits section can enable Use product benefit copy. It reads
+custom.benefit_card_copy (JSON): an array of up to three objects containing title
+and text, in block order. Both values are required for an override; otherwise the
+existing block copy remains. Images continue using their existing sources.
+Hydra-Boost has moisturiser-specific copy here; other products retain their
+previous content. Edit the product's Benefit card copy metafield to change it.
+
+### Usage summary (optional)
+
+custom.usage_summary is an optional rich-text product field for the short caption
+in Your skincare ritual. It takes precedence there; the existing custom.usage
+fallback is retained for products without a summary. How to Use and its FAQ answer
+continue to display the complete custom.usage instructions. Hydra-Boost now has
+three ordered usage steps and retains its original short copy as the summary.

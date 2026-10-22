@@ -1,0 +1,121 @@
+/* Reference story composition: 65% image, right-aligned copy, inset navigation. */
+.product-story--brand_stories product-story-slider { position: relative; }
+.product-story--brand_stories product-story-slider .product-story__items { gap: 0; scrollbar-width: none; }
+.product-story--brand_stories product-story-slider .product-story__items::-webkit-scrollbar { display: none; }
+.product-story--brand_stories .product-story__item {
+  position: relative;
+  flex: 0 0 100%;
+  height: 450px;
+  min-width: 0;
+  scroll-snap-align: start;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgb(var(--color-background));
+}
+.product-story--brand_stories .product-story__item .product-brand__image {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 65%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0;
+}
+.product-brand__copy {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 18px 31.5px 65px 18px;
+  text-align: right;
+}
+main:has(.olivelle-product--reference) .product-story--brand_stories .product-brand__heading {
+  width: 100%;
+  margin: 0;
+  font-size: 63px;
+  font-weight: 700;
+  line-height: 1.27;
+  overflow-wrap: anywhere;
+}
+.product-brand__link {
+  position: relative;
+  color: rgb(var(--color-foreground));
+  font-size: 16.2px;
+  line-height: 30.6px;
+  text-decoration: none;
+}
+.product-brand__link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.product-story--brand_stories .product-brand__caption {
+  max-width: 26%;
+  padding-top: 13.5px;
+  font-size: 14.4px;
+  line-height: 27.2px;
+  color: rgba(var(--color-foreground), .75);
+}
+.product-brand__caption > :first-child { margin-top: 0; }
+.product-brand__caption > :last-child { margin-bottom: 0; }
+.product-story--brand_stories .product-story__controls {
+  position: absolute;
+  right: 31.5px;
+  bottom: 0;
+  z-index: 2;
+  gap: 0;
+  margin: 0;
+}
+.product-story--brand_stories .product-story__counter {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-style: italic;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.product-story--brand_stories .product-story__controls button {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  font-size: 0;
+}
+.product-story--brand_stories .product-story__controls button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border: 7px solid transparent;
+  border-right: 9px solid currentColor;
+  border-left: 0;
+}
+.product-story--brand_stories .product-story__controls button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 4.5px;
+  width: 22.5px;
+  height: 1px;
+  background: currentColor;
+}
+.product-story--brand_stories .product-story__controls [name='next']::before {
+  right: 0;
+  left: auto;
+  border-left: 9px solid currentColor;
+  border-right: 0;
+}
+.product-story--brand_stories .product-story__controls [name='next']::after { right: 4.5px; left: auto; }
+.product-story--brand_stories .product-story__item:not(:has(img)) .product-brand__caption { max-width: 80%; }
+@media screen and (max-width: 768px) {
+  .product-story--brand_stories .product-story__item .product-brand__image { width: 100%; }
+  .product-story--brand_stories .product-story__item:has(img)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(var(--color-background), .6);
+  }
+  .product-brand__copy { padding-right: 18px; }
+  main:has(.olivelle-product--reference) .product-story--brand_stories .product-brand__heading { font-size: 36px; }
+  .product-story--brand_stories .product-brand__caption { max-width: 80%; }
+  .product-story--brand_stories .product-story__controls { right: 31.5px; }
+  .product-story--brand_stories .product-story__counter { font-size: 22.5px; }
+}

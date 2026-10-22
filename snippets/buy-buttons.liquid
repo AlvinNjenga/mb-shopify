@@ -5,6 +5,7 @@
   - block: {Object} passing the block information.
   - product_form_id: {String} product form id.
   - section_id: {String} id of section to which this snippet belongs.
+  - use_standard_checkout: {Boolean} replace accelerated payment with a Buy It Now button (optional).
   - show_pickup_availability: {Boolean} for the pickup availability. If true the pickup availability is rendered, false - not rendered (optional).
 
   Usage:
@@ -94,7 +95,18 @@
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
-            {{ form | payment_button }}
+            {%- if use_standard_checkout -%}
+              <button
+                type="submit"
+                class="product-form__checkout button button--full-width button--primary"
+                data-checkout-url="{{ routes.root_url }}checkout"
+                {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout or product.selected_or_first_available_variant == null %}disabled{% endif %}
+              >
+                Buy It Now
+              </button>
+            {%- else -%}
+              {{ form | payment_button }}
+            {%- endif -%}
           {%- endif -%}
         </div>
       {%- endform -%}

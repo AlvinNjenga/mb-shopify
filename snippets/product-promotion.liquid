@@ -1,0 +1,18 @@
+{% comment %}Optional merchant promotion. Accepts block. No discount is created.{% endcomment %}
+{%- assign promotion_text = block.settings.content | strip_html | strip -%}
+{%- assign promotion_heading = block.settings.heading | strip -%}
+{%- if block.settings.enabled -%}
+  {%- if promotion_heading != blank or promotion_text != blank -%}
+    <aside class="product-promotion color-{{ block.settings.color_scheme }} gradient"{% if promotion_heading != blank %} aria-labelledby="PromotionHeading-{{ block.id }}"{% endif %} {{ block.shopify_attributes }}>
+      {%- if promotion_heading != blank -%}
+        <h2 class="product-promotion__heading" id="PromotionHeading-{{ block.id }}">{{ block.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if promotion_text != blank -%}<div class="product-promotion__content rte">{{ block.settings.content }}</div>{%- endif -%}
+      {%- if block.settings.link != blank and block.settings.link_label != blank -%}
+        <a class="product-promotion__link link underlined-link" href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}</a>
+      {%- endif -%}
+    </aside>
+  {%- elsif request.design_mode -%}
+    <div class="product-promotion product-promotion--placeholder" {{ block.shopify_attributes }}>Add a promotion heading or offer details. This empty panel stays hidden on the storefront.</div>
+  {%- endif -%}
+{%- endif -%}

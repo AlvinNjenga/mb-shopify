@@ -1,25 +1,55 @@
 {% comment %}Reusable product story card, result, testimonial or FAQ. Accepts block, layout.{% endcomment %}
-{%- assign item_text = block.settings.content | strip_html | strip -%}
+{%- assign item_content = block.settings.content -%}
+{%- assign item_heading = block.settings.heading -%}
+{%- if layout == 'benefits' and benefit_copy.title != blank and benefit_copy.text != blank -%}
+  {%- assign item_heading = benefit_copy.title -%}
+  {%- capture item_content -%}<p>{{ benefit_copy.text | escape }}</p>{%- endcapture -%}
+{%- endif -%}
+{%- assign item_text = item_content | strip_html | strip -%}
+{%- if item_text == blank and block.settings.metafield_key != blank -%}
+  {%- capture item_content -%}{% render 'product-metafield-content', product: product, key: block.settings.metafield_key %}{%- endcapture -%}
+  {%- assign item_text = item_content | strip_html | strip -%}
+{%- endif -%}
+{%- assign has_image = false -%}
+{%- assign item_image = block.settings.image | default: fallback_image -%}
+{%- if item_text == blank and block.settings.image == blank -%}
+  {%- if layout == 'brand_stories' or layout == 'benefits' -%}
+    {%- assign item_image = nil -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if layout == 'reviews' and block.settings.product != blank -%}
+  {%- assign item_image = block.settings.image | default: block.settings.product.featured_image -%}
+{%- endif -%}
+{%- if item_image != blank and hide_images != true -%}
+  {%- assign has_image = true -%}
+{%- endif -%}
 {%- if layout == 'faq' -%}
   {%- if block.settings.heading != blank and item_text != blank -%}
     <details class="product-story__faq" {{ block.shopify_attributes }}>
-      <summary><span class="product-story__question" aria-hidden="true">?</span>{{ block.settings.heading | escape }}<svg class="product-story__chevron" aria-hidden="true" viewBox="0 0 12 8" width="12" height="8"><path d="m1 1 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></summary>
-      <div class="rte">{{ block.settings.content }}</div>
+      <summary><span class="product-story__question" aria-hidden="true">?</span><h3 class="product-story__question-text">{{ block.settings.heading | escape }}</h3><svg class="product-story__chevron" aria-hidden="true" viewBox="0 0 12 8" width="12" height="8"><path d="m1 1 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></summary>
+      <div class="rte">{{ item_content }}</div>
     </details>
   {%- endif -%}
-{%- elsif item_text != blank or block.settings.image != blank or layout == 'marquee' and block.settings.heading != blank -%}
-  <div class="product-story__item{% if block.settings.image != blank %} product-story__item--image{% endif %} product-story__item--{{ block.settings.presentation | default: 'feature' }}" {{ block.shopify_attributes }}>
-    {%- if block.settings.image != blank -%}
-      {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '100, 240, 400, 800', sizes: '(min-width: 990px) 25vw, 100vw' }}
+{%- elsif item_text != blank or has_image or layout == 'marquee' and block.settings.heading != blank or layout == 'offers' and block.settings.heading != blank -%}
+  <div class="product-story__item{% if has_image %} product-story__item--image{% endif %} product-story__item--{{ block.settings.presentation | default: 'feature' }}" {{ block.shopify_attributes }}>
+    {%- if layout == 'offers' -%}
+      <span class="product-offer__message">{{ block.settings.heading | escape }}{% if block.settings.heading != blank and item_text != blank %}&#32;{% endif %}{{ item_text | escape }}</span>
+      <svg class="product-offer__separator" aria-hidden="true" viewBox="0 0 24 24" width="15" height="15" fill="none"><polygon points="12,2 19,7 19,17 12,22 5,17 5,7" stroke="currentColor" stroke-width="2"/></svg>
+    {%- elsif layout == 'brand_stories' -%}
+      {% render 'product-brand-story', block: block, image: item_image, item_text: item_text, item_content: item_content %}
+    {%- elsif layout == 'reviews' -%}
+      {% render 'product-story-review', block: block, image: item_image, content: item_content %}
+    {%- else -%}
+    {%- if has_image -%}
+      {{ item_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '100, 240, 400, 800, 1200', sizes: '(min-width: 990px) 50vw, 100vw' }}
     {%- endif -%}
     {%- if layout == 'results' and block.settings.metric != blank -%}<p class="product-story__metric">{{ block.settings.metric | escape }}</p>{%- endif -%}
-    {%- if block.settings.heading != blank -%}<h3>{{ block.settings.heading | escape }}</h3>{%- endif -%}
-    {%- if layout == 'reviews' and item_text != blank -%}
-      {%- if block.settings.rating > 0 -%}<p class="product-story__stars" role="img" aria-label="{{ block.settings.rating }} / 5">{%- for star in (1..block.settings.rating) -%}★{%- endfor -%}</p>{%- endif -%}
-      <blockquote class="rte">{{ block.settings.content }}</blockquote>
-      {%- if block.settings.author != blank -%}<p class="product-story__author">{{ block.settings.author | escape }}</p>{%- endif -%}
-    {%- elsif item_text != blank -%}
-      <div class="rte">{{ block.settings.content }}</div>
+    {%- if item_heading != blank -%}<h3>{{ item_heading | escape }}</h3>{%- endif -%}
+    {%- if item_text != blank -%}
+      <div class="rte">{{ item_content }}</div>
+    {%- endif -%}
+    {%- if block.settings.link != blank and block.settings.link_label != blank -%}<a class="product-story__link link underlined-link" href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}</a>{%- endif -%}
     {%- endif -%}
   </div>
 {%- endif -%}
+

@@ -16,6 +16,7 @@
 .product-story__faq { border-bottom: 1px solid rgba(var(--color-foreground), 0.2); padding-block: 1.8rem; }
 .product-story__faq summary { display: flex; justify-content: space-between; gap: 2rem; cursor: pointer; list-style: none; font-weight: 600; }
 .product-story__faq summary::-webkit-details-marker { display: none; }
+.product-story__faq .product-story__question-text { font: inherit; margin: 0; }
 .product-story__faq[open] summary { margin-bottom: 1.6rem; }
 .product-story__faq[open] .product-story__chevron { transform: rotate(180deg); }
 .product-story__question { display: inline-grid; place-items: center; flex: 0 0 2rem; height: 2rem; border: 1px solid currentColor; border-radius: 50%; font-size: 1.3rem; }
@@ -96,4 +97,195 @@
   .product-story--results .product-story__item { flex: 0 0 85%; scroll-snap-align: start; min-height: 36rem; }
   .product-story--results .product-story__item:nth-child(even) { margin: 0; min-height: 36rem; }
   .product-story--gallery .product-story__item { flex-basis: 75%; }
+}
+
+/* Text-only product overview: no split panel or reserved media column. */
+.product-story--text .product-story__copy { max-width: 96rem; margin-inline: auto; }
+.product-story--reference.product-story--text .product-story__layout .product-story__heading,
+.product-story--reference.product-story--text .product-story__layout .product-story__intro {
+  text-align: left;
+  max-width: none;
+  margin-inline: 0;
+}
+main:has(.olivelle-product--reference) .product-story--text .product-story__heading {
+  font-size: clamp(2.4rem, 3vw, 3.2rem);
+  margin-bottom: 2rem;
+}
+.product-story--text .product-story__items { margin-top: 2.4rem; gap: 2rem; }
+.product-story--text .product-detail { min-width: 0; overflow-wrap: anywhere; }
+.product-story--text .product-detail__heading { margin: 0 0 .4rem; font-weight: 600; }
+.product-story--text .product-detail__content > :last-child { margin-bottom: 0; }
+
+/* Facial Roler lower page sequence. */
+.product-story__subheading { text-align: center; font-size: 1.6rem; margin: -1rem 0 2.4rem; }
+product-story-slider { display: block; min-width: 0; }
+.product-story__controls { display: flex; justify-content: flex-end; align-items: center; gap: 1.6rem; margin-top: 2rem; }
+.product-story__controls[hidden] { display: none; }
+.product-story__controls button { width: 4.4rem; height: 4.4rem; border: 0; background: transparent; color: inherit; font-size: 2.4rem; cursor: pointer; }
+.product-story__controls button:disabled { opacity: .3; cursor: default; }
+.product-story__items:focus-visible,
+.product-story__controls button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.product-story--brand_stories .product-story__items,
+.product-story--reviews product-story-slider .product-story__items {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 2rem; scrollbar-width: thin;
+}
+.product-story--benefits .product-story__items { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.product-story--benefits .product-story__item { text-align: center; }
+.product-story--benefits .product-story__item img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
+.product-story--reference.product-story--reviews { background: var(--story-panel); }
+.product-story--reference.product-story--reviews .product-story__layout .product-story__heading { text-align: left; max-width: none; font-size: 3.6rem; }
+.product-story--brand_stories .product-story__items,
+.product-story--benefits .product-story__items { margin-top: 0; }
+.product-story--reviews product-story-slider .product-story__item {
+  flex: 0 0 calc((100% - 4rem) / 3); scroll-snap-align: start; text-align: center;
+  background: rgba(var(--color-background), .7); border: 0; border-radius: 8px;
+}
+.product-story--reviews .product-story__item img { border-radius: 8px; width: 10rem; height: 10rem; margin-inline: auto; }
+.product-story--reviews .product-story__product-link { display: block; font-size: 1.4rem; margin-bottom: 1rem; }
+@media screen and (max-width: 749px) {
+  .product-story--benefits .product-story__items { grid-template-columns: 1fr; gap: 3.6rem; }
+  .product-story--reviews product-story-slider .product-story__item { flex-basis: 90%; }
+}
+/* Share Your Glow: edge-to-edge image marquee, measured against the reference. */
+.product-story--reference.product-story--gallery .product-story__layout { max-width: none; padding-inline: 0; }
+.product-story--gallery .product-story__heading,
+.product-story--gallery .product-story__subheading,
+.product-story--gallery .product-story__intro { padding-inline: 1.5rem; }
+.product-story__gallery-marquee { display: block; width: 100%; overflow: hidden; margin-top: 3.6rem; }
+.product-story__gallery-marquee .scrolling-images__track,
+.product-story__gallery-marquee .scrolling-images__group { display: flex; align-items: center; width: max-content; }
+.product-story--gallery .product-story__gallery-marquee .product-story__items {
+  flex: none; overflow: visible; gap: 18px; padding-right: 18px; margin: 0; scroll-snap-type: none;
+}
+.product-story--gallery .product-story__gallery-marquee .product-story__item { flex: 0 0 300px; width: 300px; }
+.product-story__gallery-marquee .product-story__item a { display: block; }
+.product-story--gallery .product-story__gallery-marquee .product-story__item img {
+  display: block; width: 300px; height: 300px; aspect-ratio: 1; object-fit: cover; border-radius: 8px; margin: 0;
+}
+@media screen and (max-width: 990px) {
+  .product-story--gallery .product-story__gallery-marquee .product-story__item { flex-basis: 350px; width: 350px; }
+  .product-story--gallery .product-story__gallery-marquee .product-story__item img { width: 350px; height: 350px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-story__gallery-marquee { overflow-x: auto; }
+}
+
+
+/* Reference testimonials, with portraits removed at the merchant's request. */
+.product-story--reviews .product-story__layout { max-width: none; padding-inline: 45px; }
+.product-story--reviews .product-story__copy { position: relative; }
+.product-story--reviews product-story-slider { position: static; }
+.product-story--reviews product-story-slider .product-story__items {
+  margin-top: 30px; padding-bottom: 25px; align-items: stretch; scrollbar-width: none;
+}
+.product-story--reviews product-story-slider .product-story__items::-webkit-scrollbar { display: none; }
+.product-story--reviews product-story-slider .product-story__item { position: relative; padding: 0; background: transparent; }
+.product-story__review-card {
+  position: relative; height: 100%; padding: 20px; color: rgb(var(--color-foreground));
+  background: rgb(var(--color-background)); border-radius: 8px 8px 0;
+}
+.product-story__review-card::after {
+  content: ''; position: absolute; bottom: -25px; right: 0;
+  border-top: 25px solid rgb(var(--color-background)); border-left: 25px solid transparent;
+}
+.product-story--reviews .product-story__review-card img { width: 100px; height: 100px; margin: 0 auto 10px; object-fit: cover; }
+main:has(.olivelle-product--reference) .product-story--reviews .product-story__review-product,
+.product-story--reviews .product-story__product-link {
+  font-family: var(--font-heading-family); font-size: 15px; font-weight: 400; line-height: 19.05px; margin: 0;
+}
+.product-story__review-card .review-stars { display: flex; justify-content: center; gap: 2px; margin: 6px 0 10px; }
+.product-story__review-card .review-stars svg { width: 12.4px; height: 12px; }
+main:has(.olivelle-product--reference) .product-story--reviews .product-story__review-card .rte,
+main:has(.olivelle-product--reference) .product-story--reviews .product-story__review-card .rte p {
+  font-size: 11.34px; line-height: 21.42px; font-style: normal; margin: 0; color: rgb(var(--color-foreground));
+}
+.product-story--reviews .product-story__author {
+  font-family: var(--font-heading-family); font-size: 11.34px; font-weight: 700;
+  line-height: 14.4px; margin: 11.34px 0 0;
+}
+.product-story--reference.product-story--reviews .product-story__layout .product-story__heading { margin: 0; padding-right: 100px; }
+.product-story--reviews .product-story__controls { position: absolute; top: 0; right: 0; margin: 0; gap: 0; }
+.product-story--reviews .product-story__controls button { font-size: 0; }
+.product-story--reviews .product-story__controls button::before {
+  content: ''; display: inline-block; width: 7px; height: 7px;
+  border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg);
+}
+.product-story--reviews .product-story__controls [name='previous']::before { transform: rotate(-135deg); }
+.product-story--reviews .product-story__counter { display: none; }
+@media screen and (max-width: 989px) {
+  .product-story--reviews .product-story__layout { padding-inline: 13.5px; }
+  .product-story--reviews product-story-slider .product-story__items { width: calc(100% + 13.5px); gap: 10px; }
+  .product-story--reviews product-story-slider .product-story__item { flex-basis: calc(100% - 36px); }
+  .product-story--reviews .product-story__controls { display: none; }
+  main:has(.olivelle-product--reference) .product-story--reviews .product-story__layout .product-story__heading { font-size: 30px; line-height: 38.1px; padding-right: 0; }
+}
+
+/* Reference FAQ: a 990px question area with inset, border-free accordion rows. */
+.product-story--reference.product-story--faq .product-story__layout--faq {
+  max-width: 1057px; padding-inline: 33.5px;
+}
+.product-story--reference.product-story--faq .product-story__layout--faq .product-story__heading {
+  max-width: none; margin: 4.5px 0 27px;
+}
+.product-story--reference.product-story--faq .product-story__items { margin-top: 0; gap: 10px; }
+.product-story--reference.product-story--faq .product-story__faq { border: 0; padding: 0; }
+main:has(.olivelle-product--reference) .product-story--faq .product-story__faq summary {
+  display: grid; grid-template-columns: 15px minmax(0, 1fr) 8px; column-gap: 15.5px;
+  min-height: 50px; padding: 13.5px; margin: 0; border-radius: 8px;
+  color: rgb(var(--color-foreground)); font-size: 16.2px; line-height: 1;
+}
+main:has(.olivelle-product--reference) .product-story--faq .product-story__question-text {
+  font-family: var(--font-body-family); font-size: 18px; line-height: 22.86px;
+  font-weight: 400; letter-spacing: .54px; margin: 0; min-width: 0;
+}
+.product-story--faq .product-story__question { width: 15px; height: 15px; font-size: 11px; line-height: 1; }
+.product-story--faq .product-story__chevron { width: 8px; height: 6px; margin: 0; opacity: .7; }
+.product-story--reference.product-story--faq .product-story__faq > .rte { padding: 0 44px 13.5px; }
+.product-story--faq .product-story__faq > .rte > :first-child { margin-top: 0; }
+.product-story--faq .product-story__faq > .rte > :last-child { margin-bottom: 0; }
+@media screen and (max-width: 989px) {
+  main:has(.olivelle-product--reference) .product-story--faq .product-story__faq summary { font-size: 14.4px; }
+}
+@media screen and (max-width: 749px) {
+  main:has(.olivelle-product--reference) .product-story--faq .product-story__question-text { font-size: 17px; line-height: 21.59px; }
+}
+
+/* Share Your Glow title/hashtag spacing, separate from the full-width image rail. */
+main:has(.olivelle-product--reference) .product-story--reference.product-story--gallery .product-story__heading {
+  width: calc(100% - 40.5px); max-width: 702px; padding: 0; margin: 0 auto;
+  font-size: 52px; line-height: 1.27; text-align: center;
+}
+.product-story--reference.product-story--gallery .product-story__subheading {
+  width: calc(100% - 40.5px); max-width: 702px; padding: 0; margin: 9px auto 0;
+  font-size: 16.2px; line-height: 30.6px; text-align: center;
+}
+.product-story--reference.product-story--gallery .product-story__gallery-marquee { margin-top: 16px; }
+@media screen and (max-width: 990px) {
+  main:has(.olivelle-product--reference) .product-story--reference.product-story--gallery .product-story__heading,
+  .product-story--reference.product-story--gallery .product-story__subheading { max-width: 450px; text-align: left; }
+  .product-story--reference.product-story--gallery .product-story__subheading { font-size: 14.4px; line-height: 27.2px; }
+}
+@media screen and (max-width: 749px) {
+  main:has(.olivelle-product--reference) .product-story--reference.product-story--gallery .product-story__heading { font-size: 40px; }
+  .product-story--reference.product-story--gallery .product-story__gallery-marquee { margin-top: 12px; }
+}
+
+
+/* Reference offers: 75px lavender band, regular text and hexagon separators. */
+.product-story--offers { background: var(--story-panel); border: 0; overflow: hidden; }
+.product-story--offers .product-story__layout { max-width: none; padding: 0; }
+.product-story--offers .product-story__heading { display: none; }
+.product-story--offers .product-story__copy { display: block; width: 100%; }
+.product-story__offer-marquee { display: block; width: 100%; height: 75px; overflow: hidden; }
+.product-story__offer-marquee .scrolling-images__track,
+.product-story__offer-marquee .scrolling-images__group { display: flex; align-items: center; width: max-content; height: 75px; }
+.product-story--offers .product-story__offer-marquee .product-story__items { flex: none; flex-wrap: nowrap; gap: 0; margin: 0; padding: 0; animation: none; }
+.product-story--offers .product-story__item { display: flex; flex: none; align-items: center; gap: 0; }
+.product-offer__message { display: block; padding-inline: 19.8px; white-space: nowrap; font-size: 16.2px; font-weight: 400; line-height: 30.6px; letter-spacing: .54px; }
+.product-offer__separator { display: block; flex: 0 0 15px; width: 15px; height: 15px; }
+@media screen and (max-width: 998px) {
+  .product-offer__message { padding-inline: 31.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-story__offer-marquee { overflow-x: auto; }
 }

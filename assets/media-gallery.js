@@ -77,14 +77,6 @@ if (!customElements.get('media-gallery')) {
           .querySelectorAll('button')
           .forEach((element) => element.removeAttribute('aria-current'));
         thumbnail.querySelector('button').setAttribute('aria-current', true);
-        if (this.closest('.olivelle-product--reference') && window.matchMedia('(min-width: 990px)').matches) {
-          const rail = this.elements.thumbnails.slider;
-          const top = thumbnail.offsetTop;
-          if (top < rail.scrollTop || top + thumbnail.offsetHeight > rail.scrollTop + rail.clientHeight) {
-            rail.scrollTo({ top: Math.max(0, top - (rail.clientHeight - thumbnail.offsetHeight) / 2) });
-          }
-          return;
-        }
         if (this.elements.thumbnails.isSlideVisible(thumbnail, 10)) return;
 
         this.elements.thumbnails.slider.scrollTo({ left: thumbnail.offsetLeft });
@@ -123,3 +115,4 @@ if (!customElements.get('media-gallery')) {
     }
   );
 }
+

@@ -1,0 +1,18 @@
+{% comment %}Testimonial with merchant-selected or existing reference imagery.{% endcomment %}
+{%- assign reference_card = block.settings.reference_card | default: 'none' -%}
+<div class="product-story__review-card">
+  {%- if image != blank -%}
+    {{ image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '100, 200, 240', sizes: '100px' }}
+  {%- elsif reference_card != 'none' -%}
+    {%- assign product_asset = 'review-product-' | append: reference_card | append: '.webp' -%}
+    <img src="{{ product_asset | asset_url }}" width="100" height="100" loading="lazy" alt="{{ block.settings.heading | escape }}">
+  {%- endif -%}
+  {%- if block.settings.product != blank -%}
+    <a class="product-story__product-link link" href="{{ block.settings.product.url }}">{{ block.settings.product.title | escape }}</a>
+  {%- elsif block.settings.heading != blank -%}
+    <h3 class="product-story__review-product">{{ block.settings.heading | escape }}</h3>
+  {%- endif -%}
+  {%- if block.settings.rating > 0 -%}{% render 'review-stars', rating: block.settings.rating %}{%- endif -%}
+  <blockquote class="rte">{{ content }}</blockquote>
+  {%- if block.settings.author != blank -%}<p class="product-story__author">{{ block.settings.author | escape }}</p>{%- endif -%}
+</div>

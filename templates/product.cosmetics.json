@@ -12,6 +12,18 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "product_promotion": {
+          "type": "product_promotion",
+          "settings": { "enabled": true, "color_scheme": "scheme-1" }
+        },
+        "about_product": {
+          "type": "product_overview",
+          "settings": { "heading": "About the product", "metafield_key": "short_introduction", "show_details": true, "open": false }
+        },
+        "how_to_use": {
+          "type": "product_overview",
+          "settings": { "heading": "How to Use", "metafield_key": "usage", "show_details": false, "open": true }
+        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -60,24 +72,6 @@
             "introduction_only": true
           }
         },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        },
-        "benefit_icons": {
-          "type": "icon-with-text",
-          "settings": {
-            "layout": "horizontal",
-            "icon_1": "check_mark",
-            "heading_1": "{{ product.metafields.custom.features.value }}",
-            "icon_2": "bottle",
-            "heading_2": "{{ product.metafields.custom.finish.value }}",
-            "icon_3": "heart",
-            "heading_3": "{{ product.metafields.custom.recommended_for.value }}"
-          }
-        },
         "complementary_products": {
           "type": "complementary",
           "settings": {
@@ -97,7 +91,7 @@
             "heading": "Product Info",
             "icon": "clipboard",
             "source": "content",
-            "content": "{{ product.metafields.custom.composition | metafield_tag }}"
+            "content": "{{ product.metafields.custom.composition | metafield_tag }}", "metafield_key": "composition"
           }
         },
         "product_support": {
@@ -123,29 +117,25 @@
           "settings": {
             "text": ""
           }
-        },
-        "payment_icons": {
-          "type": "payment_icons",
-          "settings": {}
         }
       },
       "block_order": [
         "vendor",
         "title",
-        "price",
         "inventory",
-        "description",
-        "benefit_icons",
-        "complementary_products",
-        "product_information",
-        "product_support",
-        "shipping_returns",
+        "price",
         "delivery_note",
+        "description",
+        "product_information",
+        "shipping_returns",
+        "product_support",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "payment_icons",
-        "share"
+        "complementary_products",
+        "about_product",
+        "how_to_use",
+        "product_promotion"
       ],
       "settings": {
         "enable_olivelle_layout": true,
@@ -154,7 +144,7 @@
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "thumbnail",
+        "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "hide",
         "media_position": "left",
         "image_zoom": "lightbox",
@@ -167,6 +157,7 @@
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -191,8 +182,39 @@
         "padding_bottom": 0
       }
     },
+    "scrolling_offers": {
+      "type": "product-story",
+      "settings": { "heading": "Store offers", "layout": "offers", "reference_layout": true, "panel_color": "#e9e4fc", "padding_top": 0, "padding_bottom": 0 },
+      "blocks": {
+        "offer_1": { "type": "item", "settings": { "heading": "FREE SHIPPING", "content": "<p>on all orders over $100</p>" } },
+        "offer_2": { "type": "item", "settings": { "heading": "10% OFF", "content": "<p>your first order | Use code: PROMO10</p>" } },
+        "offer_3": { "type": "item", "settings": { "heading": "EASY RETURNS", "content": "<p>30-day postage paid returns</p>" } }
+      },
+      "block_order": ["offer_1", "offer_2", "offer_3"]
+    },
+    "brand_stories": {
+      "type": "product-story",
+      "settings": { "heading": "", "layout": "brand_stories", "reference_layout": true, "use_product_images": true, "panel_color": "#efecf7", "padding_top": 36, "padding_bottom": 0 },
+      "blocks": {
+        "story_1": { "type": "item", "settings": { "heading": "Care for your skin", "content": "{{ product.metafields.custom.benefits | metafield_tag }}", "metafield_key": "benefits", "link_label": "Explore products", "link": "/collections/all" } },
+        "story_2": { "type": "item", "settings": { "heading": "Your skincare ritual", "content": "{{ product.metafields.custom.usage_summary | metafield_tag }}", "metafield_key": "usage", "link_label": "Explore products", "link": "/collections/all" } },
+        "story_3": { "type": "item", "settings": { "heading": "Texture and finish", "content": "{{ product.metafields.custom.finish | metafield_tag }}", "metafield_key": "finish", "link_label": "Explore products", "link": "/collections/all" } }
+      },
+      "block_order": ["story_1", "story_2", "story_3"]
+    },
+    "product_benefits": {
+      "type": "product-story",
+      "settings": { "heading": "", "layout": "benefits", "reference_layout": true, "use_product_images": true, "use_product_benefit_copy": true, "padding_top": 48, "padding_bottom": 48 },
+      "blocks": {
+        "benefit_1": { "type": "item", "settings": { "heading": "Key ingredients", "content": "{{ product.metafields.custom.composition | metafield_tag }}", "metafield_key": "composition" } },
+        "benefit_2": { "type": "item", "settings": { "heading": "Recommended for", "content": "{{ product.metafields.custom.recommended_for | metafield_tag }}", "metafield_key": "recommended_for" } },
+        "benefit_3": { "type": "item", "settings": { "heading": "Texture and finish", "content": "{{ product.metafields.custom.finish | metafield_tag }}", "metafield_key": "finish" } }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3"]
+    },
     "product_values": {
       "type": "product-story",
+      "disabled": true,
       "blocks": {
         "item_1": {
           "type": "item",
@@ -229,14 +251,14 @@
     },
     "product_story": {
       "type": "product-story",
+      "disabled": true,
       "settings": {
-        "heading": "Nourish. Restore. Glow.",
-        "layout": "split",
+        "heading": "About the product",
+        "layout": "text",
         "metafield_key": "short_introduction",
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48,
-        "image": "{{ product.metafields.custom.supporting_image.value }}",
         "reference_layout": true,
         "image_position": "right"
       },
@@ -279,7 +301,7 @@
         "usage": {
           "type": "product_detail",
           "settings": {
-            "heading": "Use & care",
+            "heading": "How to Use",
             "metafield_key": "usage"
           }
         }
@@ -295,6 +317,7 @@
     },
     "product_ingredients": {
       "type": "product-story",
+      "disabled": true,
       "blocks": {
         "item_1": {
           "type": "item",
@@ -345,6 +368,7 @@
     },
     "product_rituals": {
       "type": "product-story",
+      "disabled": true,
       "blocks": {
         "item_1": {
           "type": "item",
@@ -378,6 +402,7 @@
     },
     "product_results": {
       "type": "product-story",
+      "disabled": true,
       "blocks": {
         "item_1": {
           "type": "item",
@@ -403,9 +428,9 @@
         "item_4"
       ],
       "settings": {
-        "heading": "Results",
+        "heading": "Product benefits",
         "layout": "results",
-        "metafield_key": "",
+        "metafield_key": "benefits",
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48,
@@ -419,28 +444,28 @@
           "type": "item",
           "settings": {
             "heading": "What are the benefits?",
-            "content": "{{ product.metafields.custom.benefits | metafield_tag }}"
+            "content": "{{ product.metafields.custom.benefits | metafield_tag }}", "metafield_key": "benefits"
           }
         },
         "item_2": {
           "type": "item",
           "settings": {
             "heading": "How do I use this product?",
-            "content": "{{ product.metafields.custom.usage | metafield_tag }}"
+            "content": "{{ product.metafields.custom.usage | metafield_tag }}", "metafield_key": "usage"
           }
         },
         "item_3": {
           "type": "item",
           "settings": {
             "heading": "What are the ingredients?",
-            "content": "{{ product.metafields.custom.composition | metafield_tag }}"
+            "content": "{{ product.metafields.custom.composition | metafield_tag }}", "metafield_key": "composition"
           }
         },
         "item_4": {
           "type": "item",
           "settings": {
             "heading": "Tell me more about this product.",
-            "content": "{{ product.metafields.custom.short_introduction | metafield_tag }}"
+            "content": "{{ product.metafields.custom.short_introduction | metafield_tag }}", "metafield_key": "short_introduction"
           }
         }
       },
@@ -465,25 +490,31 @@
       "blocks": {
         "item_1": {
           "type": "item",
-          "settings": {}
+          "settings": { "heading": "Peptide Lift Oil", "content": "<p>This oil instantly became part of my daily routine. It feels lightweight yet deeply nourishing, leaving my skin soft, radiant, and beautifully hydrated all day.</p>", "author": "Rob Doe", "rating": 5, "reference_card": "1" }
         },
         "item_2": {
           "type": "item",
-          "settings": {}
+          "settings": { "heading": "Complete Self-Care Beauty Gift Set", "content": "<p>Such a beautiful set! Every product feels luxurious and thoughtfully designed. It's perfect for relaxing self-care moments and makes an amazing gift too.</p>", "author": "Esther Love", "rating": 4, "reference_card": "2" }
         },
         "item_3": {
           "type": "item",
-          "settings": {}
+          "settings": { "heading": "Facial ice globes", "content": "<p>These cooling globes feel incredible on the skin. They instantly refresh my face, reduce puffiness, and leave my complexion looking brighter and more awake.</p>", "author": "John Kindani", "rating": 3, "reference_card": "3" }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": { "heading": "Luxury Self-Care & Skincare Spa Set", "content": "<p>This spa set instantly elevates my skincare routine. The products feel luxurious and create a calming ritual that makes every evening more relaxing.</p>", "author": "Brian Kindani", "rating": 5, "reference_card": "4" }
         }
       },
       "block_order": [
         "item_1",
         "item_2",
-        "item_3"
+        "item_3",
+        "item_4"
       ],
       "settings": {
-        "heading": "Customer stories",
+        "heading": "Over 3,000 Happy reviews",
         "layout": "reviews",
+        "panel_color": "#e9e4fc",
         "metafield_key": "",
         "color_scheme": "scheme-1",
         "padding_top": 48,
@@ -493,6 +524,7 @@
     },
     "product_services": {
       "type": "product-story",
+      "disabled": true,
       "blocks": {
         "item_1": {
           "type": "item",
@@ -530,11 +562,13 @@
     "product_gallery": {
       "type": "product-story",
       "settings": {
-        "heading": "",
+        "heading": "Share Your Glow",
+        "subheading": "#GlowRoutine",
         "layout": "gallery",
+        "use_product_images": true,
         "reference_layout": true,
-        "padding_top": 24,
-        "padding_bottom": 24
+        "padding_top": 36,
+        "padding_bottom": 12
       },
       "blocks": {
         "image_1": {
@@ -564,17 +598,21 @@
   },
   "order": [
     "main",
+    "scrolling_offers",
     "sticky_purchase",
     "disclosures",
+    "brand_stories",
+    "product_faq",
+    "product_benefits",
+    "product_testimonials",
+    "product_gallery",
     "product_values",
     "product_story",
     "product_ingredients",
     "product_rituals",
     "product_results",
-    "product_faq",
-    "product_testimonials",
     "related-products",
-    "product_services",
-    "product_gallery"
+    "product_services"
   ]
 }
+

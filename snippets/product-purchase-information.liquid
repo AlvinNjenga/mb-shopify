@@ -1,7 +1,10 @@
 {% comment %}Purchase accordion using real store policies or merchant content. Accepts block, section_id.{% endcomment %}
+{%- assign information_text = block.settings.content | strip_html | strip -%}
 {%- capture information_content -%}
-  {%- if block.settings.content != blank -%}
+  {%- if information_text != blank -%}
     {{ block.settings.content }}
+  {%- elsif block.settings.metafield_key != blank -%}
+    {% render 'product-metafield-content', product: product, key: block.settings.metafield_key %}
   {%- else -%}
     {%- case block.settings.source -%}
       {%- when 'shipping_returns' -%}

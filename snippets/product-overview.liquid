@@ -1,0 +1,39 @@
+{% comment %}Text-only overview accordion. Accepts product, block, section_id.{% endcomment %}
+{%- capture overview_body -%}
+  {%- assign override_text = block.settings.content | strip_html | strip -%}
+  {%- if override_text != blank -%}
+    {{ block.settings.content }}
+  {%- else -%}
+    {% render 'product-metafield-content', product: product, key: block.settings.metafield_key %}
+  {%- endif -%}
+  {%- if block.settings.show_details -%}
+    {%- assign keys = 'recommended_for,benefits,features,finish,composition' | split: ',' -%}
+    {%- assign labels = 'Recommended for,Benefits,Key features,Texture / finish,Ingredients / materials' | split: ',' -%}
+    {%- capture labelled_details -%}
+      {%- for key in keys -%}
+        {%- capture value -%}{% render 'product-metafield-content', product: product, key: key %}{%- endcapture -%}
+        {%- assign value_text = value | strip_html | strip -%}
+        {%- if value_text != blank -%}
+          <div><dt>{{ labels[forloop.index0] | escape }}:</dt><dd>{{ value }}</dd></div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- assign labelled_details = labelled_details | strip -%}
+    {%- if labelled_details != blank -%}<dl class="product-overview__details">{{ labelled_details }}</dl>{%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign overview_text = overview_body | strip_html | strip -%}
+{%- if overview_text != blank or request.design_mode -%}
+  <div class="product-overview__row accordion" {{ block.shopify_attributes }}>
+    <details id="Overview-{{ section_id }}-{{ block.id }}"{% if block.settings.open %} open{% endif %}>
+      <summary>
+        <h2 class="product-overview__heading">{{ block.settings.heading | escape }}</h2>
+        {{ 'icon-caret.svg' | inline_asset_content }}
+      </summary>
+      <div class="product-overview__content rte">
+        {{ overview_body }}
+        {%- if overview_text == blank -%}<p>Add content or populate the selected product metafield. Empty accordions stay hidden on the storefront.</p>{%- endif -%}
+      </div>
+    </details>
+  </div>
+{%- endif -%}
