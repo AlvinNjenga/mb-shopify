@@ -1,0 +1,580 @@
+{
+  "sections": {
+    "sticky_purchase": {
+      "type": "sticky-product-bar",
+      "settings": {
+        "enabled": true,
+        "show_desktop": true,
+        "show_mobile": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_single_value_options": true,
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "introduction_only": true
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "benefit_icons": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "check_mark",
+            "heading_1": "{{ product.metafields.custom.features.value }}",
+            "icon_2": "bottle",
+            "heading_2": "{{ product.metafields.custom.finish.value }}",
+            "icon_3": "heart",
+            "heading_3": "{{ product.metafields.custom.recommended_for.value }}"
+          }
+        },
+        "complementary_products": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Goes well with",
+            "make_collapsible_row": false,
+            "product_list_limit": 6,
+            "products_per_page": 2,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false,
+            "manual_products": []
+          }
+        },
+        "product_information": {
+          "type": "purchase_information",
+          "settings": {
+            "heading": "Product Info",
+            "icon": "clipboard",
+            "source": "content",
+            "content": "{{ product.metafields.custom.composition | metafield_tag }}"
+          }
+        },
+        "product_support": {
+          "type": "purchase_information",
+          "settings": {
+            "heading": "Support",
+            "icon": "chat_bubble",
+            "source": "contact",
+            "content": "<p>For questions or feedback, please <a href=\"/pages/contact\">contact our team</a>. We aim to reply promptly during our usual business hours.</p>"
+          }
+        },
+        "shipping_returns": {
+          "type": "purchase_information",
+          "settings": {
+            "heading": "Shipping and Returns",
+            "icon": "truck",
+            "source": "shipping_returns",
+            "content": "<p>Changed your mind? You can return or exchange your purchase within <strong>30 days</strong>, with <strong>no return charge</strong>. Choose a replacement product, store credit, or a refund to the payment method used for your order.</p>"
+          }
+        },
+        "delivery_note": {
+          "type": "delivery_note",
+          "settings": {
+            "text": ""
+          }
+        },
+        "payment_icons": {
+          "type": "payment_icons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "inventory",
+        "description",
+        "benefit_icons",
+        "complementary_products",
+        "product_information",
+        "product_support",
+        "shipping_returns",
+        "delivery_note",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "payment_icons",
+        "share"
+      ],
+      "settings": {
+        "enable_olivelle_layout": true,
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "reference_product_layout": true
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 68,
+        "reference_layout": true
+      }
+    },
+    "disclosures": {
+      "type": "disclosures",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "product_values": {
+      "type": "product-story",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "heading": "Product values",
+        "layout": "marquee",
+        "metafield_key": "benefits",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "reference_layout": true
+      }
+    },
+    "product_story": {
+      "type": "product-story",
+      "settings": {
+        "heading": "Nourish. Restore. Glow.",
+        "layout": "split",
+        "metafield_key": "short_introduction",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "image": "{{ product.metafields.custom.supporting_image.value }}",
+        "reference_layout": true,
+        "image_position": "right"
+      },
+      "blocks": {
+        "skin_types": {
+          "type": "product_detail",
+          "settings": {
+            "heading": "Recommended for",
+            "metafield_key": "recommended_for"
+          }
+        },
+        "skin_benefits": {
+          "type": "product_detail",
+          "settings": {
+            "heading": "Benefits",
+            "metafield_key": "benefits"
+          }
+        },
+        "target_concerns": {
+          "type": "product_detail",
+          "settings": {
+            "heading": "Key features",
+            "metafield_key": "features"
+          }
+        },
+        "texture": {
+          "type": "product_detail",
+          "settings": {
+            "heading": "Texture / finish",
+            "metafield_key": "finish"
+          }
+        },
+        "ingredients": {
+          "type": "product_detail",
+          "settings": {
+            "heading": "Ingredients / materials",
+            "metafield_key": "composition"
+          }
+        },
+        "usage": {
+          "type": "product_detail",
+          "settings": {
+            "heading": "Use & care",
+            "metafield_key": "usage"
+          }
+        }
+      },
+      "block_order": [
+        "skin_types",
+        "skin_benefits",
+        "target_concerns",
+        "texture",
+        "ingredients",
+        "usage"
+      ]
+    },
+    "product_ingredients": {
+      "type": "product-story",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {}
+        },
+        "photo_1": {
+          "type": "item",
+          "settings": {
+            "presentation": "photo"
+          }
+        },
+        "photo_2": {
+          "type": "item",
+          "settings": {
+            "presentation": "photo"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "photo_1",
+        "photo_2"
+      ],
+      "settings": {
+        "heading": "Ingredients",
+        "layout": "features",
+        "metafield_key": "composition",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "reference_layout": true
+      }
+    },
+    "product_rituals": {
+      "type": "product-story",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
+      "settings": {
+        "heading": "Use & care",
+        "layout": "split",
+        "metafield_key": "usage",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "reference_layout": true,
+        "image": "{{ product.metafields.custom.supporting_image.value }}",
+        "image_position": "left"
+      }
+    },
+    "product_results": {
+      "type": "product-story",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "heading": "Results",
+        "layout": "results",
+        "metafield_key": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "reference_layout": true
+      }
+    },
+    "product_faq": {
+      "type": "product-story",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "heading": "What are the benefits?",
+            "content": "{{ product.metafields.custom.benefits | metafield_tag }}"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "heading": "How do I use this product?",
+            "content": "{{ product.metafields.custom.usage | metafield_tag }}"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "heading": "What are the ingredients?",
+            "content": "{{ product.metafields.custom.composition | metafield_tag }}"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "heading": "Tell me more about this product.",
+            "content": "{{ product.metafields.custom.short_introduction | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "heading": "FAQ",
+        "layout": "faq",
+        "metafield_key": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "reference_layout": true
+      }
+    },
+    "product_testimonials": {
+      "type": "product-story",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
+      "settings": {
+        "heading": "Customer stories",
+        "layout": "reviews",
+        "metafield_key": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "reference_layout": true
+      }
+    },
+    "product_services": {
+      "type": "product-story",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {}
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "heading": "Shopping with us",
+        "layout": "strip",
+        "metafield_key": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "reference_layout": true
+      }
+    },
+    "product_gallery": {
+      "type": "product-story",
+      "settings": {
+        "heading": "",
+        "layout": "gallery",
+        "reference_layout": true,
+        "padding_top": 24,
+        "padding_bottom": 24
+      },
+      "blocks": {
+        "image_1": {
+          "type": "item",
+          "settings": {}
+        },
+        "image_2": {
+          "type": "item",
+          "settings": {}
+        },
+        "image_3": {
+          "type": "item",
+          "settings": {}
+        },
+        "image_4": {
+          "type": "item",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "sticky_purchase",
+    "disclosures",
+    "product_values",
+    "product_story",
+    "product_ingredients",
+    "product_rituals",
+    "product_results",
+    "product_faq",
+    "product_testimonials",
+    "related-products",
+    "product_services",
+    "product_gallery"
+  ]
+}

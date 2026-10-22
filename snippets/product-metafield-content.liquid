@@ -1,0 +1,31 @@
+{% comment %}
+  Render a product metafield with support for the original cosmetic keys.
+  Generic fields take precedence, including when an existing block uses an old key.
+  Accepts: product, key (without the custom namespace).
+{% endcomment %}
+{%- liquid
+  assign generic_key = key
+  assign legacy_key = ''
+  case key
+    when 'recommended_for', 'skin_types'
+      assign generic_key = 'recommended_for'
+      assign legacy_key = 'skin_types'
+    when 'benefits', 'skin_benefits'
+      assign generic_key = 'benefits'
+      assign legacy_key = 'skin_benefits'
+    when 'features', 'target_concerns'
+      assign generic_key = 'features'
+      assign legacy_key = 'target_concerns'
+    when 'finish', 'texture'
+      assign generic_key = 'finish'
+      assign legacy_key = 'texture'
+    when 'composition', 'ingredients'
+      assign generic_key = 'composition'
+      assign legacy_key = 'ingredients'
+  endcase
+  assign field = product.metafields.custom[generic_key]
+  if field.value == blank and legacy_key != blank
+    assign field = product.metafields.custom[legacy_key]
+  endif
+-%}
+{%- if field.value != blank -%}{{ field | metafield_tag }}{%- endif -%}

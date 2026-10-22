@@ -1,0 +1,21 @@
+{% comment %}Purchase accordion using real store policies or merchant content. Accepts block, section_id.{% endcomment %}
+{%- capture information_content -%}
+  {%- if block.settings.content != blank -%}
+    {{ block.settings.content }}
+  {%- else -%}
+    {%- case block.settings.source -%}
+      {%- when 'shipping_returns' -%}
+        {%- if shop.shipping_policy.body != blank -%}
+          <p><a href="{{ shop.shipping_policy.url }}">{{ shop.shipping_policy.title | escape }}</a></p>
+        {%- endif -%}
+        {%- if shop.refund_policy.body != blank -%}
+          <p><a href="{{ shop.refund_policy.url }}">{{ shop.refund_policy.title | escape }}</a></p>
+        {%- endif -%}
+      {%- when 'contact' -%}
+        {%- if pages.contact != blank -%}
+          <p><a href="{{ pages.contact.url }}">{{ pages.contact.title | escape }}</a></p>
+        {%- endif -%}
+    {%- endcase -%}
+  {%- endif -%}
+{%- endcapture -%}
+{% render 'product-accordion', block: block, section_id: section_id, content: information_content %}

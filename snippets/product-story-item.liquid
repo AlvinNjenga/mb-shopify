@@ -3,18 +3,19 @@
 {%- if layout == 'faq' -%}
   {%- if block.settings.heading != blank and item_text != blank -%}
     <details class="product-story__faq" {{ block.shopify_attributes }}>
-      <summary>{{ block.settings.heading | escape }}<span aria-hidden="true">+</span></summary>
+      <summary><span class="product-story__question" aria-hidden="true">?</span>{{ block.settings.heading | escape }}<svg class="product-story__chevron" aria-hidden="true" viewBox="0 0 12 8" width="12" height="8"><path d="m1 1 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></summary>
       <div class="rte">{{ block.settings.content }}</div>
     </details>
   {%- endif -%}
-{%- elsif item_text != blank or block.settings.image != blank -%}
-  <div class="product-story__item" {{ block.shopify_attributes }}>
+{%- elsif item_text != blank or block.settings.image != blank or layout == 'marquee' and block.settings.heading != blank -%}
+  <div class="product-story__item{% if block.settings.image != blank %} product-story__item--image{% endif %} product-story__item--{{ block.settings.presentation | default: 'feature' }}" {{ block.shopify_attributes }}>
     {%- if block.settings.image != blank -%}
       {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '100, 240, 400, 800', sizes: '(min-width: 990px) 25vw, 100vw' }}
     {%- endif -%}
     {%- if layout == 'results' and block.settings.metric != blank -%}<p class="product-story__metric">{{ block.settings.metric | escape }}</p>{%- endif -%}
     {%- if block.settings.heading != blank -%}<h3>{{ block.settings.heading | escape }}</h3>{%- endif -%}
     {%- if layout == 'reviews' and item_text != blank -%}
+      {%- if block.settings.rating > 0 -%}<p class="product-story__stars" role="img" aria-label="{{ block.settings.rating }} / 5">{%- for star in (1..block.settings.rating) -%}★{%- endfor -%}</p>{%- endif -%}
       <blockquote class="rte">{{ block.settings.content }}</blockquote>
       {%- if block.settings.author != blank -%}<p class="product-story__author">{{ block.settings.author | escape }}</p>{%- endif -%}
     {%- elsif item_text != blank -%}

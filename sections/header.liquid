@@ -146,7 +146,7 @@
   }
 {%- endstyle -%}
 
-{%- unless request.page_type == 'index' or use_floating_header -%}
+{%- unless use_floating_header -%}
   {{ 'component-inner-header.css' | asset_url | stylesheet_tag }}
   {%- style -%}
     #shopify-section-{{ section.id }} {
@@ -167,22 +167,26 @@
 
 {% liquid
   assign header_tag = 'div'
+  assign header_sticky_type = section.settings.sticky_header_type
+  unless use_floating_header
+    assign header_sticky_type = 'always'
+  endunless
   assign header_logo_position = section.settings.logo_position
   if section.settings.enable_floating_header
     assign header_logo_position = 'middle-center'
   endif
 
-  if section.settings.sticky_header_type != 'none' or use_floating_header
+  if header_sticky_type != 'none' or use_floating_header
     assign header_tag = 'sticky-header'
   endif
 %}
 
 <{{ header_tag }}
   {% if header_tag == 'sticky-header' %}
-    data-sticky-type="{{ section.settings.sticky_header_type }}"
+    data-sticky-type="{{ header_sticky_type }}"
     data-floating="{{ use_floating_header }}"
   {% endif %}
-  class="header-wrapper{% if use_floating_header %} header-wrapper--floating{% if request.page_type == 'collection' %} header-wrapper--collection{% endif %}{% endif %}{% unless request.page_type == 'index' or use_floating_header %} header-wrapper--inner{% endunless %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+  class="header-wrapper{% if use_floating_header %} header-wrapper--floating{% if request.page_type == 'collection' %} header-wrapper--collection{% endif %}{% endif %}{% unless use_floating_header %} header-wrapper--inner{% endunless %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
 >
   {%- liquid
     assign social_links = false
@@ -660,7 +664,8 @@
         }
       ],
       "default": "on-scroll-up",
-      "label": "t:sections.header.settings.sticky_header_type.label"
+      "label": "t:sections.header.settings.sticky_header_type.label",
+      "info": "Non-floating headers always stay visible while scrolling to match the compact header layout."
     },
     {
       "type": "checkbox",

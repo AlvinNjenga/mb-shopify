@@ -4,11 +4,12 @@
   Accepts: product, block.
 {% endcomment %}
 {%- liquid
-  assign detail_metafield = product.metafields.custom[block.settings.metafield_key]
   assign detail_content = block.settings.content
   assign detail_text = detail_content | strip_html | strip
-  if detail_text == blank and detail_metafield.value != blank
-    assign detail_content = detail_metafield | metafield_tag
+  if detail_text == blank
+    capture detail_content
+      render 'product-metafield-content', product: product, key: block.settings.metafield_key
+    endcapture
   endif
   assign detail_text = detail_content | strip_html | strip
 -%}

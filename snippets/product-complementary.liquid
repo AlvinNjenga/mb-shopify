@@ -1,0 +1,28 @@
+{% comment %}Merchant-selected complementary products using Dawn's accessible slider. Accepts products, block, section_id.{% endcomment %}
+{{ 'component-product-complements.css' | asset_url | stylesheet_tag }}
+<aside class="product-complements" aria-labelledby="ComplementaryHeading-{{ section_id }}-{{ block.id }}" {{ block.shopify_attributes }}>
+  <slider-component>
+    <div class="product-complements__header">
+      <h2 id="ComplementaryHeading-{{ section_id }}-{{ block.id }}">{{ block.settings.block_heading | escape }}</h2>
+      <div class="slider-buttons">
+        <button class="slider-button slider-button--prev" type="button" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}"><span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span></button>
+        <button class="slider-button slider-button--next" type="button" name="next" aria-label="{{ 'general.slider.next_slide' | t }}"><span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span></button>
+      </div>
+    </div>
+    <ul id="Slider-Complements-{{ section_id }}-{{ block.id }}" class="product-complements__list slider slider--everywhere list-unstyled" role="list">
+      {%- for complementary_product in products -%}
+        <li id="Slide-Complements-{{ section_id }}-{{ block.id }}-{{ forloop.index }}" class="product-complements__item slider__slide">
+          <a href="{{ complementary_product.url }}" class="product-complements__card">
+            {%- if complementary_product.featured_image != blank -%}
+              {{ complementary_product.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80, 160', sizes: '56px', alt: '' }}
+            {%- endif -%}
+            <div>
+              <h3>{{ complementary_product.title | escape }}</h3>
+              {% render 'price', product: complementary_product %}
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </slider-component>
+</aside>

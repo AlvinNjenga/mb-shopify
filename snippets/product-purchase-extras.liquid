@@ -1,0 +1,21 @@
+{% comment %}Optional accurate delivery message or enabled Shopify payment icons. Accepts block.{% endcomment %}
+{%- case block.type -%}
+  {%- when 'delivery_note' -%}
+    {%- if block.settings.text != blank -%}
+      <p class="product-delivery-note" {{ block.shopify_attributes }}>
+        {% render 'icon-accordion', icon: 'truck' %}
+        {{ block.settings.text | escape }}
+      </p>
+    {%- endif -%}
+  {%- when 'payment_icons' -%}
+    {%- if shop.enabled_payment_types.size > 0 -%}
+      <div class="product-payment-icons" {{ block.shopify_attributes }}>
+        <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
+        <ul class="list-unstyled" role="list">
+          {%- for payment_type in shop.enabled_payment_types -%}
+            <li>{{ payment_type | payment_type_svg_tag: class: 'icon icon--full-color' }}</li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+{%- endcase -%}

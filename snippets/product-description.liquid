@@ -1,0 +1,10 @@
+{% comment %}Native description with optional introductory paragraph. Accepts product, block.{% endcomment %}
+{%- if product.description != blank -%}
+  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+    {%- if block.settings.introduction_only and product.description contains '</p>' -%}
+      {{ product.description | split: '</p>' | first | append: '</p>' }}
+    {%- else -%}
+      {{ product.description }}
+    {%- endif -%}
+  </div>
+{%- endif -%}

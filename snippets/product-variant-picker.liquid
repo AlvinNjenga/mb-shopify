@@ -55,7 +55,10 @@
         </fieldset>
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill{% if hide_option %} hidden{% endif %}">
-          <legend class="form__label">{{ option.name }}</legend>
+          <legend class="form__label">
+            {{- option.name -}}
+            {%- if section.settings.reference_product_layout %}: <span data-selected-value>{{ option.selected_value }}</span>{% endif -%}
+          </legend>
           {% render 'product-variant-options',
             product: product,
             option: option,

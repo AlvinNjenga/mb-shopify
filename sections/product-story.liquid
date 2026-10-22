@@ -1,19 +1,27 @@
 {{ 'section-product-story.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign body = section.settings.content
-  assign source = product.metafields.custom[section.settings.metafield_key]
   assign body_text = body | strip_html | strip
-  if body_text == blank and source.value != blank
-    assign body = source | metafield_tag
+  if body_text == blank
+    capture body
+      render 'product-metafield-content', product: product, key: section.settings.metafield_key
+    endcapture
   endif
   assign body_text = body | strip_html | strip
 -%}
 {%- capture story_items -%}
   {%- for block in section.blocks -%}
-    {% render 'product-story-item', block: block, layout: section.settings.layout %}
+    {%- if block.type == 'product_detail' -%}
+      {% render 'product-detail', product: product, block: block %}
+    {%- else -%}
+      {% render 'product-story-item', block: block, layout: section.settings.layout %}
+    {%- endif -%}
   {%- endfor -%}
 {%- endcapture -%}
 {%- assign story_items = story_items | strip -%}
+{%- if section.settings.layout == 'marquee' and story_items == blank and body_text != blank -%}
+  {%- capture story_items -%}<div class="product-story__item"><h3>{{ body_text | escape }}</h3></div>{%- endcapture -%}
+{%- endif -%}
 {%- liquid
   assign has_content = false
   if body_text != blank or section.settings.image != blank or story_items != blank
@@ -21,7 +29,7 @@
   endif
 -%}
 {%- if has_content or request.design_mode -%}
-  <div class="product-story color-{{ section.settings.color_scheme }} gradient" style="--story-top: {{ section.settings.padding_top }}px; --story-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="product-story{% if section.settings.reference_layout %} product-story--reference product-story--{{ section.settings.layout }}{% endif %} color-{{ section.settings.color_scheme }} gradient" style="--story-top: {{ section.settings.padding_top }}px; --story-bottom: {{ section.settings.padding_bottom }}px; --story-panel: {{ section.settings.panel_color }};">
     <div class="page-width product-story__layout product-story__layout--{{ section.settings.layout }}{% if section.settings.image_position == 'right' %} product-story__layout--reverse{% endif %}">
       {%- if section.settings.image != blank -%}
         <div class="product-story__media">
@@ -36,6 +44,9 @@
         {%- endif -%}
         {%- if story_items != blank -%}
           <div class="product-story__items">{{ story_items }}</div>
+          {%- if section.settings.layout == 'marquee' -%}
+            <div class="product-story__items product-story__items--duplicate" aria-hidden="true" inert>{{ story_items }}</div>
+          {%- endif -%}
         {%- endif -%}
       </div>
     </div>
@@ -45,34 +56,188 @@
 {
   "name": "Product story",
   "tag": "section",
-  "disabled_on": { "groups": ["header", "footer"] },
-  "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Discover your product" },
-    { "type": "select", "id": "layout", "label": "Layout", "default": "split", "options": [
-      { "value": "split", "label": "Image and story" },
-      { "value": "cards", "label": "Ingredient or ritual cards" },
-      { "value": "strip", "label": "Benefits or service strip" },
-      { "value": "results", "label": "Results" },
-      { "value": "faq", "label": "FAQ accordions" },
-      { "value": "reviews", "label": "Testimonials" }
-    ] },
-    { "type": "richtext", "id": "content", "label": "Introduction", "info": "Supports dynamic sources. Literal content is shared by products using this template." },
-    { "type": "text", "id": "metafield_key", "label": "Fallback product metafield key", "info": "Optional key in the custom namespace, such as ingredients. Used when Introduction is empty." },
-    { "type": "image_picker", "id": "image", "label": "Image", "info": "Connect a product image metafield for product-specific imagery." },
-    { "type": "select", "id": "image_position", "label": "Desktop image position", "default": "left", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }] },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Top padding", "default": 48 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding", "default": 48 }
-  ],
-  "blocks": [{
-    "type": "item", "name": "Content item", "settings": [
-      { "type": "text", "id": "heading", "label": "Heading or question" },
-      { "type": "richtext", "id": "content", "label": "Content or answer", "info": "Supports dynamic sources. Empty items are hidden." },
-      { "type": "image_picker", "id": "image", "label": "Image or icon" },
-      { "type": "text", "id": "metric", "label": "Result value", "info": "For Results layout. Enter only results supported by your own evidence." },
-      { "type": "text", "id": "author", "label": "Testimonial attribution" }
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
     ]
-  }],
-  "presets": [{ "name": "Product story" }]
+  },
+  "settings": [
+    { "type": "checkbox", "id": "reference_layout", "label": "Use reference section styling", "default": false },
+    { "type": "color", "id": "panel_color", "label": "Story panel background", "default": "#efecf7" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Discover your product"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "default": "split",
+      "options": [
+        { "value": "marquee", "label": "Scrolling product values" },
+        { "value": "features", "label": "Mixed feature and image grid" },
+        { "value": "gallery", "label": "Horizontal image gallery" },
+        {
+          "value": "split",
+          "label": "Image and story"
+        },
+        {
+          "value": "cards",
+          "label": "Product detail cards"
+        },
+        {
+          "value": "strip",
+          "label": "Benefits or service strip"
+        },
+        {
+          "value": "results",
+          "label": "Results"
+        },
+        {
+          "value": "faq",
+          "label": "FAQ accordions"
+        },
+        {
+          "value": "reviews",
+          "label": "Testimonials"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Introduction",
+      "info": "Supports dynamic sources. Literal content is shared by products using this template."
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Fallback product metafield key",
+      "info": "Optional key in the custom namespace, such as composition. Used when Introduction is empty."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Connect a product image metafield for product-specific imagery."
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Desktop image position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Content item",
+      "settings": [
+        { "type": "select", "id": "presentation", "label": "Feature presentation", "default": "feature", "options": [{ "value": "feature", "label": "Icon and text" }, { "value": "photo", "label": "Lifestyle photo" }] },
+        { "type": "range", "id": "rating", "label": "Review stars", "min": 0, "max": 5, "step": 1, "default": 0, "info": "Use the genuine review rating. Zero hides stars." },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading or question"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content or answer",
+          "info": "Supports dynamic sources. Empty items are hidden."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image or icon"
+        },
+        {
+          "type": "text",
+          "id": "metric",
+          "label": "Result value",
+          "info": "For Results layout. Enter only results supported by your own evidence."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Testimonial attribution"
+        }
+      ]
+    },
+    {
+      "type": "product_detail",
+      "name": "Product detail",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Product detail"
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Product metafield key",
+          "info": "Key in the custom namespace, for example composition. Empty fields are hidden."
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "info": "Optional override. Connect a dynamic source for product-specific content, or leave empty to use the metafield key above."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Supporting image",
+          "info": "Connect a product image metafield using a dynamic source to show a different image for each product."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product story"
+    }
+  ]
 }
 {% endschema %}

@@ -1,0 +1,19 @@
+{% comment %}
+  Product breadcrumbs. Use the URL's collection context, otherwise the catalog.
+  Usage: {% render 'breadcrumbs', product: product, collection: collection %}
+{% endcomment %}
+{%- if product != blank -%}
+  <nav class="breadcrumbs" aria-label="{{ 'general.breadcrumbs.label' | t | escape }}">
+    <ol role="list">
+      <li><a class="link" href="{{ routes.root_url }}">{{ 'general.breadcrumbs.home' | t }}</a></li>
+      <li>
+        {%- if collection != blank -%}
+          <a class="link" href="{{ collection.url }}">{{ collection.title | escape }}</a>
+        {%- else -%}
+          <a class="link" href="{{ routes.all_products_collection_url }}">{{ 'general.breadcrumbs.catalog' | t }}</a>
+        {%- endif -%}
+      </li>
+      <li><span aria-current="page">{{ product.title | escape }}</span></li>
+    </ol>
+  </nav>
+{%- endif -%}
