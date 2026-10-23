@@ -14,8 +14,8 @@
   min-height: 300px;
   display: flex;
   align-items: flex-end;
-  color: #fff;
-  background: #777;
+  color: rgb(var(--brand-white));
+  background: rgba(var(--brand-text), 0.75);
 }
 .collection-promotion > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .collection-promotion::before { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent, #0009); z-index: -1; }
@@ -23,8 +23,8 @@
 .collection-promotion__content h2 { color: inherit; margin: 0; font: 700 28px/1.27 'Collection Card Fraunces', Georgia, serif; }
 .collection-promotion__content p { margin: 8px 0 16px; }
 .collection-promotion__content .collection-promotion__eyebrow { margin: 0; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
-.collection-promotion__content a { display: inline-flex; gap: 10px; align-items: center; padding: 3px 8px; border-radius: 20px; background: #fff; color: #1d1d1d; text-decoration: none; font-weight: 700; }
-.collection-promotion__content a span { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; color: #fff; background: #ddd; }
+.collection-promotion__content a { display: inline-flex; gap: 10px; align-items: center; padding: 3px 8px; border-radius: 20px; background: rgb(var(--brand-white)); color: rgb(var(--brand-text)); text-decoration: none; font-weight: 700; }
+.collection-promotion__content a span { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; color: rgb(var(--brand-text)); background: rgb(var(--brand-action)); }
 @media screen and (max-width: 749px) {
   .collection-promotion__content { padding: 18px; font-size: 12px; }
   .collection-promotion__content h2 { font-size: 23px; }
@@ -77,7 +77,7 @@
   height: 58px;
   margin: 0;
   padding: 16px 8px 8px 16px;
-  background: #fff;
+  background: rgb(var(--brand-white));
   border-top-left-radius: 30px;
 }
 
@@ -87,7 +87,7 @@
   position: absolute;
   width: 7px;
   height: 7px;
-  background: radial-gradient(circle at 0 0, transparent 7px, #fff 7.5px);
+  background: radial-gradient(circle at 0 0, transparent 7px, rgb(var(--brand-white)) 7.5px);
   pointer-events: none;
 }
 
@@ -99,15 +99,17 @@
   min-width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #f7f7f7;
+  background: rgb(var(--brand-action));
 }
 
 .collection-reference-layout .product-card-wrapper .quick-add modal-opener .quick-add__submit {
-  background: #e9e4fc;
+  background: rgb(var(--brand-action));
 }
 
-.collection-reference-layout .product-card-wrapper .quick-add__submit:hover {
-  filter: brightness(0.95);
+.collection-reference-layout .product-card-wrapper .card:not(.card--horizontal) .quick-add__submit:not([disabled]):not([aria-disabled='true']):not(.loading):hover {
+  background: rgb(var(--brand-action-hover));
+  color: rgb(var(--brand-white));
+  filter: none;
 }
 
 .collection-reference-layout .collection-card-swatches {
@@ -123,7 +125,7 @@
   z-index: 2;
   display: inline-flex;
   padding: 2px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(var(--brand-text), 0.2);
   border-radius: 50%;
 }
 

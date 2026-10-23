@@ -15,7 +15,7 @@
   bottom: -0.15em;
   width: 100%;
   height: 0.18em;
-  border-top: 3px solid #d4c4d9;
+  border-top: 3px solid rgb(var(--brand-pink));
   border-radius: 50%;
   transform: rotate(-2deg);
 }

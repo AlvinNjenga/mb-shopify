@@ -22,7 +22,7 @@
 .about-slideshow__slider:hover .about-slideshow__controls, .about-slideshow__slider:focus-within .about-slideshow__controls { opacity: 1; }
 .about-slideshow__controls button:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
 .about-slideshow__progress { position: absolute; z-index: 2; inset: 0 0 auto; height: 4px; background: rgb(0 0 0 / 25%); }
-.about-slideshow__progress span { display: block; height: 100%; width: var(--slider-progress, 50%); background: #e9e4fc; transition: width 600ms; }
+.about-slideshow__progress span { display: block; height: 100%; width: var(--slider-progress, 50%); background: rgb(var(--brand-light-pink)); transition: width 600ms; }
 @media (max-width: 990px) {
   .about-slideshow__layout { justify-content: center; }
   .about-slideshow__panel { text-align: center; }

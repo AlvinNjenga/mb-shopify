@@ -1,13 +1,13 @@
 .collection-services { padding: 24px 45px; }
 .collection-services__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; max-width: 1530px; padding: 0; margin: 0 auto; list-style: none; }
-.collection-services__card { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; border-radius: 7px; background: #f7f7f7; color: #1d1d1d; }
+.collection-services__card { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; border-radius: 7px; background: rgb(var(--brand-blush)); color: rgb(var(--brand-text)); }
 .collection-services__card h2 { margin: 0; font-family: 'Collection Card Fraunces', Georgia, serif; font-size: 18px; font-weight: 700; line-height: 1.4; letter-spacing: normal; }
 .collection-services__card p { margin: 0; font-family: 'Collection Card Inter', Arial, sans-serif; font-size: 12.6px; line-height: 1.8; }
 .collection-services__icon { display: flex; width: 28px; flex: 0 0 28px; }
 .collection-services__icon svg { width: 100%; height: 28px; }
-.collection-social { position: fixed; top: 300px; right: 5px; z-index: 4; background: #fff; border-radius: 13px; }
+.collection-social { position: fixed; top: 300px; right: 5px; z-index: 4; background: rgb(var(--brand-white)); border-radius: 13px; }
 .collection-social .collection-social-rail { display: flex; flex-direction: column; padding: 12px 0; margin: 0; }
-.collection-social .list-social__link { padding: 6px 10px; color: #1d1d1d; }
+.collection-social .list-social__link { padding: 6px 10px; color: rgb(var(--brand-text)); }
 .collection-social .svg-wrapper { width: 16px; height: 16px; }
 @media screen and (max-width: 989px) {
   .collection-services__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }

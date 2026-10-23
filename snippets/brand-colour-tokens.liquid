@@ -1,0 +1,17 @@
+{%- comment -%}
+  RGB channels match Dawn's colour-variable format. Scheme colours remain
+  controlled by settings.color_schemes; these tokens support shared accents.
+{%- endcomment -%}
+{%- liquid
+  assign brand_keys = 'pink,light_pink,action,blush,text,white' | split: ','
+  assign brand_defaults = '#FF65C3,#FFC3E9,#FF65C3,#FFF1F9,#34212E,#FFFFFF' | split: ','
+-%}
+{% style %}
+  :root {
+    {%- for key in brand_keys %}
+      {%- assign setting_id = key | prepend: 'brand_' -%}
+      {%- assign brand_colour = settings[setting_id] | default: brand_defaults[forloop.index0] %}
+      --brand-{{ key | replace: '_', '-' }}: {{ brand_colour | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    {%- endfor %}
+  }
+{% endstyle %}

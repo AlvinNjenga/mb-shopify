@@ -20,7 +20,7 @@ main:has(.olivelle-product--reference) .sticky-product-bar__inner {
   display: inline-block;
   padding: .6rem 1rem;
   border-radius: 8px;
-  background: #f7f7f7;
+  background: rgb(var(--brand-blush));
   font-size: 1rem;
   line-height: 1.6;
   letter-spacing: .03em;
@@ -34,14 +34,14 @@ main:has(.olivelle-product--reference) .sticky-product-bar__inner {
 .olivelle-product--reference .price-item--sale { order: -1; }
 .olivelle-product--reference .price-item { margin: 0; }
 .olivelle-product--reference .price--large { font-size: 1.9rem; font-weight: 700; }
-.olivelle-product--reference .price--on-sale .price-item--regular { font-size: 1.1rem; font-weight: 400; color: #777; }
-.olivelle-product--reference .price .badge { padding: .4rem .6rem; background: #f7f7f7; color: #1d1d1d; border: 0; border-radius: 5px; font-size: .9rem; letter-spacing: .1em; text-transform: uppercase; }
+.olivelle-product--reference .price--on-sale .price-item--regular { font-size: 1.1rem; font-weight: 400; color: rgba(var(--brand-text), 0.75); }
+.olivelle-product--reference .price .badge { padding: .4rem .6rem; background: rgb(var(--brand-blush)); color: rgb(var(--brand-text)); border: 0; border-radius: 5px; font-size: .9rem; letter-spacing: .1em; text-transform: uppercase; }
 .olivelle-product--reference .product__tax { margin-block: 0 1.6rem; font-size: 1rem; line-height: 1.3; }
-.olivelle-product--reference .product__inventory { padding-top: 1.4rem; border-top: 1px solid #e6e6e6; font-size: 1.4rem; }
+.olivelle-product--reference .product__inventory { padding-top: 1.4rem; border-top: 1px solid rgba(var(--brand-text), 0.16); font-size: 1.4rem; }
 .olivelle-product--reference .product__description { font-size: 1.4rem; line-height: 1.5; letter-spacing: .025em; }
 .olivelle-product--reference .icon-with-text--horizontal { justify-content: flex-start; gap: 1.5rem; }
 .olivelle-product--reference .icon-with-text__item { flex: 0 0 auto; width: 3rem; }
-.olivelle-product--reference .icon-with-text__item .svg-wrapper { width: 3rem; height: 3rem; padding: .5rem; border: 1px solid #999; border-radius: 50%; }
+.olivelle-product--reference .icon-with-text__item .svg-wrapper { width: 3rem; height: 3rem; padding: .5rem; border: 1px solid rgba(var(--brand-text), 0.6); border-radius: 50%; }
 .olivelle-product--reference .icon-with-text__item .h4 { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 .olivelle-product--reference .product__accordion { margin: 0; }
 .olivelle-product--reference .product__accordion:first-child { border-top: 0; }
@@ -49,8 +49,8 @@ main:has(.olivelle-product--reference) .sticky-product-bar__inner {
 .olivelle-product--reference .accordion__title { font-size: 1.6rem; font-weight: 400; }
 .olivelle-product--reference .accordion .svg-wrapper { width: 1.6rem; height: 1.6rem; margin-right: 1.4rem; }
 .olivelle-product--reference .product-form__input .form__label { font-size: 1.2rem; margin-bottom: .6rem; }
-.olivelle-product--reference .product-form__input--pill input[type='radio'] + label { min-width: 6.8rem; margin: .3rem .7rem .3rem 0; padding: .9rem 1.6rem; border: 1px solid #e6e6e6; border-radius: 8px; letter-spacing: 0; }
-.olivelle-product--reference .product-form__input--pill input[type='radio']:checked + label { background: #1d1d1d; color: #fff; border-color: #1d1d1d; }
+.olivelle-product--reference .product-form__input--pill input[type='radio'] + label { min-width: 6.8rem; margin: .3rem .7rem .3rem 0; padding: .9rem 1.6rem; border: 1px solid rgba(var(--brand-text), 0.16); border-radius: 8px; letter-spacing: 0; }
+.olivelle-product--reference .product-form__input--pill input[type='radio']:checked + label { background: rgb(var(--brand-action)); color: rgb(var(--brand-text)); border-color: rgb(var(--brand-action)); }
 .olivelle-product--reference .product-form__input--pill input[type='radio']:focus-visible + label { outline: 2px solid currentColor; outline-offset: 3px; }
 .olivelle-product--reference .quantity { width: 14rem; min-height: 3.4rem; border-radius: 6px; --inputs-radius: 6px; --inputs-border-opacity: .08; }
 .olivelle-product--reference .quantity__input { font-size: 1.2rem; }
@@ -58,14 +58,14 @@ main:has(.olivelle-product--reference) .sticky-product-bar__inner {
 .olivelle-product--reference .quantity__button .svg-wrapper { width: .9rem; }
 .olivelle-product--reference .product-form__submit,
 .olivelle-product--reference .shopify-payment-button__button--unbranded { min-height: 3.8rem; border-radius: 13px; font-size: 1.4rem; font-weight: 700; }
-.olivelle-product--reference .product-form__submit { background: #fff; color: #1d1d1d; border: 2px solid #1d1d1d; --border-opacity: 1; --border-offset: 0; --buttons-radius: 13px; --buttons-border-width: 2px; }
-.olivelle-product--reference .shopify-payment-button__button--unbranded { background: #1d1d1d; color: #fff; }
+.olivelle-product--reference .product-form__submit { --color-button: var(--brand-action); --color-button-text: var(--brand-text); background: rgb(var(--brand-action)); color: rgb(var(--brand-text)); border: 2px solid rgb(var(--brand-action)); --border-opacity: 1; --border-offset: 0; --buttons-radius: 13px; --buttons-border-width: 2px; }
+.olivelle-product--reference .shopify-payment-button__button--unbranded { background: rgb(var(--brand-action)); color: rgb(var(--brand-text)); }
 .product-payment-icons ul { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; }
 .product-payment-icons svg { display: block; width: 3.8rem; height: 2.4rem; }
-.product-delivery-note { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1rem; border-radius: 8px; background: #f7f7f7; font-size: 1rem; letter-spacing: .15em; }
+.product-delivery-note { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1rem; border-radius: 8px; background: rgb(var(--brand-blush)); font-size: 1rem; letter-spacing: .15em; }
 .product-delivery-note .svg-wrapper { width: 1.5rem; height: 1.5rem; }
 .olivelle-product--reference .product__media-icon { top: 1rem; right: 1rem; left: auto; }
-.olivelle-product--reference .complementary-products__container .card--horizontal { padding: .8rem; background: #f7f7f7; border-radius: 9px; gap: 1rem; }
+.olivelle-product--reference .complementary-products__container .card--horizontal { padding: .8rem; background: rgb(var(--brand-blush)); border-radius: 9px; gap: 1rem; }
 .olivelle-product--reference .complementary-products__container .card__heading { font-size: 1.4rem; }
 .olivelle-product--reference .complementary-products__container .price { font-size: 1.1rem; }
 .olivelle-product--reference .complementary-products__container .price__sale { flex-wrap: wrap; gap: .3rem; }
@@ -157,7 +157,7 @@ main:has(.olivelle-product--reference) .sticky-product-bar__inner {
   padding: .3rem 1rem;
   border: 0;
   border-radius: 2rem;
-  background: #e9e3ff;
+  background: rgb(var(--brand-light-pink));
   font-size: 1rem;
   line-height: 1.4;
   text-transform: uppercase;
@@ -207,10 +207,10 @@ main:has(.olivelle-product--reference) .sticky-product-bar__inner {
   min-width: 0;
   margin: 0;
   min-height: 4.4rem;
-  border: 2px solid #1d1d1d;
+  border: 2px solid rgb(var(--brand-action));
   border-radius: 13px;
-  background: #1d1d1d;
-  color: #fff;
+  background: rgb(var(--brand-action));
+  color: rgb(var(--brand-text));
   font-size: 1.4rem;
   font-weight: 700;
 }
@@ -229,7 +229,7 @@ main:has(.olivelle-product--reference) .sticky-product-bar__inner {
   width: 0;
   height: 100%;
   border-radius: 0;
-  background: #9f9f9f33;
+  background: rgba(var(--brand-white), 0.08);
   box-shadow: none;
   z-index: -1;
   pointer-events: none;

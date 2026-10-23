@@ -1,4 +1,4 @@
-.customer-reviews.page-width { max-width: 1620px; padding-left: 45px; padding-right: 45px; color: #1d1d1d; }
+.customer-reviews.page-width { max-width: 1620px; padding-left: 45px; padding-right: 45px; color: rgb(var(--brand-text)); }
 .customer-reviews__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 34px; }
 .customer-reviews__header h2 { margin: 0; font-family: 'Olivelle Fraunces', Georgia, serif; font-size: 36px; line-height: 1.27; font-weight: 700; letter-spacing: .54px; }
 .customer-reviews__header .slider-button { width: 34px; height: 34px; }
@@ -6,14 +6,14 @@
 .customer-reviews .customer-reviews__list { display: flex; gap: 20px; list-style: none; padding: 0; margin: 0; scroll-padding-left: 0; }
 .customer-reviews .customer-reviews__list::after { display: none; }
 .customer-reviews .customer-reviews__slide { width: calc((100% - 40px) / 3); padding: 0; margin: 0; flex-shrink: 0; }
-.customer-review { display: grid; grid-template-columns: 65% 35%; background: #f7f7f7; border-radius: 8px; overflow: hidden; }
+.customer-review { display: grid; grid-template-columns: 65% 35%; background: rgb(var(--brand-blush)); border-radius: 8px; overflow: hidden; }
 .customer-review__body { padding: 20px; }
 .review-stars { display: flex; gap: 1px; width: 70px; margin: 10px 0; }
 .review-stars svg { display: block; width: 13px; height: 13px; }
-.customer-review__quote { color: rgba(29,29,29,.75); font-family: 'Olivelle Inter', Arial, sans-serif; font-size: 11.34px; line-height: 21.42px; letter-spacing: .54px; }
+.customer-review__quote { color: rgba(var(--brand-text), .75); font-family: 'Olivelle Inter', Arial, sans-serif; font-size: 11.34px; line-height: 21.42px; letter-spacing: .54px; }
 .customer-review__quote p { margin: 0; }
 .customer-review__body h3 { margin: 13px 0 9px; font-family: 'Olivelle Fraunces', Georgia, serif; font-size: 11.34px; line-height: 1.27; font-weight: 700; letter-spacing: .54px; }
-.customer-review__product { display: flex; align-items: center; justify-content: center; padding: 20px; background: #e9e4fc; text-align: center; }
+.customer-review__product { display: flex; align-items: center; justify-content: center; padding: 20px; background: rgb(var(--brand-light-pink)); text-align: center; }
 .customer-review__product a { color: inherit; text-decoration: none; }
 .customer-review__product img { display: block; width: 60px; height: 60px; object-fit: cover; border-radius: 7.2px; margin: 0 auto 12px; }
 .customer-review__product h4 { margin: 0; font-family: 'Olivelle Fraunces', Georgia, serif; font-size: 13px; line-height: 1.27; letter-spacing: .54px; }

@@ -1,5 +1,4 @@
-/* Olivelle's global typography and palette. Keep the saved scheme IDs so
-   sections, cards, drawers and theme-editor previews share these overrides. */
+/* Existing typography. Colour schemes are generated from theme settings. */
 :root {
   --font-body-family: 'Olivelle Inter', Arial, sans-serif;
   --font-body-style: normal;
@@ -8,58 +7,6 @@
   --font-heading-family: 'Olivelle Fraunces', Georgia, serif;
   --font-heading-style: normal;
   --font-heading-weight: 400;
-}
-
-:root,
-.color-scheme-1,
-.color-scheme-2,
-.color-scheme-4,
-.color-scheme-5 {
-  --color-background: 255, 255, 255;
-  --gradient-background: #ffffff;
-  --color-foreground: 29, 29, 29;
-  --color-background-contrast: 191, 191, 191;
-  --color-shadow: 29, 29, 29;
-  --color-button: 29, 29, 29;
-  --color-button-text: 255, 255, 255;
-  --color-secondary-button: var(--color-background);
-  --color-secondary-button-text: 29, 29, 29;
-  --color-link: 29, 29, 29;
-  --color-badge-foreground: 29, 29, 29;
-  --color-badge-background: var(--color-background);
-  --color-badge-border: 29, 29, 29;
-  --payment-terms-background-color: rgb(var(--color-background));
-}
-
-/* Reserve the pale grey section background for the footer. */
-.footer.color-scheme-2 {
-  --color-background: 247, 247, 247;
-  --gradient-background: #f7f7f7;
-  --color-background-contrast: 183, 183, 183;
-}
-
-.color-scheme-3 {
-  --color-background: 29, 29, 29;
-  --gradient-background: #1d1d1d;
-  --color-foreground: 242, 242, 242;
-  --color-background-contrast: 42, 42, 42;
-  --color-shadow: 242, 242, 242;
-  --color-button: 255, 255, 255;
-  --color-button-text: 29, 29, 29;
-  --color-secondary-button: 29, 29, 29;
-  --color-secondary-button-text: 255, 255, 255;
-  --color-link: 255, 255, 255;
-  --color-badge-foreground: 242, 242, 242;
-  --color-badge-background: 29, 29, 29;
-  --color-badge-border: 242, 242, 242;
-  --payment-terms-background-color: #1d1d1d;
-}
-
-.color-scheme-4,
-.color-scheme-5 {
-  --color-background: 233, 228, 252;
-  --gradient-background: #e9e4fc;
-  --color-background-contrast: 139, 113, 239;
 }
 
 h6,

@@ -113,7 +113,7 @@
   width: 300px;
   height: 300px;
   max-width: none;
-  color: #e9e4fc;
+  color: rgb(var(--brand-light-pink));
   z-index: -1;
   pointer-events: none;
   margin: 0;
@@ -125,7 +125,7 @@
   height: 20px;
   margin-left: 5px;
   border-radius: 50%;
-  background: rgba(159, 159, 159, 0.4);
+  background: rgb(var(--brand-action));
 }
 
 @keyframes skincare-shape-spin {

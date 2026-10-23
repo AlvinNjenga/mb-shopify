@@ -1,0 +1,116 @@
+/* Scheme colours come from the theme editor. Do not override them globally. */
+:root {
+  --brand-focus: var(--brand-text);
+  --brand-action-hover: 172, 33, 111; /* Deep action pink #AC216F. */
+}
+
+/* Pink panels need plum for contrast; dark surfaces need an inverse ring. */
+.color-scheme-3 {
+  --brand-focus: var(--brand-white);
+}
+
+.color-scheme-6,
+.color-scheme-4,
+.color-scheme-5 {
+  --brand-focus: var(--brand-text);
+}
+
+body {
+  color: rgb(var(--color-foreground));
+}
+
+:where(.rte) a {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+:where(.rte) a:hover,
+.link:hover {
+  text-decoration-thickness: 0.2rem;
+}
+
+/* Keep resting buttons logo pink; highlight actions with deep pink. */
+.button:not([disabled]):not([aria-disabled='true']):not(.disabled):not(.loading):hover,
+.shopify-challenge__button:not([disabled]):hover,
+.customer button:not([disabled]):hover,
+.shopify-payment-button__button--unbranded:not([disabled]):hover {
+  --color-button: var(--brand-action-hover);
+  --color-button-text: var(--brand-white);
+  background-color: rgb(var(--brand-action-hover));
+  background-image: none;
+  color: rgb(var(--brand-white));
+  border-color: transparent;
+  --border-opacity: 0;
+  --border-offset: 0;
+}
+
+/* Dawn draws button borders with pseudo-element shadows. Keep the layout's
+   border width, but hide its colour and decorative rings while hovering. */
+:is(.button, .shopify-challenge__button, .customer button, .shopify-payment-button__button--unbranded, .custom-hero__button, .about-sale__button):not([disabled]):not([aria-disabled='true']):not(.disabled):hover {
+  border-color: transparent;
+}
+
+:is(.button, .shopify-challenge__button, .customer button, .shopify-payment-button__button--unbranded):not([disabled]):not([aria-disabled='true']):not(.disabled):hover::before,
+:is(.button, .shopify-challenge__button, .customer button, .shopify-payment-button__button--unbranded):not([disabled]):not([aria-disabled='true']):not(.disabled):hover::after {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+/* Opaque, two-colour focus treatment stays visible around filled buttons.
+   Keep the theme's .focused keyboard fallback as well as :focus-visible. */
+*:focus-visible,
+.focused {
+  outline: 2px solid rgb(var(--brand-focus));
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgb(var(--color-background));
+}
+
+.button:focus-visible,
+.button.focused,
+.shopify-payment-button__button--unbranded:focus-visible,
+.shopify-payment-button__button--unbranded.focused {
+  outline: 2px solid rgb(var(--brand-focus));
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgb(var(--color-background));
+}
+
+@media (forced-colors: active) {
+  *:focus-visible,
+  .focused {
+    outline-color: Highlight;
+  }
+}
+
+/* Shared purchase controls, including secondary-class Add to Basket buttons. */
+.product-form__submit,
+.product-form__checkout,
+.sticky-product-bar .button {
+  --color-button: var(--brand-action);
+  --color-button-text: var(--brand-text);
+  --color-secondary-button: var(--brand-action);
+  --color-secondary-button-text: var(--brand-text);
+}
+
+.header__icon:hover,
+.header__menu-item:hover,
+.menu-drawer__menu-item--active,
+.menu-drawer__menu-item:hover {
+  color: rgb(var(--brand-text));
+}
+
+.cart-count-bubble {
+  background: rgb(var(--brand-pink));
+  color: rgb(var(--brand-text));
+}
+
+.color-scheme-6 .menu-drawer__menu-item--active,
+.color-scheme-6 .menu-drawer__menu-item:hover {
+  color: rgb(var(--color-foreground));
+}
+
+/* Preserve loading labels while the spinner is displayed. */
+.product-card-wrapper .card:not(.card--horizontal) .quick-add__submit.loading,
+.olivelle-product--reference .product-form__submit.loading,
+.olivelle-product--reference .product-form__checkout.loading {
+  color: transparent;
+}

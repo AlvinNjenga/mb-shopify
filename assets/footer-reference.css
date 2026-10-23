@@ -55,7 +55,7 @@
 .footer--reference .footer-block__newsletter { margin: 10px 0 0; text-align: left; }
 .footer--reference .newsletter-form,
 .footer--reference .newsletter-form__field-wrapper { display: block; max-width: 100%; margin: 0; }
-.footer--reference .field { border-bottom: 1px solid #ebebeb; }
+.footer--reference .field { border-bottom: 1px solid rgba(var(--brand-text), 0.16); }
 .footer--reference .field::before,
 .footer--reference .field::after { content: none; }
 .footer--reference .field__input {
@@ -73,7 +73,7 @@
 .footer--reference .list-social .svg-wrapper,
 .footer--reference .list-social .icon { width: 16px; height: 16px; }
 .footer--reference .footer-block--newsletter { margin-top: 0; }
-.footer--reference .footer__content-bottom { border-top: 1px solid #ebebeb; padding: 10px 0 0; }
+.footer--reference .footer__content-bottom { border-top: 1px solid rgba(var(--brand-text), 0.16); padding: 10px 0 0; }
 .footer--reference .footer__content-bottom-wrapper { align-items: center; gap: 20px; min-height: 54px; }
 .footer--reference .footer__copyright { display: flex; align-items: center; flex-wrap: wrap; flex: 1 1 0; margin: 0; text-align: left; }
 .footer--reference .copyright__content { font-size: 13px; letter-spacing: 0; }

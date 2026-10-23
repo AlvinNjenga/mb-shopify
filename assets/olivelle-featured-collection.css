@@ -1,8 +1,8 @@
 /* Match the reference grid without changing saved section settings. */
 .olivelle-product-collection {
   --grid-desktop-horizontal-spacing: 20px;
-  --color-foreground: 29, 29, 29;
-  background: #f7f7f7;
+  --color-foreground: var(--brand-text);
+  background: rgb(var(--brand-blush));
 }
 
 .olivelle-product-collection .collection__title {
@@ -46,9 +46,9 @@
   gap: 8px;
   min-height: 34px;
   padding: 5px 5px 5px 12px;
-  border: 1px solid #ebebeb;
+  border: 1px solid rgba(var(--brand-text), 0.16);
   border-radius: 12px;
-  color: #1d1d1d;
+  color: rgb(var(--brand-text));
   font-size: 11px;
   line-height: 1.3;
   font-weight: 500;
@@ -58,7 +58,7 @@
 
 .olivelle-product-collection .olivelle-collection__pill:hover,
 .olivelle-product-collection .olivelle-collection__pill--selected {
-  background: #fff;
+  background: rgb(var(--brand-white));
   font-weight: 600;
 }
 
@@ -70,7 +70,7 @@
   height: 20px;
   padding-inline: 3px;
   border-radius: 50%;
-  background: #f2f2f2;
+  background: rgb(var(--brand-white));
   font-size: 10px;
 }
 

@@ -5,7 +5,7 @@ body:has(sticky-product-bar) { padding-bottom: var(--sticky-product-bar-height, 
 .sticky-product-bar__product { display: flex; align-items: center; gap: 1.2rem; flex: 1; min-width: 0; }
 .sticky-product-bar__image { width: 48px; height: 48px; object-fit: contain; border-radius: 4px; }
 .sticky-product-bar__copy { min-width: 0; }
-.sticky-product-bar__title { color: #000; margin: 0 0 0.3rem; font-size: 1.5rem; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sticky-product-bar__title { color: rgb(var(--brand-text)); margin: 0 0 0.3rem; font-size: 1.5rem; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sticky-product-bar .price { font-size: 1.4rem; line-height: 1.3; }
 .sticky-product-bar .price__container { margin: 0; }
 .sticky-product-bar .price .badge { display: none; }

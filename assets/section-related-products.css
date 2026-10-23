@@ -5,7 +5,7 @@
 .related-products__heading {
   margin: 0 0 3rem;
 }
-.related-products-reference { background: #f5f5f5; }
+.related-products-reference { background: rgb(var(--brand-blush)); }
 .related-products-reference .related-products__heading { text-align: center; }
 .related-products-reference .product-grid { flex-wrap: nowrap; scroll-padding-left: 0; }
 .related-products-reference .slider__slide { flex-shrink: 0; }

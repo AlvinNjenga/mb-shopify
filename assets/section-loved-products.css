@@ -1,16 +1,16 @@
-.loved-products { --grid-desktop-horizontal-spacing: 20px; --grid-mobile-horizontal-spacing: 20px; color: rgba(29,29,29,.75); }
+.loved-products { --grid-desktop-horizontal-spacing: 20px; --grid-mobile-horizontal-spacing: 20px; color: rgba(var(--brand-text), .75); }
 .loved-products .page-width { max-width: 1620px; padding-left: 45px; padding-right: 45px; }
 .loved-products .multicolumn__title { margin-bottom: 18px; padding: 0; }
-.loved-products .multicolumn__title h2 { margin: 0; font-family: 'Olivelle Fraunces', Georgia, serif; color: #1d1d1d; font-size: 36px; line-height: 1.27; font-weight: 700; letter-spacing: .54px; }
+.loved-products .multicolumn__title h2 { margin: 0; font-family: 'Olivelle Fraunces', Georgia, serif; color: rgb(var(--brand-text)); font-size: 36px; line-height: 1.27; font-weight: 700; letter-spacing: .54px; }
 .loved-products .multicolumn-list { padding: 0; margin-top: 16.2px; margin-bottom: 0; }
 .loved-products .multicolumn-list .slider__slide { padding-top: 0; padding-bottom: 0; }
 .loved-product-card { position: relative; text-align: left; }
 .loved-product-card__image { border-radius: 8px; transition: transform .6s ease; }
 .loved-product-card__image-link { display: block; }
 .loved-product-card__info { position: absolute; bottom: 0; left: 0; padding: 5px 20px; background: rgb(var(--color-background)); border-top-right-radius: 8px; font-size: 16.2px; line-height: 30.6px; }
-.loved-product-card__info h3 { margin: 4.5px 0 0; font-family: 'Olivelle Fraunces', Georgia, serif; font-size: 20px; line-height: 1.27; font-weight: 700; letter-spacing: .54px; color: #1d1d1d; }
-.loved-product-card__badge { display: inline-block; margin: 0; padding: 5px 10px; background: #f7f7f7; border-radius: 3px; color: #1d1d1d; font-size: 9px; line-height: 11px; letter-spacing: 2.7px; text-transform: uppercase; }
-.loved-product-card__info .link { display: flex; align-items: center; gap: 5px; margin-top: 10px; font-size: 12.96px; line-height: 24.48px; color: #1d1d1d; text-decoration: none; }
+.loved-product-card__info h3 { margin: 4.5px 0 0; font-family: 'Olivelle Fraunces', Georgia, serif; font-size: 20px; line-height: 1.27; font-weight: 700; letter-spacing: .54px; color: rgb(var(--brand-text)); }
+.loved-product-card__badge { display: inline-block; margin: 0; padding: 5px 10px; background: rgb(var(--brand-blush)); border-radius: 3px; color: rgb(var(--brand-text)); font-size: 9px; line-height: 11px; letter-spacing: 2.7px; text-transform: uppercase; }
+.loved-product-card__info .link { display: flex; align-items: center; gap: 5px; margin-top: 10px; font-size: 12.96px; line-height: 24.48px; color: rgb(var(--brand-text)); text-decoration: none; }
 .loved-product-card__info .svg-wrapper { width: 10px; height: 10px; transform: rotate(-90deg); }
 .loved-products slider-component { position: static; }
 .loved-products .slider-buttons { position: absolute; top: calc(var(--loved-padding-top) + 10px); right: 45px; justify-content: flex-end; }

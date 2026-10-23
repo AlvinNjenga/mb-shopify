@@ -45,8 +45,8 @@
         "accessibility_label": "About our brand",
         "height": 500,
         "mobile_height": 400,
-        "panel_color": "#e9e4fc",
-        "text_color": "#1d1d1d"
+        "panel_color": "#FFC3E9",
+        "text_color": "#34212E"
       }
     },
     "introduction": {
@@ -55,7 +55,7 @@
         "show_decoration": true,
         "heading": "A Journey to <em>Natural</em> Beauty",
         "text": "<p>We believe skincare should be more than a routine — it should be a moment of balance, care, and renewal. Our philosophy blends nourishing botanical oils, thoughtfully crafted beauty tools, and mindful self-care rituals designed to support healthy, radiant skin.</p>",
-        "highlight_color": "#d4c4d9",
+        "highlight_color": "#FF65C3",
         "padding_top": 32,
         "padding_bottom": 16
       }
@@ -75,7 +75,7 @@
       "settings": {
         "heading": "Quality & Sustainability",
         "text": "<p>We believe beauty should be as mindful as it is effective. Our products are created with carefully selected ingredients, skin-friendly materials, and thoughtful design to support both your wellbeing and the planet. From nourishing botanical oils to durable beauty tools and calming self-care essentials, every detail is chosen to deliver quality you can trust.</p>",
-        "background_color": "#e9e4fc",
+        "background_color": "#FFC3E9",
         "padding": 36,
         "mobile_gap": 56
       }
@@ -85,7 +85,7 @@
       "settings": {
         "heading": "Our <em>Team</em>",
         "accessibility_label": "Our team members",
-        "highlight_color": "#d4c4d9",
+        "highlight_color": "#FF65C3",
         "padding_top": 36,
         "padding_bottom": 36
       },

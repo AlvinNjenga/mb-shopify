@@ -1,12 +1,12 @@
-.about-team { padding-top: var(--team-padding-top); padding-bottom: var(--team-padding-bottom); background: #fff; color: #1d1d1d; font-family: 'About Inter', Arial, sans-serif; letter-spacing: 0.6px; }
+.about-team { padding-top: var(--team-padding-top); padding-bottom: var(--team-padding-bottom); background: rgb(var(--brand-white)); color: rgb(var(--brand-text)); font-family: 'About Inter', Arial, sans-serif; letter-spacing: 0.6px; }
 .about-team__heading { text-align: center; padding: 0 21px 16px; }
 .about-team__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 1620px; margin: 0 auto; padding: 36px 45px 0; list-style: none; }
 .about-team__card { min-width: 0; text-align: center; padding-bottom: 20px; }
 .about-team__image { position: relative; width: 25%; aspect-ratio: 1; margin: 0 auto; overflow: hidden; border-radius: 50%; }
 .about-team__image img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .about-team__info { padding-top: 13.5px; }
-.about-team__name { margin: 0 0 9px; font-family: 'About Fraunces', Georgia, serif; color: #1d1d1d; font-size: 26px; font-weight: 700; line-height: 1.45; letter-spacing: 0.6px; }
-.about-team__text { color: rgba(29,29,29,0.75); font-size: 14.58px; line-height: 1.6; }
+.about-team__name { margin: 0 0 9px; font-family: 'About Fraunces', Georgia, serif; color: rgb(var(--brand-text)); font-size: 26px; font-weight: 700; line-height: 1.45; letter-spacing: 0.6px; }
+.about-team__text { color: rgba(var(--brand-text), 0.75); font-size: 14.58px; line-height: 1.6; }
 .about-team__text > :first-child { margin-top: 0; }
 .about-team__text > :last-child { margin-bottom: 0; }
 @media (max-width: 989px) {

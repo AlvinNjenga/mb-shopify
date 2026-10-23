@@ -6,8 +6,8 @@
   --border-radius: 7.2px;
   --shadow-opacity: 0;
   --text-alignment: center;
-  color: #1d1d1d;
-  background: #fff;
+  color: rgb(var(--brand-text));
+  background: rgb(var(--brand-white));
   border: 0;
   border-radius: 7.2px;
   box-shadow: none;
@@ -52,7 +52,7 @@
 }
 
 .product-card-wrapper .card:not(.card--horizontal) .card__heading {
-  color: #1d1d1d;
+  color: rgb(var(--brand-text));
   font-family: 'Olivelle Fraunces', Georgia, serif;
   font-size: 16px;
   font-style: normal;
@@ -67,7 +67,7 @@
 }
 
 .product-card-wrapper .card:not(.card--horizontal) .price {
-  color: #1d1d1d;
+  color: rgb(var(--brand-text));
   font-family: 'Olivelle Inter', Arial, sans-serif;
   font-size: 12.6px;
   font-weight: 400;
@@ -86,7 +86,7 @@
 
 .product-card-wrapper .card:not(.card--horizontal) .price--on-sale .price-item--regular {
   font-size: 10.8px;
-  color: #aaa;
+  color: rgba(var(--brand-text), 0.75);
   margin: 0;
 }
 
@@ -114,8 +114,8 @@
   border: 0;
   border-radius: 0;
   padding: 2px 3px;
-  background: #f7f7f7;
-  color: #1d1d1d;
+  background: rgb(var(--brand-blush));
+  color: rgb(var(--brand-text));
   font-family: 'Olivelle Inter', Arial, sans-serif;
   font-size: 9px;
   line-height: 1.2;
@@ -166,10 +166,10 @@
 }
 
 .product-card-wrapper .card:not(.card--horizontal) .quick-add__submit {
-  --color-button: 255, 255, 255;
-  --color-button-text: 29, 29, 29;
-  --color-secondary-button: 255, 255, 255;
-  --color-secondary-button-text: 29, 29, 29;
+  --color-button: var(--brand-action);
+  --color-button-text: var(--brand-text);
+  --color-secondary-button: var(--brand-action);
+  --color-secondary-button-text: var(--brand-text);
   --buttons-radius: 7.2px;
   --buttons-radius-outset: 7.2px;
   --border-opacity: 0;
@@ -180,8 +180,8 @@
   width: 100%;
   padding: 0;
   border-radius: 7.2px;
-  background: #fff;
-  color: #1d1d1d;
+  background: rgb(var(--brand-action));
+  color: rgb(var(--brand-text));
   font-family: 'Olivelle Inter', Arial, sans-serif;
   font-size: 1.3rem;
   font-weight: 400;
@@ -202,7 +202,8 @@
 }
 
 .product-card-wrapper .card:not(.card--horizontal) .quick-add__submit:hover {
-  background: #f7f7f7;
+  background: rgb(var(--brand-action-hover));
+  color: rgb(var(--brand-white));
 }
 
 @media screen and (min-width: 990px) and (hover: hover) and (prefers-reduced-motion: no-preference) {

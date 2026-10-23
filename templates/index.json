@@ -258,8 +258,8 @@
                                                    "subtitle":  "Clean Beauty",
                                                    "text":  "\u003cp\u003eOur skincare is created with carefully selected botanical ingredients designed to nourish and support healthy, radiant skin. We focus on gentle, effective formulas that work in harmony with your skin, helping to hydrate, balance, and restore its natural glow.\u003c/p\u003e\u003cp\u003eEvery product is crafted with simplicity and care, avoiding unnecessary additives and focusing on ingredients that truly benefit your skin. Our goal is to deliver clean beauty solutions that feel luxurious while remaining safe and skin-friendly.\u003c/p\u003e\u003cp\u003eWe believe skincare should be both effective and mindful. Thatâ€™s why our formulas are designed to support your skinâ€™s natural balance while turning your routine into a calming self-care ritual.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eWhat Makes Our Formulas Special?\u003c/strong\u003e\u003c/p\u003e\u003cp\u003eâ€¢ Botanical and skin-loving ingredients\u003cbr/\u003eâ€¢ Gentle formulas suitable for daily use\u003cbr/\u003eâ€¢ Designed to support natural skin balance\u003cbr/\u003eâ€¢ Clean beauty approach without unnecessary additives\u003c/p\u003e",
                                                    "reference_image":  "1",
-                                                   "background":  "#e9e4fc",
-                                                   "text_color":  "#1d1d1d",
+                                                   "background":  "#FFC3E9",
+                                                   "text_color":  "#34212E",
                                                    "title":  "Natural. Gentle. Skin-Loving."
                                                },
                                   "type":  "card"
@@ -269,8 +269,8 @@
                                                    "subtitle":  "Skin Care Tools",
                                                    "text":  "\u003cp\u003eOur beauty tools are designed to elevate your skincare routine and help you achieve better results from your favorite products. From facial rollers to cleansing brushes and skincare devices, each tool is created to support healthier, smoother-looking skin.\u003c/p\u003e\u003cp\u003eThese tools help improve circulation, reduce puffiness, and enhance the absorption of skincare products. When used regularly, they can help your skin look more refreshed, revitalized, and naturally radiant.\u003c/p\u003e\u003cp\u003eBy combining skincare with beauty tools, your daily routine becomes more effective and enjoyable, turning simple moments into a relaxing beauty ritual.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eWhy Use Beauty Tools?\u003c/strong\u003e\u003c/p\u003e\u003cp\u003eâ€¢ Improve circulation and skin tone\u003cbr/\u003eâ€¢ Reduce puffiness and facial tension\u003cbr/\u003eâ€¢ Enhance absorption of skincare products\u003cbr/\u003eâ€¢ Support smoother, glowing skin\u003c/p\u003e",
                                                    "reference_image":  "2",
-                                                   "background":  "#f7f5f2",
-                                                   "text_color":  "#1d1d1d",
+                                                   "background":  "#FFF1F9",
+                                                   "text_color":  "#34212E",
                                                    "title":  "Advanced Beauty Tools"
                                                },
                                   "type":  "card"
@@ -280,8 +280,8 @@
                                                    "subtitle":  "Self-Care Ritual",
                                                    "text":  "\u003cp\u003eSkincare is more than a routine â€” itâ€™s a moment to slow down and care for yourself. Our self-care sets and spa-inspired products are designed to help you create calming rituals that nurture both your skin and your well-being.\u003c/p\u003e\u003cp\u003eFrom nourishing oils and creams to relaxing beauty tools and spa accessories, every product is made to transform everyday skincare into a peaceful experience.\u003c/p\u003e\u003cp\u003eTaking time for self-care allows your skin to recharge while helping you feel refreshed, relaxed, and confident.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003ePerfect For Your Daily Ritual\u003c/strong\u003e\u003c/p\u003e\u003cp\u003eâ€¢ Relaxing at-home spa moments\u003cbr/\u003eâ€¢ Evening skincare routines\u003cbr/\u003eâ€¢ Stress-relieving self-care rituals\u003cbr/\u003eâ€¢ Creating mindful beauty habits\u003c/p\u003e",
                                                    "reference_image":  "3",
-                                                   "background":  "#e9e4fc",
-                                                   "text_color":  "#1d1d1d",
+                                                   "background":  "#FFC3E9",
+                                                   "text_color":  "#34212E",
                                                    "title":  "Relax. Restore. Glow."
                                                },
                                   "type":  "card"
@@ -291,8 +291,8 @@
                                                    "subtitle":  "Vegan Beauty",
                                                    "text":  "\u003cp\u003eWe believe beauty should be kind â€” to your skin, to animals, and to the planet. Thatâ€™s why our products are developed with vegan-friendly formulas and cruelty-free practices.\u003c/p\u003e\u003cp\u003eOur approach focuses on responsibly selected ingredients and thoughtful design, helping you build a beauty routine that feels good and aligns with your values.\u003c/p\u003e\u003cp\u003eBy choosing clean and conscious skincare, youâ€™re supporting a routine that respects both your skin and the environment.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eOur Commitment\u003c/strong\u003e\u003c/p\u003e\u003cp\u003eâ€¢ Vegan-friendly ingredients\u003cbr/\u003eâ€¢ Cruelty-free beauty philosophy\u003cbr/\u003eâ€¢ Thoughtfully selected materials\u003cbr/\u003eâ€¢ Conscious and responsible skincare\u003c/p\u003e",
                                                    "reference_image":  "4",
-                                                   "background":  "#f7f5f2",
-                                                   "text_color":  "#1d1d1d",
+                                                   "background":  "#FFF1F9",
+                                                   "text_color":  "#34212E",
                                                    "title":  "Kind to Skin \u0026 Planet"
                                                },
                                   "type":  "card"

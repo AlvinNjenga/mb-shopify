@@ -3,26 +3,26 @@
 .custom-hero--collection .custom-hero__heading { font-size: 62px; line-height: 1.27; letter-spacing: .54px; }
 .custom-hero--collection .custom-hero__description { margin-top: 9px; font-size: 16.2px; line-height: 30.6px; }
 .custom-hero--collection .custom-hero__button { margin-top: 9px; min-height: 38px; padding: 0 18px; border-radius: 12px; font-size: 14.4px; }
-.custom-hero--collection .custom-hero__button svg { width: 20px; height: 20px; color: #fff; }
+.custom-hero--collection .custom-hero__button svg { width: 20px; height: 20px; color: rgb(var(--brand-white)); }
 .hero-product-collection.page-width { position: relative; z-index: 3; max-width: 1620px; padding: 0 45px; margin: -230px auto 0; --grid-desktop-horizontal-spacing: 20px; }
 .hero-product-collection slider-component { --desktop-margin-left-first-item: 0px; }
 .hero-product-collection .slider-buttons { justify-content: flex-end; gap: 5px; }
-.hero-product-collection .slider-button { background: #fff; color: #1d1d1d; width: 34px; height: 34px; padding: 0; border: 2px solid #fff; border-radius: 50%; box-shadow: 0 2px 3px #0002; }
-.hero-product-collection .slider-button .svg-wrapper { width: 26px; height: 26px; background: #d9d9d9; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.hero-product-collection .slider-button { background: rgb(var(--brand-action)); color: rgb(var(--brand-text)); width: 34px; height: 34px; padding: 0; border: 2px solid rgb(var(--brand-action)); border-radius: 50%; box-shadow: 0 2px 3px #0002; }
+.hero-product-collection .slider-button .svg-wrapper { width: 26px; height: 26px; background: rgb(var(--brand-action)); color: rgb(var(--brand-text)); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 .hero-product-collection .slider-button .icon { height: 9px; }
 .hero-product-collection .hero-product-collection__list { padding: 0; margin: 16.2px 0 0; scroll-padding-left: 0; }
 .hero-product-collection .slider--desktop::after { display: none; }
 .hero-product-collection .hero-product-collection__list.slider--desktop .grid__item { width: calc((100% - 60px) / 4); }
-.hero-product-collection .card-wrapper { background: #fff; border-radius: 8px; }
-.hero-product-collection__reference { display: block; color: #1d1d1d; text-decoration: none; }
+.hero-product-collection .card-wrapper { background: rgb(var(--brand-white)); border-radius: 8px; }
+.hero-product-collection__reference { display: block; color: rgb(var(--brand-text)); text-decoration: none; }
 .hero-product-collection__reference-image { position: relative; }
 .hero-product-collection__reference-image .media { border-radius: 7.2px; }
-.hero-product-collection__reference-action { position: absolute; right: 0; bottom: 0; width: 58px; height: 58px; border-radius: 30px 0 0; background: #fff; }
+.hero-product-collection__reference-action { position: absolute; right: 0; bottom: 0; width: 58px; height: 58px; border-radius: 30px 0 0; background: rgb(var(--brand-white)); }
 .hero-product-collection__reference-action::before,
-.hero-product-collection__reference-action::after { content: ''; position: absolute; width: 7.2px; height: 7.2px; background: radial-gradient(circle at 0 0, transparent 7.2px, #fff 7.3px); pointer-events: none; }
+.hero-product-collection__reference-action::after { content: ''; position: absolute; width: 7.2px; height: 7.2px; background: radial-gradient(circle at 0 0, transparent 7.2px, rgb(var(--brand-white)) 7.3px); pointer-events: none; }
 .hero-product-collection__reference-action::before { top: -7.2px; right: 0; }
 .hero-product-collection__reference-action::after { bottom: 0; left: -7.2px; }
-.hero-product-collection__reference-action svg { position: absolute; right: 8px; bottom: 6px; width: 34.2px; height: 34.2px; padding: 5px; border-radius: 50%; background: #e9e4fc; }
+.hero-product-collection__reference-action svg { position: absolute; right: 8px; bottom: 6px; width: 34.2px; height: 34.2px; padding: 5px; border-radius: 50%; background: rgb(var(--brand-light-pink)); }
 .hero-product-collection__reference h3 { margin: 0; padding: 20px 0 0; text-align: center; font-family: 'Hero Fraunces', Georgia, serif; font-size: 16px; font-weight: 700; line-height: 1.27; letter-spacing: .54px; }
 @media screen and (max-width: 989px) {
   .custom-hero--collection .custom-hero__layout { min-height: 504px; padding: 36px 13.5px; }

@@ -12,8 +12,8 @@
   display: flex;
   align-items: flex-end;
   min-height: var(--collection-banner-height, 414px);
-  background: #1d1d1d;
-  color: #fff;
+  background: rgb(var(--brand-text));
+  color: rgb(var(--brand-white));
 }
 
 .collection-banner-overlay__image,

@@ -102,6 +102,18 @@
     ]
   },
   {
+    "name": "MEGYN BEAUTY palette",
+    "settings": [
+      { "type": "paragraph", "content": "Brand tokens for accents and shared interaction states. Section backgrounds, text and buttons remain editable under Colors using the existing schemes. Check contrast after changing colours." },
+      { "type": "color", "id": "brand_pink", "label": "Signature pink", "default": "#FF65C3" },
+      { "type": "color", "id": "brand_light_pink", "label": "Light logo pink", "default": "#FFC3E9" },
+      { "type": "color", "id": "brand_action", "label": "Action pink", "default": "#FF65C3" },
+      { "type": "color", "id": "brand_blush", "label": "Soft blush", "default": "#FFF1F9" },
+      { "type": "color", "id": "brand_text", "label": "Dark plum", "default": "#34212E" },
+      { "type": "color", "id": "brand_white", "label": "White", "default": "#FFFFFF" }
+    ]
+  },
+  {
     "name": "t:settings_schema.typography.name",
     "settings": [
       {

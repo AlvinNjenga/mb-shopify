@@ -58,7 +58,7 @@
 .product-story--results .product-story__items { grid-template-columns: 1.3fr 1fr 1fr 1.3fr; align-items: start; }
 .product-story--results .product-story__item { position: relative; padding: 3rem; background: var(--story-panel); min-height: 30rem; isolation: isolate; }
 .product-story--results .product-story__item:nth-child(even) { margin-top: 5rem; min-height: 38rem; }
-.product-story--results .product-story__item--image { display: flex; flex-direction: column; justify-content: end; color: #fff; }
+.product-story--results .product-story__item--image { display: flex; flex-direction: column; justify-content: end; color: rgb(var(--brand-white)); }
 .product-story--results .product-story__item--image img { position: absolute; inset: 0; height: 100%; object-fit: cover; z-index: -2; border-radius: 0; }
 .product-story--results .product-story__item--image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent, #000b); z-index: -1; }
 .product-story--results .product-story__item--image h3 { color: inherit; }

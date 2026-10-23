@@ -184,7 +184,7 @@
     },
     "scrolling_offers": {
       "type": "product-story",
-      "settings": { "heading": "Store offers", "layout": "offers", "reference_layout": true, "panel_color": "#e9e4fc", "padding_top": 0, "padding_bottom": 0 },
+      "settings": { "heading": "Store offers", "layout": "offers", "reference_layout": true, "panel_color": "#FFC3E9", "padding_top": 0, "padding_bottom": 0 },
       "blocks": {
         "offer_1": { "type": "item", "settings": { "heading": "FREE SHIPPING", "content": "<p>on all orders over $100</p>" } },
         "offer_2": { "type": "item", "settings": { "heading": "10% OFF", "content": "<p>your first order | Use code: PROMO10</p>" } },
@@ -194,7 +194,7 @@
     },
     "brand_stories": {
       "type": "product-story",
-      "settings": { "heading": "", "layout": "brand_stories", "reference_layout": true, "use_product_images": true, "panel_color": "#efecf7", "padding_top": 36, "padding_bottom": 0 },
+      "settings": { "heading": "", "layout": "brand_stories", "reference_layout": true, "use_product_images": true, "panel_color": "#FFF1F9", "padding_top": 36, "padding_bottom": 0 },
       "blocks": {
         "story_1": { "type": "item", "settings": { "heading": "Care for your skin", "content": "{{ product.metafields.custom.benefits | metafield_tag }}", "metafield_key": "benefits", "link_label": "Explore products", "link": "/collections/all" } },
         "story_2": { "type": "item", "settings": { "heading": "Your skincare ritual", "content": "{{ product.metafields.custom.usage_summary | metafield_tag }}", "metafield_key": "usage", "link_label": "Explore products", "link": "/collections/all" } },
@@ -514,7 +514,7 @@
       "settings": {
         "heading": "Over 3,000 Happy reviews",
         "layout": "reviews",
-        "panel_color": "#e9e4fc",
+        "panel_color": "#FFC3E9",
         "metafield_key": "",
         "color_scheme": "scheme-1",
         "padding_top": 48,
