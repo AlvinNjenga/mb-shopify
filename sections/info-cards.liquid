@@ -4,7 +4,17 @@
 <div class="reference-infocards color-{{ section.settings.color_scheme }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
   <div class="reference-infocards__grid">
     {% for block in section.blocks %}
-      <details class="reference-infocard" style="--card-background: {{ block.settings.background }}; --card-color: {{ block.settings.text_color }};" {{ block.shopify_attributes }}>
+      {% liquid
+        assign mobile_color_block = block
+        if section.blocks.size == 4
+          if forloop.index == 3
+            assign mobile_color_block = section.blocks[3]
+          elsif forloop.index == 4
+            assign mobile_color_block = section.blocks[2]
+          endif
+        endif
+      %}
+      <details class="reference-infocard" style="--card-background: {{ block.settings.background }}; --card-color: {{ block.settings.text_color }}; --mobile-card-background: {{ mobile_color_block.settings.background }}; --mobile-card-color: {{ mobile_color_block.settings.text_color }};" {{ block.shopify_attributes }}>
         <summary class="reference-infocard__summary">
           {% render 'infocard-image', block: block %}
           <span class="reference-infocard__subtitle">{{ block.settings.subtitle | escape }}</span>

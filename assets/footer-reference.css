@@ -96,10 +96,17 @@
 @media screen and (max-width: 749px) {
   .footer--reference .page-width { padding-left: 15px; padding-right: 15px; }
   .footer--reference .footer__content-top { padding-bottom: 12px; }
-  .footer--reference .footer__blocks-wrapper { display: block; }
+  .footer--reference .footer__blocks-wrapper { display: flex; gap: 30px 20px; }
   .footer--reference .footer-block.grid__item,
   .footer--reference .footer-block.grid__item:first-child,
-  .footer--reference .footer-block.grid__item:last-child { width: 100%; padding: 0; margin: 30px 0 0; }
+  .footer--reference .footer-block.grid__item:last-child { width: 100%; padding: 0; margin: 0; }
+  .footer--reference .footer-block.grid__item.footer-block--text,
+  .footer--reference .footer-block.grid__item.footer-block--menu {
+    flex: 1 1 140px;
+    width: auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
   .footer--reference .footer-block.grid__item:first-child { margin-top: 0; }
   .footer--reference .footer__content-bottom { padding: 10px 0; }
   .footer--reference .footer__copyright { display: block; }
