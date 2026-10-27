@@ -192,6 +192,8 @@
                   {% render 'product-purchase-information', block: block, section_id: section.id %}
                 {%- when 'delivery_note', 'payment_icons' -%}
                   {% render 'product-purchase-extras', block: block %}
+                {%- when 'uk_delivery' -%}
+                  {% render 'product-uk-delivery', block: block, product: product %}
                 {%- when 'quantity_selector' -%}
                   <div
                     id="Quantity-Form-{{ section.id }}"
@@ -667,7 +669,7 @@
                   {%- case block.type -%}
                     {%- when 'complementary' -%}
                       {%- assign layout_block_type = 'purchase_information' -%}
-                    {%- when 'delivery_note' -%}
+                    {%- when 'delivery_note', 'uk_delivery' -%}
                       {%- assign layout_block_type = 'text' -%}
                   {%- endcase -%}
                 {%- endif -%}
@@ -2288,6 +2290,22 @@
           "label": "Delivery information",
           "info": "Enter an accurate delivery message. Leave blank to hide; dates are not invented."
         }
+      ]
+    },
+    {
+      "type": "uk_delivery",
+      "name": "UK delivery estimates",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Shown when the storefront country is United Kingdom. Maintain these independently of checkout shipping settings. Estimates exclude weekends and any holiday dates entered below; final options and dates are confirmed at checkout." },
+        { "type": "range", "id": "preparation_days", "label": "Preparation (business days)", "min": 0, "max": 10, "step": 1, "default": 1 },
+        { "type": "range", "id": "cutoff_hour", "label": "UK cutoff hour (24-hour clock)", "min": 0, "max": 23, "step": 1, "default": 14 },
+        { "type": "range", "id": "standard_min", "label": "Standard minimum transit days", "min": 1, "max": 20, "step": 1, "default": 2 },
+        { "type": "range", "id": "standard_max", "label": "Standard maximum transit days", "min": 1, "max": 20, "step": 1, "default": 4 },
+        { "type": "checkbox", "id": "show_express", "label": "Show Express delivery", "default": true },
+        { "type": "range", "id": "express_min", "label": "Express minimum transit days", "min": 1, "max": 20, "step": 1, "default": 1 },
+        { "type": "range", "id": "express_max", "label": "Express maximum transit days", "min": 1, "max": 20, "step": 1, "default": 2 },
+        { "type": "textarea", "id": "holidays", "label": "Non-working dates", "info": "Enter dates as YYYY-MM-DD, separated by commas or new lines. Include relevant bank holidays and closures." }
       ]
     },
     {

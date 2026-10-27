@@ -112,6 +112,18 @@
             "content": "<p>Changed your mind? You can return or exchange your purchase within <strong>30 days</strong>, with <strong>no return charge</strong>. Choose a replacement product, store credit, or a refund to the payment method used for your order.</p>"
           }
         },
+        "uk_delivery": {
+          "type": "uk_delivery",
+          "settings": {
+            "preparation_days": 1,
+            "cutoff_hour": 14,
+            "standard_min": 2,
+            "standard_max": 4,
+            "show_express": true,
+            "express_min": 1,
+            "express_max": 2
+          }
+        },
         "delivery_note": {
           "type": "delivery_note",
           "settings": {
@@ -124,6 +136,7 @@
         "title",
         "inventory",
         "price",
+        "uk_delivery",
         "delivery_note",
         "description",
         "product_information",

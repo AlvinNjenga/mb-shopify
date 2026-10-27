@@ -63,6 +63,18 @@
             "show_gift_card_recipient": true
           }
         },
+        "uk_delivery": {
+          "type": "uk_delivery",
+          "settings": {
+            "preparation_days": 1,
+            "cutoff_hour": 14,
+            "standard_min": 2,
+            "standard_max": 4,
+            "show_express": true,
+            "express_min": 1,
+            "express_max": 2
+          }
+        },
         "description": {
           "type": "description",
           "settings": {}
@@ -120,6 +132,7 @@
         "vendor",
         "title",
         "price",
+        "uk_delivery",
         "inventory",
         "description",
         "skin_types",
